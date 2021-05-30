@@ -22,7 +22,7 @@ class LoginVC: UIViewController {
         hideKeyboardWhenTappedAround()
         loginBtn.setToDisabled()
         password.isSecureBeginClear = false
-        
+        print("完成UI设计")
     }
     override func viewWillAppear(_ animated: Bool) {
 
