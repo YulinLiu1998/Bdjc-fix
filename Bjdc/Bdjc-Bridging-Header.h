@@ -13,3 +13,7 @@
 #import <MAMapKit/MAMapKit.h>
 #import <AMapFoundationKit/AMapFoundationKit.h>
 #import "LMJDropdownMenu.h"
+
+#import <CommonCrypto/CommonCrypto.h>
+
+#import "MBProgressHUD.h"

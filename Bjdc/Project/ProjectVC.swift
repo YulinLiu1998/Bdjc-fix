@@ -100,7 +100,7 @@ class ProjectVC: UIViewController, MAMapViewDelegate {
             annotationView!.rightCalloutAccessoryView = UIButton(type: UIButton.ButtonType.detailDisclosure)
             
             let idx = annotations.firstIndex(of: annotation as! MAPointAnnotation)
-            print("\(idx)")
+            //print("\(idx)")
             annotationView!.pinColor = MAPinAnnotationColor(rawValue: idx! % 3)!
             
             return annotationView!

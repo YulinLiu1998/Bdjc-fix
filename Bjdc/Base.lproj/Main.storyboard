@@ -43,7 +43,7 @@
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="afI-L3-LOO">
+                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="qazXSW0" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="afI-L3-LOO">
                                                                 <rect key="frame" x="69.5" y="0.0" width="264.5" height="24"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                 <textInputTraits key="textInputTraits" returnKeyType="next" enablesReturnKeyAutomatically="YES" textContentType="username"/>
@@ -76,7 +76,7 @@
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Mr4-IG-mCr">
+                                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="qazxswEDCVFR0*" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Mr4-IG-mCr">
                                                                 <rect key="frame" x="69.5" y="0.0" width="226.5" height="30"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                 <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES" secureTextEntry="YES" textContentType="password"/>
@@ -1836,11 +1836,11 @@
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="26" translatesAutoresizingMaskIntoConstraints="NO" id="h2w-1d-d0I">
                                 <rect key="frame" x="10" y="104" width="384" height="22"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="icQ-9U-0mu">
-                                        <rect key="frame" x="0.0" y="0.0" width="268" height="22"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="icQ-9U-0mu">
+                                        <rect key="frame" x="0.0" y="0.0" width="283" height="22"/>
                                         <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="-9" translatesAutoresizingMaskIntoConstraints="NO" id="kkT-D7-6aD">
-                                                <rect key="frame" x="0.0" y="0.0" width="78" height="22"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="-3" translatesAutoresizingMaskIntoConstraints="NO" id="kkT-D7-6aD">
+                                                <rect key="frame" x="0.0" y="0.0" width="84" height="22"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="监测点总数：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dlk-7m-DUN">
                                                         <rect key="frame" x="0.0" y="0.0" width="74" height="22"/>
@@ -1849,15 +1849,15 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KBA-zC-d4f">
-                                                        <rect key="frame" x="65" y="0.0" width="13" height="22"/>
+                                                        <rect key="frame" x="71" y="0.0" width="13" height="22"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
                                             </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="-8" translatesAutoresizingMaskIntoConstraints="NO" id="o6u-dK-W3r">
-                                                <rect key="frame" x="81" y="0.0" width="187" height="22"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="-4" translatesAutoresizingMaskIntoConstraints="NO" id="o6u-dK-W3r">
+                                                <rect key="frame" x="92" y="0.0" width="191" height="22"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="更新于：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HRb-wG-Lak">
                                                         <rect key="frame" x="0.0" y="0.0" width="49.5" height="22"/>
@@ -1866,7 +1866,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2021年05月25日 12:15:29" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D6m-0y-uBM">
-                                                        <rect key="frame" x="41.5" y="0.0" width="145.5" height="22"/>
+                                                        <rect key="frame" x="45.5" y="0.0" width="145.5" height="22"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -1878,6 +1878,9 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gAR-dh-Bhv">
                                         <rect key="frame" x="360" y="0.0" width="24" height="22"/>
                                         <state key="normal" image="arrow.2.circlepath" catalog="system"/>
+                                        <connections>
+                                            <action selector="updateTimeEvent:" destination="Vu2-zo-Kgp" eventType="touchUpInside" id="VH8-IR-PKl"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -1892,16 +1895,7 @@
                                         </constraints>
                                         <color key="tintColor" systemColor="labelColor"/>
                                         <state key="normal">
-                                            <attributedString key="attributedTitle">
-                                                <fragment>
-                                                    <string key="content">总数
-12</string>
-                                                    <attributes>
-                                                        <font key="NSFont" metaFont="system" size="15"/>
-                                                        <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                                    </attributes>
-                                                </fragment>
-                                            </attributedString>
+                                            <attributedString key="attributedTitle"/>
                                             <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
                                         </state>
                                         <userDefinedRuntimeAttributes>
@@ -1915,6 +1909,9 @@
                                                 <real key="value" value="1"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="showTotalData:" destination="Vu2-zo-Kgp" eventType="touchUpInside" id="jed-Fo-l9e"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="wordWrap" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="daa-Vs-ctn">
                                         <rect key="frame" x="81" y="0.0" width="60" height="60"/>
@@ -1925,16 +1922,7 @@
                                         </constraints>
                                         <color key="tintColor" systemColor="labelColor"/>
                                         <state key="normal">
-                                            <attributedString key="attributedTitle">
-                                                <fragment>
-                                                    <string key="content">在线
-7</string>
-                                                    <attributes>
-                                                        <font key="NSFont" metaFont="system" size="18"/>
-                                                        <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                                    </attributes>
-                                                </fragment>
-                                            </attributedString>
+                                            <attributedString key="attributedTitle"/>
                                             <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
                                         </state>
                                         <userDefinedRuntimeAttributes>
@@ -1948,6 +1936,9 @@
                                                 <color key="value" systemColor="secondaryLabelColor"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="showOnlineData:" destination="Vu2-zo-Kgp" eventType="touchUpInside" id="AgM-wx-bRU"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="wordWrap" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cLP-SC-N3l">
                                         <rect key="frame" x="162" y="0.0" width="60" height="60"/>
@@ -1958,16 +1949,7 @@
                                         </constraints>
                                         <color key="tintColor" systemColor="labelColor"/>
                                         <state key="normal">
-                                            <attributedString key="attributedTitle">
-                                                <fragment>
-                                                    <string key="content">警告
-0</string>
-                                                    <attributes>
-                                                        <font key="NSFont" metaFont="system" size="16"/>
-                                                        <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                                    </attributes>
-                                                </fragment>
-                                            </attributedString>
+                                            <attributedString key="attributedTitle"/>
                                             <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
                                         </state>
                                         <userDefinedRuntimeAttributes>
@@ -1981,6 +1963,9 @@
                                                 <color key="value" systemColor="secondaryLabelColor"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="showWarningData:" destination="Vu2-zo-Kgp" eventType="touchUpInside" id="8Ku-IC-kRz"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="wordWrap" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="H1o-xt-EQa">
                                         <rect key="frame" x="243" y="0.0" width="60" height="60"/>
@@ -1991,16 +1976,7 @@
                                         </constraints>
                                         <color key="tintColor" systemColor="labelColor"/>
                                         <state key="normal">
-                                            <attributedString key="attributedTitle">
-                                                <fragment>
-                                                    <string key="content">故障
-0</string>
-                                                    <attributes>
-                                                        <font key="NSFont" metaFont="system" size="16"/>
-                                                        <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                                    </attributes>
-                                                </fragment>
-                                            </attributedString>
+                                            <attributedString key="attributedTitle"/>
                                             <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
                                         </state>
                                         <userDefinedRuntimeAttributes>
@@ -2014,6 +1990,9 @@
                                                 <real key="value" value="1"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="showErrorData:" destination="Vu2-zo-Kgp" eventType="touchUpInside" id="vvF-E9-iUh"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="wordWrap" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VTE-2N-Rcq">
                                         <rect key="frame" x="324" y="0.0" width="60" height="60"/>
@@ -2024,16 +2003,7 @@
                                         </constraints>
                                         <color key="tintColor" systemColor="labelColor"/>
                                         <state key="normal">
-                                            <attributedString key="attributedTitle">
-                                                <fragment>
-                                                    <string key="content">离线
-5</string>
-                                                    <attributes>
-                                                        <font key="NSFont" metaFont="system" size="16"/>
-                                                        <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                                    </attributes>
-                                                </fragment>
-                                            </attributedString>
+                                            <attributedString key="attributedTitle"/>
                                             <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
                                         </state>
                                         <userDefinedRuntimeAttributes>
@@ -2044,6 +2014,9 @@
                                                 <real key="value" value="1"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="showOfflineData:" destination="Vu2-zo-Kgp" eventType="touchUpInside" id="Kbs-IR-lTL"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -2153,6 +2126,14 @@
                     <navigationItem key="navigationItem" id="p3Z-Nf-EgW"/>
                     <connections>
                         <outlet property="ContainerView" destination="3sw-bc-gSz" id="ZUs-kR-GSE"/>
+                        <outlet property="errorBtn" destination="H1o-xt-EQa" id="I6k-Na-g84"/>
+                        <outlet property="offlineBtn" destination="VTE-2N-Rcq" id="Lfa-N2-EYq"/>
+                        <outlet property="onlineBtn" destination="daa-Vs-ctn" id="LNN-Zg-XjG"/>
+                        <outlet property="stationNums" destination="KBA-zC-d4f" id="PRt-tt-huu"/>
+                        <outlet property="tableView" destination="AmP-8v-x9E" id="Q6N-e8-U4d"/>
+                        <outlet property="totalBtn" destination="OP8-f5-PON" id="cC7-qY-vi6"/>
+                        <outlet property="updateTime" destination="D6m-0y-uBM" id="p0v-qF-9gb"/>
+                        <outlet property="warningBtn" destination="cLP-SC-N3l" id="9rH-gk-4NT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b0g-S3-YMx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

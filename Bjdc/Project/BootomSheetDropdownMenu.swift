@@ -11,10 +11,8 @@ extension BootomSheetVC{
 
     
     func dropdownMenuBootomSheet() {
-        _menu1OptionTitles = ["Option1","Option2","Option3","Option4","Option5"]
-        _menu1OptionIcons = ["icon1","icon2","icon3","icon4","icon5"]
-        
-        
+        _menu1OptionTitles = projectTitles
+        print("_menu1OptionTitles",projectTitles)
         
         navMenu1 = LMJDropdownMenu.init()
         NavMenu1 = navMenu1
@@ -27,7 +25,7 @@ extension BootomSheetVC{
         navMenu1?.layer.borderWidth  = 0
         navMenu1?.layer.cornerRadius = 0
         
-        navMenu1?.title = "Option1"
+        navMenu1?.title = projectTitles[0]
         currentTitle = navMenu1?.title
         navMenu1?.titleBgColor = .white
         navMenu1?.titleFont = .boldSystemFont(ofSize: 15)
@@ -68,6 +66,24 @@ extension BootomSheetVC:LMJDropdownMenuDelegate,LMJDropdownMenuDataSource{
     //MARK: -LMJDropdownMenuDelegate
     func dropdownMenu(_ menu: LMJDropdownMenu, didSelectOptionAt index: UInt, optionTitle title: String) {
         print("您选择了index：\(index),title: \(title)")
+        //MARK: -当前工程索引
+        CurrentProject = Int(index)
+        //MARK: -标题
         currentTitle = title
+        //MARK: -监测点总数
+        stationNums.text = pssTotal[Int(index)]
+        //MARK: -btn
+        let warning = NSAttributedString(string: "警告\n\(pssWarning[Int(index)])")
+        warningBtn.setAttributedTitle(warning, for: .normal)
+        let total = NSAttributedString(string: "总数\n\(pssTotal[Int(index)])")
+        totalBtn.setAttributedTitle(total, for: .normal)
+        let online = NSAttributedString(string: "在线\n\(pssOnline[Int(index)])")
+        onlineBtn.setAttributedTitle(online, for: .normal)
+        let offline = NSAttributedString(string: "离线\n\(pssOffline[Int(index)])")
+        offlineBtn.setAttributedTitle(offline, for: .normal)
+        let error = NSAttributedString(string: "故障\n\(pssError[Int(index)])")
+        errorBtn.setAttributedTitle(error, for: .normal)
+        
+        tableView.reloadData()
     }
 }

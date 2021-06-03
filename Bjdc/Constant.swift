@@ -15,8 +15,8 @@ var NavMenu1:LMJDropdownMenu?
 
 let kPhoneRegEx = "^1\\d{10}$"
 let kAuthCodeRegEx = "^\\d{6}$"
-let kPasswordRegEx = "^[0-9a-zA-Z]{6,16}$"
-
+let kPasswordRegEx = "^[0-9a-zA-Z].{6,64}$"
+let kAccountRegEx = "^[a-zA-Z][0-9a-zA-Z]{5,32}$"
 extension UIView{
     @IBInspectable
     var radius: CGFloat{
@@ -66,6 +66,8 @@ extension String{
     var isAuthCode: Bool{ Int(self) != nil && NSRegularExpression(kAuthCodeRegEx).matches(self) }
     
     var isPassword: Bool{ NSRegularExpression(kPasswordRegEx).matches(self) }
+    
+    var isAccount: Bool{ NSRegularExpression(kAccountRegEx).matches(self) }
 }
 extension NSRegularExpression {
     convenience init(_ pattern: String) {
@@ -119,6 +121,33 @@ extension UIViewController{
     }
     @objc func dismissKeyboard(){
         view.endEditing(true) //让view中的所有textfield失去焦点--即关闭小键盘
+    }
+    
+    // MARK: - 展示加载框或提示框
+    
+    // MARK: 加载框--手动隐藏
+    func showLoadHUD(_ title: String? = nil){
+        let hud = MBProgressHUD.showAdded(to: view, animated: true)
+        hud.label.text = title
+    }
+    func hideLoadHUD(){
+        DispatchQueue.main.async {
+            MBProgressHUD.hide(for: self.view, animated: true)
+        }
+    }
+    
+    
+    // MARK: 提示框--自动隐藏
+    func showTextHUD(_ title: String, _ inCurrentView: Bool = true, _ subTitle: String? = nil){
+        var viewToShow = view!
+        if !inCurrentView{
+            viewToShow = UIApplication.shared.windows.last!
+        }
+        let hud = MBProgressHUD.showAdded(to: viewToShow, animated: true)
+        hud.mode = .text //不指定的话显示菊花和下面配置的文本
+        hud.label.text = title
+        hud.detailsLabel.text = subTitle
+        hud.hide(animated: true, afterDelay: 2)
     }
 }
 
@@ -176,3 +205,35 @@ extension UITextField {
         }
     }
 }
+
+
+//MARK: -字符串截取
+extension String {
+    subscript(_ indexs: ClosedRange<Int>) -> String {
+        let beginIndex = index(startIndex, offsetBy: indexs.lowerBound)
+        let endIndex = index(startIndex, offsetBy: indexs.upperBound)
+        return String(self[beginIndex...endIndex])
+    }
+    
+    subscript(_ indexs: Range<Int>) -> String {
+        let beginIndex = index(startIndex, offsetBy: indexs.lowerBound)
+        let endIndex = index(startIndex, offsetBy: indexs.upperBound)
+        return String(self[beginIndex..<endIndex])
+    }
+    
+    subscript(_ indexs: PartialRangeThrough<Int>) -> String {
+        let endIndex = index(startIndex, offsetBy: indexs.upperBound)
+        return String(self[startIndex...endIndex])
+    }
+    
+    subscript(_ indexs: PartialRangeFrom<Int>) -> String {
+        let beginIndex = index(startIndex, offsetBy: indexs.lowerBound)
+        return String(self[beginIndex..<endIndex])
+    }
+    
+    subscript(_ indexs: PartialRangeUpTo<Int>) -> String {
+        let endIndex = index(startIndex, offsetBy: indexs.upperBound)
+        return String(self[startIndex..<endIndex])
+    }
+}
+

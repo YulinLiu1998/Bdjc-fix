@@ -5,29 +5,40 @@
 //  Created by 徐煜 on 2021/5/25.
 //
 
-import UIKit
 
+//sssssAAA
+//123MKOpl098123*
+import UIKit
+import MBProgressHUD
 class LoginVC: UIViewController {
 
     @IBOutlet weak var account: UITextField!
     @IBOutlet weak var password: UITextField!
     @IBOutlet weak var plaintTextDisplay: UIButton!
     @IBOutlet weak var loginBtn: UIButton!
-    private var accountStr:String {account.unwrappedText }
-    private var passwordStr:String {password.unwrappedText}
+    var accountStr:String {account.unwrappedText }
+    var passwordStr:String {password.unwrappedText}
     override func viewDidLoad() {
         super.viewDidLoad()
+        //请求Token令牌
+        accessToken()
+        
         
         account.becomeFirstResponder()
         hideKeyboardWhenTappedAround()
-        loginBtn.setToDisabled()
+        //loginBtn.setToDisabled()
         password.isSecureBeginClear = false
-        print("完成UI设计")
     }
     override func viewWillAppear(_ animated: Bool) {
-
+        //校验用户会话
+        doSession()
+        
     }
-    
+    override func viewWillDisappear(_ animated: Bool) {
+        //获取工程项目列表
+       // getProjects()
+        
+    }
     @IBAction func changeDisplayStatus(_ sender: UIButton) {
         print("之前：\(plaintTextDisplay.isSelected)")
         plaintTextDisplay.isSelected.toggle()
@@ -36,7 +47,7 @@ class LoginVC: UIViewController {
     }
    
     @IBAction func TFEditingChanged(_ sender: Any) {
-        if accountStr.isPhoneNum && passwordStr.isPassword{
+        if accountStr.isAccount && passwordStr.isPassword{
             loginBtn.setToEnabled()
         }else{
             loginBtn.setToDisabled()
@@ -47,19 +58,36 @@ class LoginVC: UIViewController {
     
     
     @IBAction func loginEvent(_ sender: UIButton) {
-    performSegue(withIdentifier: "LoginToTabBar", sender: nil)
-        
-
+        //doLogin()
+        //getProjects()
+        let workingGroup = DispatchGroup()
+        let workingQueue = DispatchQueue(label: "request_queue")
+        workingGroup.enter() // 开始
+        workingQueue.async {
+            let sema = DispatchSemaphore(value: 0)
+            self.doLogin(sema: sema)
+            sema.wait() // 等待任务结束, 否则一直阻塞
+            workingGroup.leave() // 结束
+        }
+        workingGroup.enter() // 开始
+        workingQueue.async {
+            let sema = DispatchSemaphore(value: 0)
+            self.getProjects(sema: sema)
+            sema.wait() // 等待任务结束, 否则一直阻塞
+            workingGroup.leave() // 结束
+        }
+        workingGroup.notify(queue: DispatchQueue.main) {
+            // 全部调用完成后回到主线程,更新UI
+            let now = Date()
+             
+            // 创建一个日期格式器
+            let dformatter = DateFormatter()
+            dformatter.dateFormat = "yyyy年MM月dd日 HH:mm:ss"
+            currentTime = dformatter.string(from: now)
+            print("当前日期时间：\(dformatter.string(from: now))")
+            self.performSegue(withIdentifier: "LoginToTabBar", sender: nil)
+        }
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
 // MARK: - UITextFieldDelegate
@@ -67,7 +95,7 @@ extension LoginVC: UITextFieldDelegate{
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         //range.location--当前输入的字符或粘贴文本的第一个字符的索引
         //string--当前输入的字符或粘贴的文本
-        let limit = textField == account ? 11 : 16
+        let limit = textField == account ? 32 : 64
         let isExceed = range.location >= limit || (textField.unwrappedText.count + string.count) > limit
         if isExceed{
             //showTextHUD("最多只能输入\(limit)位哦")

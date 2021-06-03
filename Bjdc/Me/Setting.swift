@@ -27,12 +27,15 @@ class Setting: UIViewController {
     
     @IBAction func logOut(_ sender: Any) {
         
+        
+        doLogout()
+        
         //返回登陆页面的方法1
         //let vc = storyboard?.instantiateViewController(identifier: "LoginVCID") as! LoginVC
         // vc.hidesBottomBarWhenPushed = true
         // self.navigationController?.pushViewController(vc, animated: true)
         //返回登陆页面的方法2 由登陆页面present而来 dismiss 之后 会返回
-        dismiss(animated: true, completion: nil)
+        //注销登录操作
     }
     
     

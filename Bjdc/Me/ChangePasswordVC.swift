@@ -14,9 +14,9 @@ class ChangePasswordVC: UIViewController {
     @IBOutlet weak var newPasswordTF: UITextField!
     @IBOutlet weak var confirmPasswordTF: UITextField!
     
-    private var originalPassword:String{ originalPasswordTF.unwrappedText}
-    private var newPassword:String{ newPasswordTF.unwrappedText}
-    private var confirmPassword:String{ confirmPasswordTF.unwrappedText}
+    var originalPassword:String{ originalPasswordTF.unwrappedText}
+    var newPassword:String{ newPasswordTF.unwrappedText}
+    var confirmPassword:String{ confirmPasswordTF.unwrappedText}
     
     @IBOutlet weak var done: UIButton!
     override func viewDidLoad() {
@@ -35,13 +35,10 @@ class ChangePasswordVC: UIViewController {
         
         view.endEditing(true)
         
-        if newPassword.isPassword && !originalPassword.isPassword && confirmPassword.isPassword{
+        if newPassword.isPassword && originalPassword.isPassword && confirmPassword.isPassword{
             if newPassword == confirmPassword  {
                 //更新数据
-                
-                //返回上一页面
-                self.navigationController?.popViewController(animated: true)
-                
+                setPassword()
             }else{
                 print("两次密码不一致")
             }
