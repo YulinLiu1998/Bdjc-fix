@@ -8,8 +8,17 @@
 import Foundation
 import UIKit
 
+//统一表格状态
+var tableFlage = false
 var NavMenu:LMJDropdownMenu?
 var NavMenu1:LMJDropdownMenu?
+////当前项目索引 已有
+//var CurrentProject:Int?
+//当前项目名
+var CurrentTitle:String?
+
+
+
 
 //正则表达式
 
@@ -237,3 +246,17 @@ extension String {
     }
 }
 
+extension  UIImage  {
+     /**
+      *  重设图片大小
+      */
+     func  reSizeImage(reSize: CGSize )-> UIImage  {
+        UIGraphicsBeginImageContextWithOptions (reSize, false , UIScreen .main.scale);
+        self .draw( in: CGRect (x: 0, y: 0, width: reSize.width, height: reSize.height));
+        let  reSizeImage: UIImage  =  UIGraphicsGetImageFromCurrentImageContext ()!;
+         UIGraphicsEndImageContext ();
+         return  reSizeImage;
+     }
+     
+   
+}

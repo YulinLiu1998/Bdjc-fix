@@ -39,10 +39,12 @@ extension LoginVC{
 //
 //                    }
 //                   }
+        showLoadHUD()
         AF.request("http://172.18.7.86/dist/API/getAccessToken.php",
                    method: HTTPMethod.post,
                    parameters: parameters,
                    encoder: JSONParameterEncoder.default).responseJSON(completionHandler: { response in
+                    self.hideLoadHUD()
                     switch response.result {
                         case .success(let value):
                             let tokenMessage = JSON(value)
@@ -66,10 +68,12 @@ extension LoginVC{
         let parameters = ["AccessToken":AccessToken,
                           "SessionUUID":SessionUUID,
         ]
+        showLoadHUD()
         AF.request("http://172.18.7.86/dist/API/doSession.php",
                    method: HTTPMethod.post,
                    parameters: parameters,
                    encoder: JSONParameterEncoder.default).responseJSON(completionHandler: { response in
+                    self.hideLoadHUD()
                     switch response.result {
                         case .success(let value):
                             let doSessionMessage = JSON(value)
@@ -184,9 +188,9 @@ extension LoginVC{
                                     var tylist = [String]()
                                     var ltlist = [String]()
                                     var sdlist = [String]()
+                                    var longitudeList = [String]()
+                                    var latitudeList = [String]()
                                     for j in 0 ..< ProjectList![i]["StationList"].count {
-                                        //print(j)
-                                        //print(ProjectList![i]["StationList"][j]["StationName"])
                                         //站点名称
                                         let sn = ProjectList![i]["StationList"][j]["StationName"].stringValue
                                         snlist.append(sn)
@@ -199,12 +203,21 @@ extension LoginVC{
                                         //最新活跃时间StationLastTime
                                         let time = ProjectList![i]["StationList"][j]["StationLastTime"].stringValue
                                         ltlist.append(time)
+                                        //经度
+                                        let longitude = ProjectList![i]["StationList"][j]["StationLongitude"].stringValue
+                                        longitudeList.append(longitude)
+                                        //纬度
+                                        let latitude = ProjectList![i]["StationList"][j]["StationLatitude"].stringValue
+                                        latitudeList.append(latitude)
                                     }
                                     stationNames.append(snlist)
                                     stationTypes.append(tylist)
                                     stationLastTime.append(ltlist)
-                                    stationStations.append(sdlist)
+                                    stationStatus.append(sdlist)
+                                    StationLongitudes.append(longitudeList)
+                                    StationLatitudes.append(latitudeList)
                                 }
+                                print("stationStatus",stationStatus)
                                 sema.signal()
                             }else if getProjectsMessage["ResponseCode"] == "400"{
                                 //若输入的密码格式错误，则返回400错误码，错误信息为“请输入正确的账号密码

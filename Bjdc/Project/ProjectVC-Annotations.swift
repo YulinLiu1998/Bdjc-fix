@@ -1,66 +1,19 @@
 //
-//  ProjectVC.swift
+//  ProjectVC-Annotations.swift
 //  Bjdc
 //
-//  Created by 徐煜 on 2021/5/25.
+//  Created by 徐煜 on 2021/6/4.
 //
 
-import UIKit
-
-class ProjectVC: UIViewController,UpdateMapView {
- 
-    
-
-    //定义地图页面
-    var mapView: MAMapView!
-    var viewButton: UIButton!
-    var flage = false
-    var mapflage = false
-    
-    //定义标记数组
-    var annotations: Array<MAPointAnnotation>!
-    var annotationsUpadate: Array<MAPointAnnotation>!
-    
-    @IBOutlet weak var ContainerView: UIView!
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
+import Foundation
+extension ProjectVC:MAMapViewDelegate{
+    //初始化地图标记
+    func initAnnotations() {
         
-        //初始化地图页面
-        initMapView()
-        //初始化地图标记
-        initAnnotations()
-        //zoomPannelView
-        initButtonView()
-        
-        BootomSheetVC.openDemo(from: self, in: self.view)
-        
-    }
-
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        
-        //向地图窗口添加一组标注
-        mapView.addAnnotations(annotations)
-        //设置地图使其可以显示数组中所有的annotation, 如果数组中只有一个则直接设置地图中心为annotation的位置
-        mapView.showAnnotations(annotations, edgePadding: UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20), animated: true)
-        //选中标注数据对应的view
-        mapView.selectAnnotation(annotations.first, animated: true)
-        
-        
-      
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-       
-    }
-    func updateMap() {
-        print("ssssssssssssss")
-        mapView.removeAnnotations(annotations)
         annotations = Array()
+        
+        //定义标记位置
+        
         let coordinates1: [CLLocationCoordinate2D] = [
             CLLocationCoordinate2D(latitude: 39.992520, longitude: 116.336170),
             CLLocationCoordinate2D(latitude: 39.978234, longitude: 116.352343),
@@ -113,17 +66,42 @@ class ProjectVC: UIViewController,UpdateMapView {
             //添加标记
             annotations.append(anno)
         }
-        
-        mapView.addAnnotations(annotations)
-        mapView.showAnnotations(annotationsUpadate, edgePadding: UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20), animated: true)
-        //选中标注数据对应的view
-        mapView.selectAnnotation(annotationsUpadate.first, animated: true)
-  
+
     }
-    func updateMapView(city:String) {
-        print(city)
-        updateMap()
+    
+    
+    
+    //MARK: - MAMapViewDelegate
+    
+    func mapView(_ mapView: MAMapView!, viewFor annotation: MAAnnotation!) -> MAAnnotationView! {
         
+        if annotation.isKind(of: MAPointAnnotation.self) {
+            let customPointAnnotationViewSwift = annotation as!CustomPointAnnotationViewSwift
+            let customReuseIndetifier: String = "customReuseIndetifier"
+            var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: customReuseIndetifier) as? CustomAnnotationViewSwift
+            
+            if annotationView == nil {
+                annotationView = CustomAnnotationViewSwift.init(annotation: annotation, reuseIdentifier: customReuseIndetifier)
+                //是否允许弹出callout
+                annotationView?.canShowCallout = false
+                ///添加到地图时是否使用下落动画效果
+                // annotationView!.animatesDrop = false
+                ///是否支持拖动
+                annotationView?.isDraggable = true
+                ///弹出框默认位于view正中上方，可以设置calloutOffset改变view的位置，正的偏移使view朝右下方移动，负的朝左上方，单位是屏幕坐标
+                annotationView?.calloutOffset = CGPoint.init(x: 0, y: -5)
+            }
+            
+            print(customPointAnnotationViewSwift.kindOfStatus)
+            let kind = customPointAnnotationViewSwift.kindOfStatus
+            annotationView!.image = UIImage(named: kind)
+            let  reSize =  CGSize (width: 44, height: 44)
+            annotationView!.image = annotationView!.image?.reSizeImage(reSize: reSize)
+            
+            return annotationView!
+        }
+        
+        return nil
     }
 
 }

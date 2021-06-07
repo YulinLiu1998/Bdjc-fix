@@ -11,7 +11,7 @@
 import UIKit
 import MBProgressHUD
 class LoginVC: UIViewController {
-
+   
     @IBOutlet weak var account: UITextField!
     @IBOutlet weak var password: UITextField!
     @IBOutlet weak var plaintTextDisplay: UIButton!
@@ -20,6 +20,7 @@ class LoginVC: UIViewController {
     var passwordStr:String {password.unwrappedText}
     override func viewDidLoad() {
         super.viewDidLoad()
+        CurrentProject = 0
         //请求Token令牌
         accessToken()
         

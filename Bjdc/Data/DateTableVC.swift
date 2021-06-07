@@ -12,13 +12,22 @@ class DateTableVC: UITableViewController {
     var _menu1OptionTitles:Array<String>?
     var _menu1OptionIcons:Array<String>?
     var navMenu:LMJDropdownMenu?
+    
     var currentTitle: String?
     
-
+    var tableRows:Int?
     var Cell: DateTableViewCell?
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableFlage = true
         dropdownMenuDateTable()
+        
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        if tableFlage {
+            NavMenu?.title = projectTitles[CurrentProject!]
+            tableView.reloadData()
+        }
     }
 
     // MARK: - Table view data source
@@ -30,17 +39,33 @@ class DateTableVC: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 5
+        return Int(pssTotal[CurrentProject!])!
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "position", for: indexPath) as! DateTableViewCell
-        Cell = cell
-        cell.positionTime.text = "2015-05-19 18:02:11"
-        cell.positionKind.text = "基准站xxxxx"
-        cell.positionStatus.tintColor = .green
-        cell.positionModel.text = "4LC-\(indexPath.row)"
+        //设备状态
+        let status = Int(stationStatus[CurrentProject!][indexPath.row])
+        var color:UIColor?
+        if status! >= 10 && status! < 20{
+            color = .green //正常
+        }else if status! >= 20 && status! < 29{
+            color = .gray  //离线
+        }else if status! >= 30 && status! < 39{
+            color = .yellow //警告
+        }else {
+            color = .red  //故障
+        }
+        cell.positionStatus.tintColor = color
+        //设备最后更新时间
+        cell.positionTime.text = stationLastTime[CurrentProject!][indexPath.row]
+        //设备类型
+        cell.positionKind.text =
+            stationTypes[CurrentProject!][indexPath.row] == "1" ? "基准站":"移动站"
+       
+        //设备名字
+        cell.positionModel.text = stationNames[CurrentProject!][indexPath.row]
         cell.viewDataBtn.tag = indexPath.row
         return cell
     }

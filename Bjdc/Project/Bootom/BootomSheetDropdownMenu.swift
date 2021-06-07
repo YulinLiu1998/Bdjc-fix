@@ -66,8 +66,10 @@ extension BootomSheetVC:LMJDropdownMenuDelegate,LMJDropdownMenuDataSource{
     //MARK: -LMJDropdownMenuDelegate
     func dropdownMenu(_ menu: LMJDropdownMenu, didSelectOptionAt index: UInt, optionTitle title: String) {
         print("您选择了index：\(index),title: \(title)")
+        
         //MARK: -当前工程索引
         CurrentProject = Int(index)
+        print("CurrentProject",CurrentProject as Any)
         //MARK: -标题
         currentTitle = title
         //MARK: -监测点总数
@@ -84,6 +86,17 @@ extension BootomSheetVC:LMJDropdownMenuDelegate,LMJDropdownMenuDataSource{
         let error = NSAttributedString(string: "故障\n\(pssError[Int(index)])")
         errorBtn.setAttributedTitle(error, for: .normal)
         
+        //每次选择下拉菜单前都要重置列表显示信息
+        CurrentSelectedStatus = "Total"
+        //设置当前选中状态的显示行数
+        tableRows = Int(pssTotal[CurrentProject!])!
         tableView.reloadData()
+        
+        let city = "北京"
+        delegate.updateMapView(city:city)
+        
+
+        
+        
     }
 }

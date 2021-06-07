@@ -10,16 +10,12 @@ import Foundation
 
 extension DateTableVC{
     func dropdownMenuDateTable() {
-        _menu1OptionTitles = ["Option1","Option2","Option3","Option4","Option5"]
-        _menu1OptionIcons = ["icon1","icon2","icon3","icon4","icon5"]
-        
-        
-        // ----------------------- navigation bar menu ---------------------------
+      
+        _menu1OptionTitles = projectTitles
+        print("_menu1OptionTitles",projectTitles)
         
         navMenu = LMJDropdownMenu.init()
         NavMenu = navMenu
-        
-//        self.view.bounds.size.width - 160
         let frame =  CGRect(x: 40, y: 2, width: self.view.bounds.size.width-80, height: 40)
         navMenu?.frame = frame
         navMenu?.dataSource = self
@@ -29,7 +25,7 @@ extension DateTableVC{
         navMenu?.layer.borderWidth  = 0
         navMenu?.layer.cornerRadius = 0
         
-        navMenu?.title = "Option1"
+        navMenu?.title =  NavMenu1!.title
         currentTitle = navMenu?.title
         navMenu?.titleBgColor = .white
         navMenu?.titleFont = .boldSystemFont(ofSize: 15)
@@ -48,7 +44,6 @@ extension DateTableVC{
         navMenu?.optionNumberOfLines = 0
         navMenu?.optionLineColor = .white
         navMenu?.optionIconSize = CGSize(width: 15, height: 15)
-//        self.navigationController?.navigationBar.addSubview(navMenu!)
         self.navigationController?.navigationBar.addSubview(navMenu!)
     }
 }
@@ -73,8 +68,15 @@ extension DateTableVC:LMJDropdownMenuDelegate,LMJDropdownMenuDataSource{
     
     //MARK: -LMJDropdownMenuDelegate
     func dropdownMenu(_ menu: LMJDropdownMenu, didSelectOptionAt index: UInt, optionTitle title: String) {
-        print("您选择了index：\(index),title: \(title)")
+        print("您选择了index：\(index),title: \(title)hhhhhhhhhhhhhhhhhh")
         currentTitle = title
+        //MARK: -当前工程索引
+        CurrentProject = Int(index)
+        //MARK: -标题
+        currentTitle = title
+        
+        print("CurrentProject",CurrentProject)
+        tableView.reloadData()
     }
     
 }
