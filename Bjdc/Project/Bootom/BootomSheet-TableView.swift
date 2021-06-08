@@ -9,7 +9,7 @@ import Foundation
 
 extension BootomSheetVC: UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return tableRows!
+        return tableRows
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -37,7 +37,6 @@ extension BootomSheetVC: UITableViewDataSource{
            
             //设备名字
             cell.positionModel.text = stationNames[CurrentProject!][indexPath.row]
-            cell.viewDataBtn.tag = indexPath.row
         }else if CurrentSelectedStatus == "Online"{
             //设备状态
             cell.positionStatus.tintColor = .green
@@ -49,7 +48,6 @@ extension BootomSheetVC: UITableViewDataSource{
            
             //设备名字
             cell.positionModel.text = OnlineNames[CurrentProject!][indexPath.row]
-            cell.viewDataBtn.tag = indexPath.row
         }else if CurrentSelectedStatus == "Error"{
             //设备状态
             cell.positionStatus.tintColor = .red
@@ -61,7 +59,6 @@ extension BootomSheetVC: UITableViewDataSource{
            
             //设备名字
             cell.positionModel.text = ErrorNames[CurrentProject!][indexPath.row]
-            cell.viewDataBtn.tag = indexPath.row
         }else if CurrentSelectedStatus == "Warning"{
             //设备状态
             cell.positionStatus.tintColor = .yellow
@@ -73,7 +70,6 @@ extension BootomSheetVC: UITableViewDataSource{
            
             //设备名字
             cell.positionModel.text = WarningNames[CurrentProject!][indexPath.row]
-            cell.viewDataBtn.tag = indexPath.row
         }else if CurrentSelectedStatus == "Offline"{
             //设备状态
             cell.positionStatus.tintColor = .gray
@@ -85,9 +81,10 @@ extension BootomSheetVC: UITableViewDataSource{
            
             //设备名字
             cell.positionModel.text = OfflineNames[CurrentProject!][indexPath.row]
-            cell.viewDataBtn.tag = indexPath.row
         }
-       
+        let stationIndex:Int?
+        stationIndex = stationNames[CurrentProject!].firstIndex(of:cell.positionModel.text! )
+        cell.viewDataBtn.tag = stationIndex!
         return cell
     }
     

@@ -92,10 +92,14 @@ extension BootomSheetVC:LMJDropdownMenuDelegate,LMJDropdownMenuDataSource{
         tableRows = Int(pssTotal[CurrentProject!])!
         tableView.reloadData()
         
-        let city = "北京"
-        delegate.updateMapView(city:city)
         
-
+        DispatchQueue.main.async{
+            self.showTextHUD("请稍等")
+        }
+        let city = "北京"
+        delegate?.updateMapView(city:city)
+        
+        updateMapdelegate?()
         
         
     }

@@ -61,6 +61,9 @@ class LoginVC: UIViewController {
     @IBAction func loginEvent(_ sender: UIButton) {
         //doLogin()
         //getProjects()
+        DispatchQueue.main.async{
+            self.showTextHUD("请稍等")
+        }
         let workingGroup = DispatchGroup()
         let workingQueue = DispatchQueue(label: "request_queue")
         workingGroup.enter() // 开始
@@ -88,6 +91,7 @@ class LoginVC: UIViewController {
             print("当前日期时间：\(dformatter.string(from: now))")
             self.performSegue(withIdentifier: "LoginToTabBar", sender: nil)
         }
+        
     }
 
 }

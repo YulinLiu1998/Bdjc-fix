@@ -109,13 +109,15 @@ extension LoginVC{
                           "Username":self.accountStr,
                           "Password":encryptText
         ]
-        
+       
         AF.request("http://172.18.7.86/dist/API/doLogin.php",
                    method: HTTPMethod.post,
                    parameters: parameters,
                    encoder: JSONParameterEncoder.default).responseJSON(completionHandler: { response in
                     switch response.result {
+                    
                         case .success(let value):
+                           
                             let loginMessage = JSON(value)
                             print("loginMessage",loginMessage)
                             if loginMessage["ResponseCode"] == "200" {
@@ -135,6 +137,7 @@ extension LoginVC{
                                 print(loginMessage["ResponseMsg"])
                             }
                         case .failure(let error):
+                        
                             print(error)
                             sema.signal()
                         }
@@ -147,12 +150,10 @@ extension LoginVC{
                           "SessionUUID":SessionUUID
         ]
      
-        //showLoadHUD()
         AF.request("http://172.18.7.86/dist/API/getProjects.php",
                    method: HTTPMethod.post,
                    parameters: parameters,
                    encoder: JSONParameterEncoder.default).responseJSON(completionHandler: { response in
-                    //self.hideLoadHUD()
                     switch response.result {
                         case .success(let value):
                             let getProjectsMessage = JSON(value)

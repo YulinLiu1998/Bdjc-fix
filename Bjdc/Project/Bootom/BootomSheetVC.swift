@@ -14,19 +14,19 @@ protocol UpdateMapView {
 class BootomSheetVC: UIViewController, Demoable {
     
     
-    var delegate:UpdateMapView!
+    var delegate:UpdateMapView?
+    var updateMapdelegate:(()->())?
     static var name: String { "bootomsheet" }
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var ContainerView: UIView!
     var _menu1OptionTitles:Array<String>?
-    var _menu1OptionIcons:Array<String>?
     var navMenu1:LMJDropdownMenu?
     
     //当前标题
     var currentTitle: String?
     //列表行数
-    var tableRows:Int?
+    var tableRows:Int = 0
     @IBOutlet weak var stationNums: UILabel!
     @IBOutlet weak var updateTime: UILabel!
     @IBOutlet weak var totalBtn: UIButton!
@@ -99,7 +99,6 @@ class BootomSheetVC: UIViewController, Demoable {
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let controller = storyboard.instantiateViewController(identifier: "BootomSheet") as! BootomSheetVC
-       
         let sheet = SheetViewController(
             controller: controller,
             sizes: [.fixed(200), .fixed(300), .fixed(450), .marginFromTop(50)],
@@ -128,10 +127,11 @@ class BootomSheetVC: UIViewController, Demoable {
         // Pass the selected object to the new view controller.
         
         let vc = segue.destination as! BootomSheetChartVC
-//        let vc = segue.destination as! ChartTableVC
         let btn = sender as! UIButton
+    
         vc.test = "\(btn.tag)BDJC"
         vc.currentDrodownTitle = currentTitle
+        vc.currenSelectedStation = stationNames[CurrentProject!][btn.tag]
         
     }
     

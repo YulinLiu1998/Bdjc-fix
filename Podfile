@@ -12,4 +12,5 @@ target 'Bjdc' do
   pod 'SwiftyJSON', '~> 4.0'
   pod 'CryptoSwift', '~> 1.4.0'
   pod 'MBProgressHUD', '~> 1.2.0'
+  pod 'Charts'
 end

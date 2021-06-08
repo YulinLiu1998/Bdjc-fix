@@ -7,7 +7,7 @@
 
 import Foundation
 import SwiftyJSON
-
+var MapView: MAMapView!
 
 //MARK: -获取访问令牌
 var AccessToken:String?

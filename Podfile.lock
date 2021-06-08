@@ -3,6 +3,9 @@ PODS:
   - AMap2DMap (5.6.1):
     - AMapFoundation (~> 1.4)
   - AMapFoundation (1.6.7)
+  - Charts (3.6.0):
+    - Charts/Core (= 3.6.0)
+  - Charts/Core (3.6.0)
   - CryptoSwift (1.4.0)
   - FittedSheets (2.4.0)
   - MBProgressHUD (1.2.0)
@@ -11,6 +14,7 @@ PODS:
 DEPENDENCIES:
   - Alamofire (~> 5.2)
   - AMap2DMap
+  - Charts
   - CryptoSwift (~> 1.4.0)
   - FittedSheets
   - MBProgressHUD (~> 1.2.0)
@@ -24,6 +28,7 @@ SPEC REPOS:
     - FittedSheets
     - SwiftyJSON
   trunk:
+    - Charts
     - CryptoSwift
     - MBProgressHUD
 
@@ -31,11 +36,12 @@ SPEC CHECKSUMS:
   Alamofire: e447a2774a40c996748296fa2c55112fdbbc42f9
   AMap2DMap: cac76bc057de18a1641f34df6b50bf5bc6b23571
   AMapFoundation: c7da72b42a713f1429c88af1858d623dde88934b
+  Charts: b1e3a1f5a1c9ba5394438ca3b91bd8c9076310af
   CryptoSwift: 7cc902df1784de3b389a387756c7d710f197730c
   FittedSheets: 470a7740a083156d711ab6ccd37d1d539005e6aa
   MBProgressHUD: 3ee5efcc380f6a79a7cc9b363dd669c5e1ae7406
   SwiftyJSON: 6faa0040f8b59dead0ee07436cbf76b73c08fd08
 
-PODFILE CHECKSUM: e2dfc9b8b2ff2a5d8e589745e01068d772b9e0fa
+PODFILE CHECKSUM: f4b3aa1cb6a814f29d7cb0fa332a37d06343de4f
 
 COCOAPODS: 1.10.1

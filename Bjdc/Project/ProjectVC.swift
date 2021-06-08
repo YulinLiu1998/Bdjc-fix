@@ -25,16 +25,17 @@ class ProjectVC: UIViewController,UpdateMapView {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         //初始化地图页面
         initMapView()
         //初始化地图标记
         initAnnotations()
         //zoomPannelView
         initButtonView()
-        
+        //let bootom = (storyboard?.instantiateViewController(identifier: "BootomSheet")) as! BootomSheetVC
+       //bootom.delegate = self
         BootomSheetVC.openDemo(from: self, in: self.view)
-        
+        MapView = mapView
+       
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -47,8 +48,10 @@ class ProjectVC: UIViewController,UpdateMapView {
         mapView.showAnnotations(annotations, edgePadding: UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20), animated: true)
         //选中标注数据对应的view
         mapView.selectAnnotation(annotations.first, animated: true)
-        
-        
+       
+        print("aaaaaaaaaaaaaaaaaaaaaa")
+        print("mapView",mapView)
+        print("MapView",MapView)
       
     }
     
@@ -59,7 +62,9 @@ class ProjectVC: UIViewController,UpdateMapView {
     }
     func updateMap() {
         print("ssssssssssssss")
-        mapView.removeAnnotations(annotations)
+        print("mapView",mapView)
+        print("MapView",MapView)
+        MapView.removeAnnotations(annotations)
         annotations = Array()
         let coordinates1: [CLLocationCoordinate2D] = [
             CLLocationCoordinate2D(latitude: 39.992520, longitude: 116.336170),
@@ -114,16 +119,18 @@ class ProjectVC: UIViewController,UpdateMapView {
             annotations.append(anno)
         }
         
-        mapView.addAnnotations(annotations)
-        mapView.showAnnotations(annotationsUpadate, edgePadding: UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20), animated: true)
+        MapView.addAnnotations(annotations)
+        MapView.showAnnotations(annotations, edgePadding: UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20), animated: true)
         //选中标注数据对应的view
-        mapView.selectAnnotation(annotationsUpadate.first, animated: true)
-  
+        MapView.selectAnnotation(annotations.first, animated: true)
     }
     func updateMapView(city:String) {
         print(city)
-        updateMap()
+        DispatchQueue.main.async{
+            self.updateMap()
+        }
         
     }
+    
 
 }

@@ -71,8 +71,9 @@ extension ProjectVC{
     
     //MARK:- event handling
     @objc func zoomPlusAction() {
-        let oldZoom = self.mapView.zoomLevel
-        self.mapView.setZoomLevel(oldZoom+1, animated: true)
+       // let oldZoom = self.mapView.zoomLevel
+       // self.mapView.setZoomLevel(oldZoom+1, animated: true)
+        self.updateMap()
     }
     
     @objc func zoomMinusAction() {

@@ -10,12 +10,22 @@ import UIKit
 class BootomSheetChartVC: UITableViewController {
 
     var test:String?
+    var currenSelectedStation:String?
     var currentDrodownTitle:String?
-    
+    var nameDropdownTitles:Array<String>?
+    var nameDropdown:LMJDropdownMenu?
+    var dateDropdownTitles:Array<String>?
+    var dateDropdown:LMJDropdownMenu?
     @IBOutlet weak var chartTitle: UILabel!
     @IBOutlet weak var Ntest: UILabel!
+    @IBOutlet weak var menuView: UIView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        //初始化站点名称下拉菜单
+        dropdownName()
+        //初始化日期选择下拉菜单
+        dropdownDate()
+        
         
         chartTitle.text = currentDrodownTitle
         
