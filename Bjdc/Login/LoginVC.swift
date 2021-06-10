@@ -6,8 +6,6 @@
 //
 
 
-//sssssAAA
-//123MKOpl098123*
 import UIKit
 import MBProgressHUD
 class LoginVC: UIViewController {
@@ -45,6 +43,7 @@ class LoginVC: UIViewController {
         plaintTextDisplay.isSelected.toggle()
         print("之后：\(plaintTextDisplay.isSelected)")
         password.isSecureTextEntry = !plaintTextDisplay.isSelected
+        
     }
    
     @IBAction func TFEditingChanged(_ sender: Any) {

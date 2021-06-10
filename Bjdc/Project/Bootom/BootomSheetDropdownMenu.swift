@@ -69,7 +69,7 @@ extension BootomSheetVC:LMJDropdownMenuDelegate,LMJDropdownMenuDataSource{
         
         //MARK: -当前工程索引
         CurrentProject = Int(index)
-        print("CurrentProject",CurrentProject as Any)
+        //print("CurrentProject",CurrentProject as Any)
         //MARK: -标题
         currentTitle = title
         //MARK: -监测点总数

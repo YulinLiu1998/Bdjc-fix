@@ -36,19 +36,14 @@ extension ProjectVC:MAMapViewDelegate{
             }
             let status = Int(stationStatus[CurrentProject!][i])
             if status! >= 10 && status! < 19{
-                print("online")
                 stationKinds.append("online")
             }else if status! >= 20 && status! < 29{
-                print("offline")
                 stationKinds.append("offline")
             }else if status! >= 30 && status! < 39{
-                print("warning")
                 stationKinds.append("warning")
             }else{
-                print("error")
                 stationKinds.append("error")
             }
-            print("stationKinds",stationKinds)
             
         }
         
@@ -92,7 +87,6 @@ extension ProjectVC:MAMapViewDelegate{
                 annotationView?.calloutOffset = CGPoint.init(x: 0, y: -5)
             }
             
-            print(customPointAnnotationViewSwift.kindOfStatus)
             let kind = customPointAnnotationViewSwift.kindOfStatus
             annotationView!.image = UIImage(named: kind)
             let  reSize =  CGSize (width: 44, height: 44)

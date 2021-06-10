@@ -48,11 +48,6 @@ class ProjectVC: UIViewController,UpdateMapView {
         mapView.showAnnotations(annotations, edgePadding: UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20), animated: true)
         //选中标注数据对应的view
         mapView.selectAnnotation(annotations.first, animated: true)
-       
-        print("aaaaaaaaaaaaaaaaaaaaaa")
-        print("mapView",mapView)
-        print("MapView",MapView)
-      
     }
     
     override func didReceiveMemoryWarning() {
@@ -61,9 +56,6 @@ class ProjectVC: UIViewController,UpdateMapView {
        
     }
     func updateMap() {
-        print("ssssssssssssss")
-        print("mapView",mapView)
-        print("MapView",MapView)
         MapView.removeAnnotations(annotations)
         annotations = Array()
         let coordinates1: [CLLocationCoordinate2D] = [
@@ -88,19 +80,14 @@ class ProjectVC: UIViewController,UpdateMapView {
             }
             let status = Int(stationStatus[CurrentProject!][i])
             if status! >= 10 && status! < 19{
-                print("online")
                 stationKinds.append("online")
             }else if status! >= 20 && status! < 29{
-                print("offline")
                 stationKinds.append("offline")
             }else if status! >= 30 && status! < 39{
-                print("warning")
                 stationKinds.append("warning")
             }else{
-                print("error")
                 stationKinds.append("error")
             }
-            print("stationKinds",stationKinds)
             
         }
         

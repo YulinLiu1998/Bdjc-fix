@@ -56,8 +56,6 @@ extension BootomSheetVC{
                                     var ltlist = [String]()
                                     var sdlist = [String]()
                                     for j in 0 ..< ProjectList![i]["StationList"].count {
-                                        //print(j)
-                                        //print(ProjectList![i]["StationList"][j]["StationName"])
                                         //站点名称
                                         let sn = ProjectList![i]["StationList"][j]["StationName"].stringValue
                                         snlist.append(sn)
@@ -94,5 +92,92 @@ extension BootomSheetVC{
                         }
                    })
   
+    }
+    func getGraphicData0(sema: DispatchSemaphore){
+        
+        let parameters = ["AccessToken":AccessToken,
+                          "SessionUUID":SessionUUID,
+                          "StationUUID":StationUUID,
+                          "GraphicType":"GNSSFilterInfo",
+                          "StartTime":"2021-03-09 00:00:00",
+                          "EndTime":"2021-03-09 23:59:59",
+                          "DeltaTime":"60"
+        ]
+        //print("parameters",parameters)
+        
+        AF.request("http://172.18.7.86/dist/API/getGraphicData.php",
+                   method: HTTPMethod.post,
+                   parameters: parameters,
+                   encoder: JSONParameterEncoder.default).responseJSON(completionHandler: { response in
+                    switch response.result {
+                        case .success(let value):
+                            let GraphicData = JSON(value)
+                            if GraphicData["ResponseCode"] == "200" {
+                                //操作成功
+                               // print("GraphicData",GraphicData)
+                                ChartData = GraphicData
+                               
+                                print(ChartData!["Content"][0])
+                                print(ChartData!["Content"][0][3])
+                                print(ChartData!["Content"][0][3].stringValue)
+                                sema.signal()
+                                //self.Processingdata(GraphicData: GraphicData)
+                            }else if GraphicData["ResponseCode"] == "400"{
+                                //操作失败/参数非法
+                                print("\(GraphicData["ResponseCode"])")
+                                print("\(GraphicData["ResponseMsg"])")
+                                sema.signal()
+                            }else{
+                                print("\(GraphicData["ResponseCode"])")
+                                print("\(GraphicData["ResponseMsg"])")
+                                sema.signal()
+                            }
+                            
+                        case .failure(let error):
+                            print(error)
+                            sema.signal()
+                        }
+                  
+                   })
+    }
+    func getGraphicData1(){
+        
+        let parameters = ["AccessToken":AccessToken,
+                          "SessionUUID":SessionUUID,
+                          "StationUUID":StationUUID,
+                          "GraphicType":"GNSSFilterInfo",
+                          "StartTime":"2021-03-09 00:00:00",
+                          "EndTime":"2021-03-09 23:59:59",
+                          "DeltaTime":"60"
+        ]
+        
+        AF.request("http://172.18.7.86/dist/API/getGraphicData.php",
+                   method: HTTPMethod.post,
+                   parameters: parameters,
+                   encoder: JSONParameterEncoder.default).responseJSON(completionHandler: { response in
+                    switch response.result {
+                        case .success(let value):
+                            let GraphicData = JSON(value)
+                            if GraphicData["ResponseCode"] == "200" {
+                                //操作成功
+                                ChartData = GraphicData
+                                self.performSegue(withIdentifier: "showChart", sender: nil)
+                            }else if GraphicData["ResponseCode"] == "400"{
+                                //操作失败/参数非法
+                                print("\(GraphicData["ResponseCode"])")
+                                print("\(GraphicData["ResponseMsg"])")
+                               
+                            }else{
+                                print("\(GraphicData["ResponseCode"])")
+                                print("\(GraphicData["ResponseMsg"])")
+                          
+                            }
+                            
+                        case .failure(let error):
+                            print(error)
+                    
+                        }
+                  
+                   })
     }
 }

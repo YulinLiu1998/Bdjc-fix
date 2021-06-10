@@ -7,8 +7,10 @@
 
 import Foundation
 import SwiftyJSON
-var MapView: MAMapView!
 
+var MapView: MAMapView!
+var StationUUID:String?
+var StationReport:JSON?
 //MARK: -获取访问令牌
 var AccessToken:String?
 var ExpireTimestamp:Int?
@@ -83,6 +85,15 @@ var pssError = [String]()
 var pssOffline = [String]()
 var pssOnline = [String]()
 var pssTotal = [String]()
+//MARK: -Chart
+var ChartData:JSON?
+var DataTime:[String]?
+var DataTimestamp:[String]?
+var GNSSFilterInfoN:[Double]?
+var GNSSFilterInfoE:[String]?
+var GNSSFilterInfoH:[String]?
+var GNSSFilterInfoDeltaD:[String]?
+var GNSSFilterInfoDeltaH:[String]?
 
-
+var currenSelectedStation:String?
 
