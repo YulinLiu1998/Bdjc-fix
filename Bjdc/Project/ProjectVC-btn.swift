@@ -29,17 +29,16 @@ extension ProjectVC{
         
         let incBtn = UIButton.init(frame: CGRect.init(x: 0, y: 0, width: 44, height: 44))
         incBtn.setImage(UIImage.init(systemName: "plus"), for: .normal)
-        incBtn.tintColor = .label
-        //incBtn.contentVerticalAlignment = .fill
-        //incBtn.contentHorizontalAlignment = .fill
+        incBtn.backgroundColor = .white
+        incBtn.tintColor = .black
         incBtn.imageView?.scalesLargeContentImage = true
-        //incBtn.imageEdgeInsets = UIEdgeInsets(top: 12, left: 12, bottom: 12, right: 12)
         incBtn.addTarget(self, action: #selector(self.zoomPlusAction), for: UIControl.Event.touchUpInside)
     
         
         let decBtn = UIButton.init(frame: CGRect.init(x: 0, y: 44, width: 44, height: 44))
         decBtn.setImage(UIImage.init(systemName: "minus"), for: .normal)
-        decBtn.tintColor = .label
+        decBtn.backgroundColor = .white
+        decBtn.tintColor = .black
         decBtn.imageView?.scalesLargeContentImage = true
         decBtn.addTarget(self, action: #selector(self.zoomMinusAction), for: UIControl.Event.touchUpInside)
         
@@ -53,10 +52,7 @@ extension ProjectVC{
         let ret = UIButton.init(frame: CGRect.init(x: 0, y: 0, width: 48, height: 48))
         ret.backgroundColor = UIColor.white
         ret.layer.cornerRadius = 4
-        
-        //ret.setImage(UIImage.init(named: "gpsStat1"), for: UIControlState.normal)
         ret.setTitle("标准", for: .normal)
-        //ret.titleLabel?.textColor = .gray
         ret.addTarget(self, action: #selector(self.gpsAction), for: UIControl.Event.touchUpInside)
         
         return ret
@@ -71,9 +67,8 @@ extension ProjectVC{
     
     //MARK:- event handling
     @objc func zoomPlusAction() {
-       // let oldZoom = self.mapView.zoomLevel
-       // self.mapView.setZoomLevel(oldZoom+1, animated: true)
-        self.updateMap()
+        let oldZoom = self.mapView.zoomLevel
+        self.mapView.setZoomLevel(oldZoom+1, animated: true)
     }
     
     @objc func zoomMinusAction() {

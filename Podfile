@@ -13,4 +13,7 @@ target 'Bjdc' do
   pod 'CryptoSwift', '~> 1.4.0'
   pod 'MBProgressHUD', '~> 1.2.0'
   pod 'Charts'
+  pod 'SwiftDate', '~> 5.0'
+  pod 'Malert'
+  pod 'PGDatePicker'
 end

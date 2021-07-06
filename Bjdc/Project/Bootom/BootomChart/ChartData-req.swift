@@ -6,41 +6,113 @@
 //
 
 import Foundation
+import Charts
 import Alamofire
 import SwiftyJSON
 extension BootomSheetChartVC:UIDocumentInteractionControllerDelegate{
     func getFilterGraphicData(){
-        
-        let parameters = ["AccessToken":AccessToken,
-                          "SessionUUID":SessionUUID,
-                          "StationUUID":StationUUID,
-                          "StartTime":"00:00:00",
-                          "EndTime":"23:59:59"
-        ]
-       
-        showLoadHUD()
-        AF.request("http://172.18.7.86/dist/API/getFilterGraphicData.php",
-                   method: HTTPMethod.post,
-                   parameters: parameters,
-                   encoder: JSONParameterEncoder.default).responseJSON(completionHandler: { response in
-                    self.hideLoadHUD()
-                    switch response.result {
-                        case .success(let value):
-                            let GraphicData = JSON(value)
-                            if GraphicData["ResponseCode"] == "200" {
-                                //操作成功
-                                print("GraphicData",GraphicData)
-                            }else if GraphicData["ResponseCode"] == "400"{
-                                //操作失败/参数非法
-                                print("\(GraphicData["ResponseMsg"])")
-                            }else{
-                                print("\(GraphicData["ResponseCode"])")
-                                print("\(GraphicData["ResponseMsg"])")
+    
+            let parameters = ["AccessToken":AccessToken,
+                              "SessionUUID":SessionUUID,
+                              "StationUUID":StationUUID,
+                              "GraphicType":"GNSSFilterInfo",
+                              "StartTime":StartTime,
+                              "EndTime":EndTime,
+                              "DeltaTime":DeltaTime[CurrentTimeInterval!]
+            ]
+        print(parameters)
+            showLoadHUD("正在加载图表")
+            AF.request("\(networkInterface)getGraphicData.php",
+                       method: HTTPMethod.post,
+                       parameters: parameters,
+                       encoder: JSONParameterEncoder.default).responseJSON(completionHandler: { [self] response in
+                        self.hideLoadHUD()
+                        switch response.result {
+                            case .success(let value):
+                                let GraphicData = JSON(value)
+                                if GraphicData["ResponseCode"] == "200" {
+                                    //操作成功
+                                    ChartData = GraphicData
+                                    print(ChartData!["Content"].count)
+                                    guard ChartData!["Content"].count != 0 else{
+                                        chartView1.data = nil
+                                        chartView2.data = nil
+                                        chartView3.data = nil
+                                        chartView4.data = nil
+                                        chartView5.data = nil
+                                        chartView6.data = nil
+                                        NStackView.isHidden = true
+                                        Ntips.isHidden = false
+                                        EStackView.isHidden = true
+                                        Etips.isHidden = false
+                                        HStackView.isHidden = true
+                                        Htips.isHidden = false
+                                        Delta.isHidden = true
+                                        DeltaTips.isHidden = false
+                                        DetalHStackView.isHidden = true
+                                        DetalHtips.isHidden = false
+                                        HeartStackView.isHidden = true
+                                        HeartTips.isHidden = false
+                                        return
+                                    }
+                                    content = ChartData!["Content"]
+                                    NStackView.isHidden = false
+                                    Ntips.isHidden = true
+                                    EStackView.isHidden = false
+                                    Etips.isHidden = true
+                                    HStackView.isHidden = false
+                                    Htips.isHidden = true
+                                    Delta.isHidden = false
+                                    DeltaTips.isHidden = true
+                                    DetalHStackView.isHidden = false
+                                    DetalHtips.isHidden = true
+                                    HeartStackView.isHidden = false
+                                    HeartTips.isHidden = true
+                                    //GNSSFilterInfoNCell
+                                    print("GNSSFilterInfoNCell")
+                                    updateN()
+                                    NStart.text = StartTime
+                                    Nend.text = EndTime
+                                    //GNSSFilterInfoECell
+                                    print("GNSSFilterInfoECell")
+                                    updateE()
+                                    EStart.text = StartTime
+                                    Eend.text = EndTime
+                                    //GNSSFilterInfoHCell
+                                    print("GNSSFilterInfoHCell")
+                                    updateH()
+                                    Hstatr.text = StartTime
+                                    Hend.text = EndTime
+                                    //GNSSFilterInfoDeltaDCell
+                                    print("GNSSFilterInfoDeltaDCell")
+                                    updateDeltaD()
+                                    DeltaDstatr.text = StartTime
+                                    DeltaDend.text = EndTime
+                                    //GNSSFilterInfoDeltaHCell
+                                    print("GNSSFilterInfoDeltaHCell")
+                                    updateDeltaH()
+                                    DeltaHstatr.text = StartTime
+                                    DeltaHend.text = EndTime
+                                    //Heart
+                                    Heart()
+                                    HeartStart.text = StartTime
+                                    HeartEnd.text = EndTime
+                                    
+                                }else if GraphicData["ResponseCode"] == "400"{
+                                    //操作失败/参数非法
+                                    print("\(GraphicData["ResponseCode"])")
+                                    print("\(GraphicData["ResponseMsg"])")
+                                }else{
+                                    print("\(GraphicData["ResponseCode"])")
+                                    print("\(GraphicData["ResponseMsg"])")
+                                }
+                                
+                            case .failure(let error):
+                                print(error)
+                        
                             }
-                        case .failure(let error):
-                            print(error)
-                        }
-                   })
+                      
+                       })
     }
     
     func getStationReport()  {
@@ -52,7 +124,8 @@ extension BootomSheetChartVC:UIDocumentInteractionControllerDelegate{
         ]
        
         showLoadHUD()
-        AF.request("http://172.18.7.86/dist/API/getStationReport.php",
+        
+        AF.request("\(networkInterface)getStationReport.php",
                    method: HTTPMethod.post,
                    parameters: parameters,
                    encoder: JSONParameterEncoder.default).responseJSON(completionHandler: { response in

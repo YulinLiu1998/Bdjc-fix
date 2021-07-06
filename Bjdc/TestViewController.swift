@@ -4,115 +4,119 @@
 //
 //  Created by 徐煜 on 2021/6/9.
 //
-
+import PGDatePicker
 import UIKit
 import Charts
+import Malert
+import SwiftDate
 class TestViewController: UIViewController {
 
-        //折线图
-        var chartView: LineChartView!
-         
-        override func viewDidLoad() {
-            super.viewDidLoad()
-             
-            //创建折线图组件对象
-            chartView = LineChartView()
-            chartView.frame = CGRect(x: 20, y: 80, width: self.view.bounds.width + 100 , height: 600)
-            self.view.addSubview(chartView)
-             
-            //设置 x 轴位置
-            chartView.xAxis.labelPosition = .bottom //x轴显示在下方
-            chartView.xAxis.axisMinimum = 0 //最小刻度值
-            chartView.xAxis.axisMaximum = 1500 //最大刻度值
-            chartView.xAxis.granularity = 120 //最小间隔´
-            chartView.xAxis.labelCount = 14
-            chartView.xAxis.labelTextColor = .orange //刻度文字颜色
-            chartView.xAxis.labelFont = .systemFont(ofSize: 14) //刻度文字大小
-            chartView.xAxis.labelRotationAngle = -30 //刻度文字倾斜角度
-            //自定义刻度标签文字 0 60 120
-            var xvalues = ["00:00"]
-            for i in 1..<1449 {
-                
-                if i%120 == 0 {
-                    let time = i/60
-                    if time >= 10 {
-                        xvalues.append("\(time):00")
-                    }else{
-                        xvalues.append("0\(time):00")
-                    }
-                }else{
-                    xvalues.append("")
-                }
-            }
-            xvalues.append("24:00")
-            let xValues = xvalues
-//            ["00:00","02:00","04:00","06:00","08:00","10:00","12:00","14:00","16:00","18:00","20:00","22:00","24:00"]
-            chartView.xAxis.valueFormatter = IndexAxisValueFormatter(values: xValues)
-            
-            //设置 y 轴位置
-            chartView.rightAxis.enabled = false //禁用右侧的Y轴
-            //chartView.rightAxis.drawLabelsEnabled = false //不绘制右侧Y轴文字
-            //chartView.rightAxis.drawAxisLineEnabled = false //不显示右侧Y轴
-
-            
-            //折线图背景色
-            chartView.backgroundColor = UIColor.white
-                     
-            //折线图无数据时显示的提示文字
-            chartView.noDataText = "暂无数据"
-                     
-         
-                     
-            //设置交互样式
-            chartView.scaleYEnabled = false //取消Y轴缩放
-            chartView.doubleTapToZoomEnabled = true //双击缩放
-            chartView.dragEnabled = true //启用拖动手势
-            chartView.dragDecelerationEnabled = true //拖拽后是否有惯性效果
-            chartView.dragDecelerationFrictionCoef = 0.5 //拖拽后惯性效果摩擦系数(0~1)越小惯性越不明显
-            
-        
-            
-            
-            //生成1440条随机数据
-           
-            var dataEntries = [ChartDataEntry]()
-            for i in 0..<ChartData!["Content"].count {
-                //let y = arc4random()%100
-                let str = ChartData!["Content"][0][3].stringValue
-                let subStr = str.getString(startIndex: 1, count: str.count-3)
-                let y = Double(subStr)
-                let entry = ChartDataEntry.init(x: Double(i), y: y!)
-                //let entry = ChartDataEntry.init(x: Double(i), y: Double(y)!)
-                
-                dataEntries.append(entry)
-                
-            }
-            //这50条数据作为1根折线里的所有数据
-            let chartDataSet = LineChartDataSet(entries: dataEntries, label: "图例1")
-            //将线条颜色设置为橙色 下面将折线改成橙色（其对应的图例颜色也会自动改变）
-            chartDataSet.colors = [.orange]
-            //修改线条大小
-            chartDataSet.lineWidth = 2
-            chartDataSet.drawCirclesEnabled = false //不绘制转折点
-            chartDataSet.mode = .cubicBezier  //贝塞尔曲线
-            chartDataSet.drawValuesEnabled = false //不绘制拐点上的文字
-            chartDataSet.highlightEnabled = false  //不启用十字线
-            //目前折线图只包括1根折线
-            let chartData = LineChartData(dataSets: [chartDataSet])
-     
-            //设置折现图数据
-            chartView.data = chartData
-        }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @IBOutlet weak var View1: UIView!
+    @IBOutlet weak var View2: UIView!
+    @IBOutlet weak var Time: UIButton!
+    var chartView1: LineChartView!
+    var chartView2: LineChartView!
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        //创建折线图组件对象
+        print("初始化")
+        chart1()
+  
+      }
+    @IBAction func ChangeColor(_ sender: Any) {
+        print("更新")
+        updateChart1()
+      
     }
-    */
+    @IBAction func SetTime(_ sender: Any) {
+   
+        let customAlert = customAlert.instantiateFromNib()
+        CustomAlert = customAlert
+        let alert = Malert(title: "自定义查询时间", customView: customAlert)
+        alert.textAlign = .center
+        alert.textColor = .gray
+        alert.titleFont = UIFont.systemFont(ofSize: 20)
+        alert.margin = 16//左右边距
+        alert.buttonsAxis = .horizontal
+        alert.separetorColor = .clear
+        
+        
+        let registerAction = MalertAction(title: "取消", backgroundColor: UIColor(red:0.96, green:0.96, blue:0.96, alpha:1.0))
+        registerAction.tintColor = .gray
+        alert.addAction(registerAction)
+        
+        let loginAction = MalertAction(title: "查询", backgroundColor: UIColor(red:0.10, green:0.14, blue:0.49, alpha:1.0)){
+            StartTime = CustomStartTime
+            EndTime = CustomEndTime
+            let start = StartTime!.toDate()
+            print("日期：", start!.date)
+            let end = EndTime!.toDate()
+            print("日期：", end!.date)
 
+
+            
+
+        }
+        loginAction.tintColor = .white
+        alert.addAction(loginAction)
+        present(alert, animated: true)
+    }
+    func chart1() {
+        chartView1 = LineChartView()
+        chartView1.frame = CGRect(x: 20, y: 80, width: self.view.bounds.width - 40,
+                                        height: 300)
+        //折线图无数据时显示的提示文字
+        chartView1.noDataText = "暂无数据"
+        chartView1.noDataFont = UIFont.systemFont(ofSize: 50)
+        self.View1.addSubview(chartView1)
+        var chartsDataArray = [ChartDataEntry]()
+        chartsDataArray.append(ChartDataEntry(x: 0, y: 0))
+           chartsDataArray.append(ChartDataEntry(x: 2, y: 2))
+           chartsDataArray.append(ChartDataEntry(x: 4, y: 4))
+           chartsDataArray.append(ChartDataEntry(x: 2, y: 6))
+           chartsDataArray.append(ChartDataEntry(x: 0, y: 8))
+        chartsDataArray.append(ChartDataEntry(x: 4, y: 2))
+        chartsDataArray.append(ChartDataEntry(x: 2, y: 6))
+        chartsDataArray.append(ChartDataEntry(x: 0, y: 9))
+        chartsDataArray.append(ChartDataEntry(x: 4, y: 1))
+        chartsDataArray.append(ChartDataEntry(x: 2, y: 0))
+        chartsDataArray.append(ChartDataEntry(x: 0, y: 3))
+        let chartDataSet = LineChartDataSet(entries: chartsDataArray, label: "图例1")
+               //修改线条大小
+               chartDataSet.lineWidth = 2
+               //目前折线图只包括1根折线
+               let chartData = LineChartData(dataSets: [chartDataSet])
+               //设置折现图数据
+        chartView1.xAxis.labelRotationAngle = 90 //刻度文字倾斜角度
+        chartView1.data = chartData
+    }
+    func chart2() {
+       
+    }
+    func   updateChart1(){
+        
+        //生成10条随机数据
+        var dataEntries = [ChartDataEntry]()
+        for _ in 0..<10 {
+            let y = arc4random()%100
+            let x = arc4random()%100
+            let entry = ChartDataEntry.init(x: Double(x), y: Double(y))
+            dataEntries.append(entry)
+        }
+        //这10条数据作为1根折线里的所有数据
+        let chartDataSet = LineChartDataSet(entries: dataEntries, label: "图例1")
+
+
+        //修改线条大小
+        chartDataSet.lineWidth = 2
+        //目前折线图只包括1根折线
+        let chartData = LineChartData(dataSets: [chartDataSet])
+        //设置折现图数据
+        chartView1.data = chartData
+    }
+    func   updateChart2(){
+       
+    }
 }
+
+

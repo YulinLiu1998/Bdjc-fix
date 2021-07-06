@@ -9,10 +9,10 @@ import UIKit
 
 class MeVC: UIViewController {
 
+    @IBOutlet weak var UserName: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        UserName.text = Username
     }
     
 

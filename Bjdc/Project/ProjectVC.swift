@@ -6,7 +6,7 @@
 //
 
 import UIKit
-
+import Malert
 class ProjectVC: UIViewController,UpdateMapView {
  
     
@@ -45,7 +45,12 @@ class ProjectVC: UIViewController,UpdateMapView {
         //向地图窗口添加一组标注
         mapView.addAnnotations(annotations)
         //设置地图使其可以显示数组中所有的annotation, 如果数组中只有一个则直接设置地图中心为annotation的位置
-        mapView.showAnnotations(annotations, edgePadding: UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20), animated: true)
+ 
+        mapView.showAnnotations(annotations, animated: true)
+    
+       
+        mapView.setZoomLevel(17, animated: true)
+        mapView.setCenter(annotations[0].coordinate, animated: true)
         //选中标注数据对应的view
         mapView.selectAnnotation(annotations.first, animated: true)
     }
@@ -58,36 +63,27 @@ class ProjectVC: UIViewController,UpdateMapView {
     func updateMap() {
         MapView.removeAnnotations(annotations)
         annotations = Array()
-        let coordinates1: [CLLocationCoordinate2D] = [
-            CLLocationCoordinate2D(latitude: 39.992520, longitude: 116.336170),
-            CLLocationCoordinate2D(latitude: 39.978234, longitude: 116.352343),
-            CLLocationCoordinate2D(latitude: 39.998293, longitude: 116.348904),
-            CLLocationCoordinate2D(latitude: 40.004087, longitude: 116.353915),
-            CLLocationCoordinate2D(latitude: 40.001442, longitude: 116.353915),
-            CLLocationCoordinate2D(latitude: 39.989105, longitude: 116.360200),
-            CLLocationCoordinate2D(latitude: 39.989098, longitude: 116.360201),
-            CLLocationCoordinate2D(latitude: 39.998439, longitude: 116.324219),
-            CLLocationCoordinate2D(latitude: 39.979590, longitude: 116.352792)]
+        
         var coordinates = [CLLocationCoordinate2D]()
         var stationKinds = [String]()
         for i in 0 ..< StationLongitudes[CurrentProject!].count{
             let Longitudes = CLLocationDegrees(StationLongitudes[CurrentProject!][i])
             let Latitudes  = CLLocationDegrees(StationLatitudes[CurrentProject!][i])
-            if Latitudes == nil || Longitudes == nil {
-                coordinates.append(coordinates1[i])
-            }else{
-                coordinates.append(CLLocationCoordinate2D(latitude: Latitudes!, longitude: Longitudes!))
+            if Latitudes != nil && Longitudes != nil {
+                let amapcoord = AMapCoordinateConvert(CLLocationCoordinate2D(latitude: Latitudes!, longitude: Longitudes!),.GPS)
+                coordinates.append(amapcoord)
+                let status = Int(stationStatus[CurrentProject!][i])
+                if status! >= 10 && status! < 19{
+                    stationKinds.append("online")
+                }else if status! >= 20 && status! < 29{
+                    stationKinds.append("offline")
+                }else if status! >= 30 && status! < 39{
+                    stationKinds.append("warning")
+                }else{
+                    stationKinds.append("error")
+                }
             }
-            let status = Int(stationStatus[CurrentProject!][i])
-            if status! >= 10 && status! < 19{
-                stationKinds.append("online")
-            }else if status! >= 20 && status! < 29{
-                stationKinds.append("offline")
-            }else if status! >= 30 && status! < 39{
-                stationKinds.append("warning")
-            }else{
-                stationKinds.append("error")
-            }
+            
             
         }
         
@@ -106,18 +102,25 @@ class ProjectVC: UIViewController,UpdateMapView {
             annotations.append(anno)
         }
         
+
         MapView.addAnnotations(annotations)
-        MapView.showAnnotations(annotations, edgePadding: UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20), animated: true)
+        MapView.showAnnotations(annotations, animated: true)
+        MapView.setZoomLevel(17, animated: true)
+        MapView.setCenter(annotations[0].coordinate, animated: true)
         //选中标注数据对应的view
         MapView.selectAnnotation(annotations.first, animated: true)
     }
-    func updateMapView(city:String) {
-        print(city)
+    func updateMapView() {
+       
         DispatchQueue.main.async{
             self.updateMap()
         }
-        
     }
-    
+    func removeAnnotationsMapView() {
+       
+        DispatchQueue.main.async{ [self] in
+            MapView.removeAnnotations(annotations)
+        }
+    }
 
 }

@@ -28,11 +28,14 @@ extension ProjectVC:MAMapViewDelegate{
         var stationKinds = [String]()
         for i in 0 ..< StationLongitudes[CurrentProject!].count{
             let Longitudes = CLLocationDegrees(StationLongitudes[CurrentProject!][i])
+            
             let Latitudes  = CLLocationDegrees(StationLatitudes[CurrentProject!][i])
             if Latitudes == nil || Longitudes == nil {
                 coordinates.append(coordinates1[i])
             }else{
-                coordinates.append(CLLocationCoordinate2D(latitude: Latitudes!, longitude: Longitudes!))
+                let amapcoord = AMapCoordinateConvert(CLLocationCoordinate2D(latitude: Latitudes!, longitude: Longitudes!),.GPS)
+                coordinates.append(amapcoord)
+                //coordinates.append(CLLocationCoordinate2D(latitude: Latitudes!, longitude: Longitudes!))
             }
             let status = Int(stationStatus[CurrentProject!][i])
             if status! >= 10 && status! < 19{

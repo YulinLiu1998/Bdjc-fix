@@ -8,6 +8,7 @@
 
 import UIKit
 import MBProgressHUD
+import SwiftDate
 class LoginVC: UIViewController {
    
     @IBOutlet weak var account: UITextField!
@@ -21,8 +22,6 @@ class LoginVC: UIViewController {
         CurrentProject = 0
         //请求Token令牌
         accessToken()
-        
-        
         account.becomeFirstResponder()
         hideKeyboardWhenTappedAround()
         //loginBtn.setToDisabled()
@@ -31,11 +30,6 @@ class LoginVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         //校验用户会话
         doSession()
-        
-    }
-    override func viewWillDisappear(_ animated: Bool) {
-        //获取工程项目列表
-       // getProjects()
         
     }
     @IBAction func changeDisplayStatus(_ sender: UIButton) {
@@ -49,6 +43,7 @@ class LoginVC: UIViewController {
     @IBAction func TFEditingChanged(_ sender: Any) {
         if accountStr.isAccount && passwordStr.isPassword{
             loginBtn.setToEnabled()
+            Username = accountStr
         }else{
             loginBtn.setToDisabled()
         }
@@ -58,31 +53,34 @@ class LoginVC: UIViewController {
     
     
     @IBAction func loginEvent(_ sender: UIButton) {
-        //doLogin()
-        //getProjects()
-        DispatchQueue.main.async{
-            self.showTextHUD("请稍等")
-        }
         let workingGroup = DispatchGroup()
         let workingQueue = DispatchQueue(label: "request_queue")
         workingGroup.enter() // 开始
         workingQueue.async {
+            DispatchQueue.main.async{
+                self.showLoadHUD("正在登录")
+            }
             let sema = DispatchSemaphore(value: 0)
             self.doLogin(sema: sema)
+            self.hideLoadHUD()
             sema.wait() // 等待任务结束, 否则一直阻塞
             workingGroup.leave() // 结束
         }
         workingGroup.enter() // 开始
         workingQueue.async {
+            DispatchQueue.main.async{
+                self.showLoadHUD("正在获取工程数据")
+            }
+
             let sema = DispatchSemaphore(value: 0)
             self.getProjects(sema: sema)
+            self.hideLoadHUD()
             sema.wait() // 等待任务结束, 否则一直阻塞
             workingGroup.leave() // 结束
         }
         workingGroup.notify(queue: DispatchQueue.main) {
             // 全部调用完成后回到主线程,更新UI
             let now = Date()
-             
             // 创建一个日期格式器
             let dformatter = DateFormatter()
             dformatter.dateFormat = "yyyy年MM月dd日 HH:mm:ss"
@@ -116,3 +114,4 @@ extension LoginVC: UITextFieldDelegate{
         return true
     }
 }
+

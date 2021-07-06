@@ -15,7 +15,7 @@ extension BootomSheetVC{
         ]
      
         showLoadHUD()
-        AF.request("http://172.18.7.86/dist/API/getProjects.php",
+        AF.request("\(networkInterface)getProjects.php",
                    method: HTTPMethod.post,
                    parameters: parameters,
                    encoder: JSONParameterEncoder.default).responseJSON(completionHandler: { response in
@@ -103,9 +103,8 @@ extension BootomSheetVC{
                           "EndTime":"2021-03-09 23:59:59",
                           "DeltaTime":"60"
         ]
-        //print("parameters",parameters)
         
-        AF.request("http://172.18.7.86/dist/API/getGraphicData.php",
+        AF.request("\(networkInterface)getGraphicData.php",
                    method: HTTPMethod.post,
                    parameters: parameters,
                    encoder: JSONParameterEncoder.default).responseJSON(completionHandler: { response in
@@ -142,26 +141,39 @@ extension BootomSheetVC{
     }
     func getGraphicData1(){
         
+    
         let parameters = ["AccessToken":AccessToken,
                           "SessionUUID":SessionUUID,
                           "StationUUID":StationUUID,
                           "GraphicType":"GNSSFilterInfo",
-                          "StartTime":"2021-03-09 00:00:00",
-                          "EndTime":"2021-03-09 23:59:59",
+                          "StartTime":StartTime,
+                          "EndTime":EndTime,
                           "DeltaTime":"60"
         ]
-        
-        AF.request("http://172.18.7.86/dist/API/getGraphicData.php",
+        showLoadHUD("正在加载图表")
+        AF.request("\(networkInterface)getGraphicData.php",
                    method: HTTPMethod.post,
                    parameters: parameters,
                    encoder: JSONParameterEncoder.default).responseJSON(completionHandler: { response in
+                    self.hideLoadHUD()
                     switch response.result {
                         case .success(let value):
                             let GraphicData = JSON(value)
                             if GraphicData["ResponseCode"] == "200" {
-                                //操作成功
+                                //操作成功  //vc.performSegue(withIdentifier: "viewData", sender: nil)
                                 ChartData = GraphicData
+                               
                                 self.performSegue(withIdentifier: "showChart", sender: nil)
+                               
+                                //self.tabBarController?.selectedIndex = 1
+//                                let vc = self.storyboard?.instantiateViewController(withIdentifier: "DateTableChart") as! DateTableVC
+//                                vc.showChart()
+                               // let vc1 = self.storyboard?.instantiateViewController(withIdentifier: "BootomSheetChart") as! BootomSheetChartVC
+                                //vc.navigationController?.pushViewController(vc1, animated: true)
+                               // vc.navigationController?.present(vc1, animated: true, completion: nil)
+                               // vc.present(vc1, animated: true, completion: nil)
+                                
+                               
                             }else if GraphicData["ResponseCode"] == "400"{
                                 //操作失败/参数非法
                                 print("\(GraphicData["ResponseCode"])")

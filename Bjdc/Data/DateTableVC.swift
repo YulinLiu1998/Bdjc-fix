@@ -6,13 +6,13 @@
 //
 
 import UIKit
-
+import SwiftDate
 class DateTableVC: UITableViewController {
   
     var _menu1OptionTitles:Array<String>?
     var _menu1OptionIcons:Array<String>?
     var navMenu:LMJDropdownMenu?
-    
+    var btnTag:Int?
     var currentTitle: String?
     
     var tableRows:Int?
@@ -28,8 +28,55 @@ class DateTableVC: UITableViewController {
             NavMenu?.title = projectTitles[CurrentProject!]
             tableView.reloadData()
         }
+        print("数据蓝")
+//        if TabBarJump {
+//            self.showChart()
+//        }
+        self.navigationController?.isNavigationBarHidden = false
+        
     }
-
+    @IBAction func showData(_ sender: Any) {
+        let btn = sender as! UIButton
+        btnTag = btn.tag
+       
+        currentDrodownTitle = currentTitle
+        currenSelectedStation = stationNames[CurrentProject!][btn.tag]
+        StationUUID = ProjectList![CurrentProject!]["StationList"][btn.tag]["StationUUID"].stringValue
+        var  date = Date()
+        date = Date.dateFromGMT(date)
+        print(date.toFormat("yyyy-MM-dd"))
+        StartTime = "\(date.toFormat("yyyy-MM-dd")) 00:00:00"
+        EndTime = "\(date.toFormat("yyyy-MM-dd")) 23:59:59"
+        TimeInterval_day = [String]()
+        DayTimeInterval()
+        CurrentTimeInterval = 3
+        TimeIntervalKind[CurrentTimeInterval!] = TimeInterval_day
+        DispatchQueue.main.async {
+            self.showTextHUD("正在加载")
+        }
+        self.getGraphicData()
+    }
+    func DayTimeInterval(){
+        var date = Date()
+        date = date.dateAt(.startOfDay)
+        TimeDateInterval = [String]()
+        for i in 0..<1440 {
+            if i%120 == 0 {
+                let time = i/60
+                if time >= 10 {
+                    TimeInterval_day.append("\(time):00")
+                }else{
+                    TimeInterval_day.append("0\(time):00")
+                }
+            }else{
+                TimeInterval_day.append("")
+            }
+            TimeDateInterval.append("\(date.toFormat("yyyy-MM-dd HH:mm"))")
+            date = date + 1.minutes
+        }
+        TimeDateInterval.append("\(date.toFormat("yyyy-MM-dd HH:mm"))")
+        TimeInterval_day.append("24:00")
+    }
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -66,47 +113,15 @@ class DateTableVC: UITableViewController {
        
         //设备名字
         cell.positionModel.text = stationNames[CurrentProject!][indexPath.row]
-        cell.viewDataBtn.tag = indexPath.row
+        let stationIndex:Int?
+        stationIndex = stationNames[CurrentProject!].firstIndex(of:cell.positionModel.text! )
+        cell.viewDataBtn.tag = stationIndex!
         return cell
     }
     
-
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
+    func showChart() {
+        self.performSegue(withIdentifier: "viewData", sender: nil)
     }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
 
     // MARK: - Navigation
 
@@ -115,16 +130,14 @@ class DateTableVC: UITableViewController {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
         
-        if segue.identifier == "viewData" {
-            let vc = segue.destination as! ChartTableVC
-            let btn = sender as! UIButton
-            vc.test = "\(btn.tag)BDJC"
-            vc.currentNavgationTitle = currentTitle
-//            let cell = sender as! DateTableViewCell
-//            let row = tableView.indexPath(for: cell)!.row
-//            vc.test = "\(sender.tag)"
-            
-        }
+//        if segue.identifier == "viewData" {
+//            let vc = segue.destination as! ChartTableVC
+//            let btn = sender as! UIButton
+//            vc.test = "\(btn.tag)BDJC"
+//            vc.currentNavgationTitle = currentTitle
+//
+//
+//        }
     }
 
 }

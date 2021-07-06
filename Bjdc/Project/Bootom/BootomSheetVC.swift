@@ -8,15 +8,17 @@
 import UIKit
 import FittedSheets
 import SwiftyJSON
+import SwiftDate
+
 protocol UpdateMapView {
-    func updateMapView(city:String)
+    func updateMapView()
+    func removeAnnotationsMapView()
 }
 class BootomSheetVC: UIViewController, Demoable {
     
     
     var delegate:UpdateMapView?
-    var updateMapdelegate:(()->())?
-    var btnTag:Int?
+    
     static var name: String { "bootomsheet" }
     
     @IBOutlet weak var tableView: UITableView!
@@ -103,7 +105,7 @@ class BootomSheetVC: UIViewController, Demoable {
         let controller = storyboard.instantiateViewController(identifier: "BootomSheet") as! BootomSheetVC
         let sheet = SheetViewController(
             controller: controller,
-            sizes: [.fixed(200), .fixed(300), .fixed(450), .marginFromTop(50)],
+            sizes: [.fixed(105), .fixed(200), .fixed(300), .fixed(450), .marginFromTop(50)],
             options: SheetOptions(useInlineMode: useInlineMode))
         
         sheet.dismissOnPull = false
@@ -124,75 +126,48 @@ class BootomSheetVC: UIViewController, Demoable {
     @IBAction func showData(_ sender: Any) {
         let btn = sender as! UIButton
         btnTag = btn.tag
-        let vc = storyboard?.instantiateViewController(identifier: "BootomSheetChart") as! BootomSheetChartVC
-
-
-        vc.test = "\(btn.tag)BDJC"
-        vc.currentDrodownTitle = currentTitle
+        TabBarJump = true
+        currentDrodownTitle = currentTitle
         currenSelectedStation = stationNames[CurrentProject!][btn.tag]
         StationUUID = ProjectList![CurrentProject!]["StationList"][btn.tag]["StationUUID"].stringValue
-       // print("currenSelectedStation",currenSelectedStation)
-       // print("StationUUID",StationUUID)
-        DispatchQueue.main.async {
-            self.showTextHUD("正在加载")
+        //设置请求时间
+        var  date = Date()
+        date = Date.dateFromGMT(date)
+        print(date.toFormat("yyyy-MM-dd"))
+        StartTime = "\(date.toFormat("yyyy-MM-dd")) 00:00:00"
+        EndTime = "\(date.toFormat("yyyy-MM-dd")) 23:59:59"
+        TimeInterval_day = [String]()
+        DayTimeInterval()
+        CurrentTimeInterval = 3
+        TimeIntervalKind[CurrentTimeInterval!] = TimeInterval_day
+        self.getGraphicData1() 
+    }
+    func DayTimeInterval(){
+        var date = Date()
+        date = date.dateAt(.startOfDay)
+        TimeDateInterval = [String]()
+        for i in 0..<1440 {
+            if i%120 == 0 {
+                let time = i/60
+                if time >= 10 {
+                    TimeInterval_day.append("\(time):00")
+                }else{
+                    TimeInterval_day.append("0\(time):00")
+                }
+            }else{
+                TimeInterval_day.append("")
+            }
+            TimeDateInterval.append("\(date.toFormat("yyyy-MM-dd HH:mm"))")
+            date = date + 1.minutes
         }
-        self.getGraphicData1()
-        
-        
-       // performSegue(withIdentifier: "showChart", sender: nil)
-//        DispatchQueue.main.async{ [self] in
-//            let btn = sender as! UIButton
-//            btnTag = btn.tag
-//            StationUUID = ProjectList![CurrentProject!]["StationList"]["\((sender as AnyObject).tag!)"]["StationUUID"].stringValue
-//        }
-//        let workingGroup = DispatchGroup()
-//        let workingQueue = DispatchQueue(label: "request_queue")
-//        workingGroup.enter() // 开始
-//        workingQueue.async { [self] in
-//            let sema = DispatchSemaphore(value: 0)
-//
-//
-//            self.getGraphicData0(sema: sema)
-//            sema.wait() // 等待任务结束, 否则一直阻塞
-//            workingGroup.leave() // 结束
-//        }
-//        workingGroup.notify(queue: DispatchQueue.main) {
-//            // 全部调用完成后回到主线程,更新UI
-//
-//            self.performSegue(withIdentifier: "showChart", sender: nil)
-//        }
+        TimeDateInterval.append("\(date.toFormat("yyyy-MM-dd HH:mm"))")
+        TimeInterval_day.append("24:00")
     }
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-        
-       
-//        let vc = segue.destination as! BootomSheetChartVC
-//        let btn = sender as! UIButton
-//
-//        vc.test = "\(btn.tag)BDJC"
-//        vc.currentDrodownTitle = currentTitle
-//        vc.currenSelectedStation = stationNames[CurrentProject!][btn.tag]
-//        StationUUID = ProjectList![CurrentProject!]["StationList"][btn.tag]["StationUUID"].stringValue
-//        self.getGraphicData1()
-//        let vc = segue.destination as! BootomSheetChartVC
-//
-//        vc.test = "\(btnTag)BDJC"
-//        vc.currentDrodownTitle = currentTitle
-//        vc.currenSelectedStation = stationNames[CurrentProject!][btnTag!]
-//        StationUUID = ProjectList![CurrentProject!]["StationList"]["\(btnTag)"]["StationUUID"].stringValue
-//        print(StationUUID)
-//        getGraphicData1()
-//        print(StationUUID)
-        
-    }
-    override func viewWillDisappear(_ animated: Bool) {
-        DispatchQueue.main.async{
-            self.showTextHUD("请稍等")
-        }
     }
 
+   
 }

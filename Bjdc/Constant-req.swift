@@ -8,9 +8,21 @@
 import Foundation
 import SwiftyJSON
 
+
+
+//地图
 var MapView: MAMapView!
+//StationUUID
 var StationUUID:String?
+//报告
 var StationReport:JSON?
+//当前下拉菜单题目
+var currentDrodownTitle:String?
+
+//MARK: -网络接口
+//http://39.96.80.62/bdjc/API/doSession.php
+//http://172.18.7.86/dist/API/doSession.php
+let networkInterface = "http://39.96.80.62/bdjc/API/"
 //MARK: -获取访问令牌
 var AccessToken:String?
 var ExpireTimestamp:Int?
@@ -94,6 +106,65 @@ var GNSSFilterInfoE:[String]?
 var GNSSFilterInfoH:[String]?
 var GNSSFilterInfoDeltaD:[String]?
 var GNSSFilterInfoDeltaH:[String]?
-
+//当前选中的站点
 var currenSelectedStation:String?
 
+//MARK: -请求图表数据时间
+var StartTime:String?
+var EndTime:String?
+//自定义时间
+var CustomStartTime:String?
+var CustomEndTime:String?
+//数据表时间间隔
+var TimeDateInterval = [String]()
+//一小时
+var TimeInterval_oneHour = [String]()
+//六小时
+var TimeInterval_sixHours = [String]()
+//十二小时
+var TimeInterval_twelveHours = [String]()
+//本日
+var TimeInterval_day = [String]()
+//大于一天小于七天
+var TimeInterval_MoreDays = [String]()
+//一周
+var TimeInterval_Sevenday = [String]()
+//大于等于七天小于一个月
+var TimeInterval_MoreSevendays = [String]()
+//一月
+var TimeInterval_Month = [String]()
+//大于等于一个月小于一年
+var TimeInterval_MoreMonths = [String]()
+//一年
+var TimeInterval_Year = [String]()
+//大于等于一年
+var TimeInterval_MoreYears = [String]()
+//自定义
+var TimeInterval_Custom = [String]()
+//MARK: - 下拉时间栏
+//设置在选择下拉时间栏时对应的x轴数据
+
+
+var TimeIntervalKind = [TimeInterval_oneHour,TimeInterval_sixHours,TimeInterval_twelveHours,TimeInterval_day,TimeInterval_Sevenday,TimeInterval_Month,TimeInterval_Year,TimeInterval_Custom]
+//设置下拉时间栏对应的索引 自定义状态值均为0（表示代设定）
+var CurrentTimeInterval:Int?
+//自定义状态
+var CustomStatus:String?
+//[30,180,360,720,1008,744,182]
+//[60,360,720,1440,2016,1488,365]
+//设置可见点数
+var VisibleXRangeMaximum = [35,190,360,750,500,500,120,0]
+//设置请求数据的间隔 用于请求函数
+var DeltaTime = ["60","60","60","60","300","1800","86400","0"]
+//设置x轴对应的最大值
+var AxisMaximum = [65,370,740,1500,2050,1500,370,0]
+var AxisGranularity = [5,30,30,120,144,48,1,0]
+
+
+var dateStartComponents: DateComponents?
+var dateEndComponents: DateComponents?
+var DiffDateComponents: DateComponents?
+
+//Range
+var heartRange:Int?
+var HeartChart:Bool?

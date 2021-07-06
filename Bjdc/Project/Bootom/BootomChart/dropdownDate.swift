@@ -19,23 +19,24 @@ extension BootomSheetChartVC{
         dateDropdown?.layer.borderWidth  = 0
         dateDropdown?.layer.cornerRadius = 0
         
-        dateDropdown?.title = dateDropdownTitles![3]
-        dateDropdown?.titleBgColor = .white
+        dateDropdown?.title = dateDropdownTitles![CurrentTimeInterval!]
+        dateDropdown?.titleBgColor = .systemBackground
         dateDropdown?.titleFont = .boldSystemFont(ofSize: 15)
         dateDropdown?.titleColor = .label
         dateDropdown?.titleAlignment = .center
         dateDropdown?.titleEdgeInsets = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 0)
         
         dateDropdown?.rotateIcon = UIImage(systemName: "arrowtriangle.down.fill")!
+        dateDropdown?.rotateIconTint = .label
         dateDropdown?.rotateIconSize = CGSize(width: 15, height: 15);
         dateDropdown?.rotateIconMarginRight = 15;
         
-        dateDropdown?.optionBgColor = .white
+        dateDropdown?.optionBgColor = .systemBackground
         dateDropdown?.optionFont = .systemFont(ofSize: 13)
         dateDropdown?.optionTextColor = .label
         dateDropdown?.optionTextAlignment = .center
         dateDropdown?.optionNumberOfLines = 0
-        dateDropdown?.optionLineColor = .white
+        dateDropdown?.optionLineColor = .systemBackground
         dateDropdown?.optionIconSize = CGSize(width: 15, height: 15)
         
         

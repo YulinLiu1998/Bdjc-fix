@@ -27,22 +27,23 @@ extension DateTableVC{
         
         navMenu?.title =  NavMenu1!.title
         currentTitle = navMenu?.title
-        navMenu?.titleBgColor = .white
+        navMenu?.titleBgColor = .systemBackground
         navMenu?.titleFont = .boldSystemFont(ofSize: 15)
         navMenu?.titleColor = .label
         navMenu?.titleAlignment = .center
         navMenu?.titleEdgeInsets = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 0)
         
         navMenu?.rotateIcon = UIImage(systemName: "arrowtriangle.down.fill")!
-        navMenu?.rotateIconSize = CGSize(width: 15, height: 15);
+        navMenu?.rotateIconSize = CGSize(width: 15, height: 15)
+        navMenu?.rotateIconTint = .label
         navMenu?.rotateIconMarginRight = 15;
         
-        navMenu?.optionBgColor = .white
+        navMenu?.optionBgColor = .systemBackground
         navMenu?.optionFont = .systemFont(ofSize: 13)
         navMenu?.optionTextColor = .label
         navMenu?.optionTextAlignment = .center
         navMenu?.optionNumberOfLines = 0
-        navMenu?.optionLineColor = .white
+        navMenu?.optionLineColor = .systemBackground
         navMenu?.optionIconSize = CGSize(width: 15, height: 15)
         self.navigationController?.navigationBar.addSubview(navMenu!)
     }
@@ -74,8 +75,6 @@ extension DateTableVC:LMJDropdownMenuDelegate,LMJDropdownMenuDataSource{
         CurrentProject = Int(index)
         //MARK: -标题
         currentTitle = title
-        
-        print("CurrentProject",CurrentProject)
         tableView.reloadData()
     }
     

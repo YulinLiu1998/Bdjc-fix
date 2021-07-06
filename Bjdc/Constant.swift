@@ -8,6 +8,10 @@
 import Foundation
 import UIKit
 
+
+var btnTag:Int?
+var TabBarJump = false
+var CustomAlert: customAlert?
 //统一表格状态
 var tableFlage = false
 var NavMenu:LMJDropdownMenu?
@@ -295,7 +299,7 @@ extension UIView {
     func showError(_ title: String) {
         let hud = MBProgressHUD.showAdded(to: self, animated: true)
         hud.mode = .customView //模式设置为自定义视图
-        hud.customView = UIImageView(image: UIImage(named: "cross")!) //自定义视图显示图片
+       // hud.customView = UIImageView(image: UIImage(named: "cross")!) //自定义视图显示图片
         hud.label.text = title
         hud.removeFromSuperViewOnHide = true
         //HUD窗口显示1秒后自动隐藏
@@ -383,4 +387,11 @@ extension String{
           return pos
       }
   
+}
+extension Date {
+    // 转成当前时区的日期
+    static func dateFromGMT(_ date: Date) -> Date {
+        let secondFromGMT: TimeInterval = TimeInterval(TimeZone.current.secondsFromGMT(for: date))
+        return date.addingTimeInterval(secondFromGMT)
+    }
 }

@@ -17,7 +17,7 @@ extension Setting{
                           "Username":Username
         ]
         
-        AF.request("http://172.18.7.86/dist/API/doLogout.php",
+        AF.request("\(networkInterface)doLogout.php",
                    method: HTTPMethod.post,
                    parameters: parameters,
                    encoder: JSONParameterEncoder.default).responseJSON(completionHandler: { response in
@@ -68,7 +68,8 @@ extension ChangePasswordVC{
                           "OldPassword":encryptOriginalPassword,
                           "NewPassword":encryptNewPassword,
         ]
-        AF.request("http://172.18.7.86/dist/API/setPassword.php",
+        
+        AF.request("\(networkInterface)setPassword.php",
                    method: HTTPMethod.post,
                    parameters: parameters,
                    encoder: JSONParameterEncoder.default).responseJSON(completionHandler: { response in

@@ -27,22 +27,23 @@ extension BootomSheetVC{
         
         navMenu1?.title = projectTitles[0]
         currentTitle = navMenu1?.title
-        navMenu1?.titleBgColor = .white
+        navMenu1?.titleBgColor = .systemBackground
         navMenu1?.titleFont = .boldSystemFont(ofSize: 15)
         navMenu1?.titleColor = .label
         navMenu1?.titleAlignment = .center
         navMenu1?.titleEdgeInsets = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 0)
         
         navMenu1?.rotateIcon = UIImage(systemName: "arrowtriangle.down.fill")!
+        navMenu1?.rotateIconTint = .label
         navMenu1?.rotateIconSize = CGSize(width: 15, height: 15);
         navMenu1?.rotateIconMarginRight = 15;
         
-        navMenu1?.optionBgColor = .white
+        navMenu1?.optionBgColor = .systemBackground
         navMenu1?.optionFont = .systemFont(ofSize: 13)
         navMenu1?.optionTextColor = .label
         navMenu1?.optionTextAlignment = .center
         navMenu1?.optionNumberOfLines = 0
-        navMenu1?.optionLineColor = .white
+        navMenu1?.optionLineColor = .systemBackground
         navMenu1?.optionIconSize = CGSize(width: 15, height: 15)
         
         
@@ -91,16 +92,42 @@ extension BootomSheetVC:LMJDropdownMenuDelegate,LMJDropdownMenuDataSource{
         //设置当前选中状态的显示行数
         tableRows = Int(pssTotal[CurrentProject!])!
         tableView.reloadData()
-        
-        
-        DispatchQueue.main.async{
-            self.showTextHUD("请稍等")
+        guard ProjectList![CurrentProject!]["StationList"].count != 0 else {
+            let alert = UIAlertController(title: "无法显示标记", message: "当前工程检测点总数为0，无法显示标记！", preferredStyle: .alert)
+            let action1 = UIAlertAction(title: "确认", style: .default){_ in
+                self.delegate?.removeAnnotationsMapView()
+            }
+            
+            alert.addAction(action1)
+            
+            self.present(alert,animated: true)
+            print("当前工程检测点总数为0，无法显示标记！")
+            return
         }
-        let city = "北京"
-        delegate?.updateMapView(city:city)
+        guard ProjectList![CurrentProject!]["StationList"].count != 0 else {
+            self.alertWarning(Message: "当前工程检测点总数为0，无法显示标记！")
+            print("当前工程检测点总数为0，无法显示标记！")
+            return
+        }
         
-        updateMapdelegate?()
+        guard StationLongitudes[CurrentProject!].count != 0 || StationLatitudes[CurrentProject!].count != 0  else {
+            self.alertWarning(Message: "当前工程检测点无位置信息，无法显示标记！")
+            print("当前工程检测点无位置信息，无法显示标记！")
+            return
+        }
+        delegate?.updateMapView()
         
         
+        
+    }
+    func alertWarning(Message:String) {
+        let alert = UIAlertController(title: "无法显示标记", message: Message, preferredStyle: .alert)
+        let action1 = UIAlertAction(title: "确认", style: .cancel){_ in
+            self.delegate?.removeAnnotationsMapView()
+        }
+
+        alert.addAction(action1)
+
+        self.present(alert,animated: true)
     }
 }

@@ -11,36 +11,12 @@ import SwiftyJSON
 extension LoginVC{
     func accessToken(){
 
-        struct TokenMessage:Codable{
-            let ResponseCode:String
-            let ResponseMsg:String
-            let AccessToken:String
-            let ExpireTimestamp:Int
-        }
-        //
         let parameters = ["GrantType":"BDJC",
                           "AppID":"UzHky82L6hOKCAsI5MBQYImw",
                           "AppSecret":"HCarvgfeeCQlFoWfo8lylh7aF61wNNBjv8FriEw"
         ]
-      //MARK: -  Decodable请求方式
-//        AF.request("http://172.18.7.86/bdjc/API/getAccessToken.php",
-//                   method: HTTPMethod.post,
-//                   parameters: parameters,
-//                   encoder: JSONParameterEncoder.default).responseDecodable(of: TokenMessage.self) { response in
-//
-//                    print(response.value)
-//                    if let tokenMessage = response.value{
-//                        print(tokenMessage.ResponseCode)
-//                        print(tokenMessage.ResponseMsg)
-//                        print(tokenMessage.AccessToken)
-//                        print(tokenMessage.ExpireTimestamp)
-//                        AccessToken = tokenMessage.AccessToken
-//                    }else{
-//
-//                    }
-//                   }
         showLoadHUD()
-        AF.request("http://172.18.7.86/dist/API/getAccessToken.php",
+        AF.request("\(networkInterface)getAccessToken.php",
                    method: HTTPMethod.post,
                    parameters: parameters,
                    encoder: JSONParameterEncoder.default).responseJSON(completionHandler: { response in
@@ -69,7 +45,8 @@ extension LoginVC{
                           "SessionUUID":SessionUUID,
         ]
         showLoadHUD()
-        AF.request("http://172.18.7.86/dist/API/doSession.php",
+        
+        AF.request("\(networkInterface)doSession.php",
                    method: HTTPMethod.post,
                    parameters: parameters,
                    encoder: JSONParameterEncoder.default).responseJSON(completionHandler: { response in
@@ -97,9 +74,8 @@ extension LoginVC{
         let iv = key![24...]
         let text = self.passwordStr
         var encryptText:String?
-        //var decrptText:String?
         encryptText = text.tripleDESEncryptOrDecrypt(op: CCOperation(kCCEncrypt), key: key!, iv: iv)
-        //decrptText = encryptText?.tripleDESEncryptOrDecrypt(op: CCOptions(kCCDecrypt), key: key!, iv: iv)
+
         
         Username = self.accountStr
         
@@ -109,21 +85,19 @@ extension LoginVC{
                           "Username":self.accountStr,
                           "Password":encryptText
         ]
-       
-        AF.request("http://172.18.7.86/dist/API/doLogin.php",
+
+        AF.request("\(networkInterface)doLogin.php",
                    method: HTTPMethod.post,
                    parameters: parameters,
                    encoder: JSONParameterEncoder.default).responseJSON(completionHandler: { response in
+
                     switch response.result {
-                    
                         case .success(let value):
-                           
                             let loginMessage = JSON(value)
                             print("loginMessage",loginMessage)
                             if loginMessage["ResponseCode"] == "200" {
-                                //成功登录
+                                //成功登
                                 sema.signal()
-                                //self.performSegue(withIdentifier: "LoginToTabBar", sender: nil)
                             }else if loginMessage["ResponseCode"] == "400"{
                                 //若输入的密码格式错误，则返回400错误码，错误信息为“请输入正确的账号密码
                                 sema.signal()
@@ -149,8 +123,8 @@ extension LoginVC{
         let parameters = ["AccessToken":AccessToken,
                           "SessionUUID":SessionUUID
         ]
-     
-        AF.request("http://172.18.7.86/dist/API/getProjects.php",
+        
+        AF.request("\(networkInterface)getProjects.php",
                    method: HTTPMethod.post,
                    parameters: parameters,
                    encoder: JSONParameterEncoder.default).responseJSON(completionHandler: { response in
@@ -218,7 +192,6 @@ extension LoginVC{
                                     StationLongitudes.append(longitudeList)
                                     StationLatitudes.append(latitudeList)
                                 }
-                                print("stationStatus",stationStatus)
                                 sema.signal()
                             }else if getProjectsMessage["ResponseCode"] == "400"{
                                 //若输入的密码格式错误，则返回400错误码，错误信息为“请输入正确的账号密码
