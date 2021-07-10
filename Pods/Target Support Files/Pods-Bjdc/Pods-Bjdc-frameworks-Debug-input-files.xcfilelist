@@ -1,0 +1,11 @@
+${PODS_ROOT}/Target Support Files/Pods-Bjdc/Pods-Bjdc-frameworks.sh
+${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework
+${BUILT_PRODUCTS_DIR}/Charts/Charts.framework
+${BUILT_PRODUCTS_DIR}/CryptoSwift/CryptoSwift.framework
+${BUILT_PRODUCTS_DIR}/FittedSheets/FittedSheets.framework
+${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework
+${BUILT_PRODUCTS_DIR}/Malert/Malert.framework
+${BUILT_PRODUCTS_DIR}/PGDatePicker/PGDatePicker.framework
+${BUILT_PRODUCTS_DIR}/PGPickerView/PGPickerView.framework
+${BUILT_PRODUCTS_DIR}/SwiftDate/SwiftDate.framework
+${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework
