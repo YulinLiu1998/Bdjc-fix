@@ -11,7 +11,7 @@ import UIKit
 
 var btnTag:Int?
 var TabBarJump = false
-var CustomAlert: customAlert?
+var alertView: AlertView?
 //统一表格状态
 var tableFlage = false
 var NavMenu:LMJDropdownMenu?
@@ -21,7 +21,8 @@ var NavMenu1:LMJDropdownMenu?
 //当前项目名
 var CurrentTitle:String?
 
-
+//定义标记数组
+var annotations: Array<MAPointAnnotation>!
 
 
 //正则表达式

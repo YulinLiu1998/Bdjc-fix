@@ -19,19 +19,24 @@ class DateTableVC: UITableViewController {
     var Cell: DateTableViewCell?
     override func viewDidLoad() {
         super.viewDidLoad()
+        if TabBarJump {
+            DispatchQueue.main.async {
+                self.showTextHUD("正在加载")
+            }
+            
+        }
         tableFlage = true
         dropdownMenuDateTable()
         
     }
     override func viewWillAppear(_ animated: Bool) {
+        if TabBarJump {
+            self.performSegue(withIdentifier: "viewData", sender: nil)
+        }
         if tableFlage {
             NavMenu?.title = projectTitles[CurrentProject!]
             tableView.reloadData()
         }
-        print("数据蓝")
-//        if TabBarJump {
-//            self.showChart()
-//        }
         self.navigationController?.isNavigationBarHidden = false
         
     }
@@ -119,9 +124,7 @@ class DateTableVC: UITableViewController {
         return cell
     }
     
-    func showChart() {
-        self.performSegue(withIdentifier: "viewData", sender: nil)
-    }
+
 
     // MARK: - Navigation
 

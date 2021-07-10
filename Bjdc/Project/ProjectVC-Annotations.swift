@@ -9,62 +9,7 @@ import Foundation
 extension ProjectVC:MAMapViewDelegate{
     //初始化地图标记
     func initAnnotations() {
-        
-        annotations = Array()
-        
-        //定义标记位置
-        
-        let coordinates1: [CLLocationCoordinate2D] = [
-            CLLocationCoordinate2D(latitude: 39.992520, longitude: 116.336170),
-            CLLocationCoordinate2D(latitude: 39.978234, longitude: 116.352343),
-            CLLocationCoordinate2D(latitude: 39.998293, longitude: 116.348904),
-            CLLocationCoordinate2D(latitude: 40.004087, longitude: 116.353915),
-            CLLocationCoordinate2D(latitude: 40.001442, longitude: 116.353915),
-            CLLocationCoordinate2D(latitude: 39.989105, longitude: 116.360200),
-            CLLocationCoordinate2D(latitude: 39.989098, longitude: 116.360201),
-            CLLocationCoordinate2D(latitude: 39.998439, longitude: 116.324219),
-            CLLocationCoordinate2D(latitude: 39.979590, longitude: 116.352792)]
-        var coordinates = [CLLocationCoordinate2D]()
-        var stationKinds = [String]()
-        for i in 0 ..< StationLongitudes[CurrentProject!].count{
-            let Longitudes = CLLocationDegrees(StationLongitudes[CurrentProject!][i])
-            
-            let Latitudes  = CLLocationDegrees(StationLatitudes[CurrentProject!][i])
-            if Latitudes == nil || Longitudes == nil {
-                coordinates.append(coordinates1[i])
-            }else{
-                let amapcoord = AMapCoordinateConvert(CLLocationCoordinate2D(latitude: Latitudes!, longitude: Longitudes!),.GPS)
-                coordinates.append(amapcoord)
-                //coordinates.append(CLLocationCoordinate2D(latitude: Latitudes!, longitude: Longitudes!))
-            }
-            let status = Int(stationStatus[CurrentProject!][i])
-            if status! >= 10 && status! < 19{
-                stationKinds.append("online")
-            }else if status! >= 20 && status! < 29{
-                stationKinds.append("offline")
-            }else if status! >= 30 && status! < 39{
-                stationKinds.append("warning")
-            }else{
-                stationKinds.append("error")
-            }
-            
-        }
-        
-        //遍历数组将位置信息加入标记数组
-        for (idx, coor) in coordinates.enumerated() {
-            //let anno = MAPointAnnotation()
-            let anno = CustomPointAnnotationViewSwift()
-            //经纬度
-            anno.coordinate = coor
-            //标题
-            anno.title = "监测点名称：\(stationNames[CurrentProject!][idx])"
-            let type = stationTypes[CurrentProject!][idx] == "1" ? "基准站":"移动站"
-            anno.subtitle = "监测点类型：\(type)"
-            anno.kindOfStatus = stationKinds[idx]
-            //添加标记
-            annotations.append(anno)
-        }
-
+        updateMap()
     }
     
     

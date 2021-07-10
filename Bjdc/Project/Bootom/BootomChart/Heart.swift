@@ -35,10 +35,13 @@ extension BootomSheetChartVC{
         min = Double(ChartData!["Min"][2].stringValue)!
         chartView6.leftAxis.axisMinimum = min - 0.01//最小刻度值
         max = Double(ChartData!["Max"][2].stringValue)!
-
         chartView6.leftAxis.axisMaximum =  max + 0.01//最大刻度值
-        //let length_Y = Double(max)! + 0.05 - Double(min)! + 0.05
-        //print("刻度差值：",length_Y )
+        //设置Y轴距离
+//        let length_Y = (max + 0.1 - min + 0.1)
+//        let portion_Y = (length_Y / 0.01)
+//        let Num_Y = portion_Y * 62.5
+//        let Scale_Y = Num_Y / Double(chartView1.bounds.height)
+//        chartView6.setScaleMinima(1, scaleY: CGFloat(Scale_Y))
         //折线图背景色
         chartView6.backgroundColor = UIColor.white
         
@@ -51,7 +54,7 @@ extension BootomSheetChartVC{
         chartView6.scaleYEnabled = false //取消Y轴缩放
         chartView6.scaleXEnabled = false //取消X轴缩放
         chartView6.doubleTapToZoomEnabled = false //双击缩放
-        chartView6.dragEnabled = true //启用拖动手势
+        chartView6.dragEnabled = false //启用拖动手势
         chartView6.dragDecelerationEnabled = true //拖拽后是否有惯性效果
         chartView6.dragDecelerationFrictionCoef = 0.5//拖拽后惯性效果摩擦系数(0~1)越小惯性越不明显
         
@@ -118,3 +121,42 @@ extension BootomSheetChartVC{
 //self.min = 0
 //self.max = Int(chart.highestVisibleX)
 //range = Int(Double(self.max - self.min) * phaseX)
+//        let scrollView = self.superview?.superview?.superview as! UIScrollView
+//
+//        print(recognizer.velocity(in: scrollView).y)
+//        if abs(recognizer.velocity(in: scrollView).y ) > 200 {
+//            //平移
+//            var translation = recognizer.translation(in: scrollView)
+//            if recognizer.state == .began{
+//                _isDragging = false
+//            }
+//            //.began, .changed, .ended 状态时更新panlabel的位置（改center）
+//            if recognizer.state != .cancelled{
+//                print("translation.y",translation.y)
+//                translation.y = -translation.y
+//                let yNum = scrollView.contentOffset.y + translation.y
+//                if yNum > 0 {
+//                    scrollView.setContentOffset(CGPoint(x: 0, y: yNum), animated: true)
+//                }
+//
+//            }
+//        }else if abs(recognizer.velocity(in: scrollView).y ) > 200 {
+//            //滑动
+//            if recognizer.state == .began{
+//                _isDragging = false
+//            }
+//            //.began, .changed, .ended 状态时更新panlabel的位置（改center）
+//            if recognizer.state != .cancelled{
+//                if recognizer.velocity(in: self).y > 0 {
+//                    var yNum = scrollView.contentOffset.y - 550
+//                    yNum = yNum < 0 ? 0 : yNum
+//                    scrollView.setContentOffset(CGPoint(x: 0,y: yNum), animated: true)
+//                }else{
+//                    var yNum = scrollView.contentOffset.y + 550
+//                    yNum = yNum > 3000 ? 3000 : yNum
+//                    scrollView.setContentOffset(CGPoint(x: 0,y: yNum), animated: true)
+//                }
+//            }
+//        }
+//        let scrollView = self.superview?.superview?.superview as! UIScrollView
+// var translation = recognizer.translation(in: scrollView)

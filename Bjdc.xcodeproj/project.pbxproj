@@ -13,17 +13,12 @@
 		FF9062EE2665FB1F00331DDF /* Constant-req.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF9062ED2665FB1F00331DDF /* Constant-req.swift */; };
 		FF9062F026660FCC00331DDF /* threeDES.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF9062EF26660FCC00331DDF /* threeDES.swift */; };
 		FF9062F2266613D800331DDF /* md5.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF9062F1266613D800331DDF /* md5.swift */; };
-		FF94A33626847674002A3D88 /* Example7View.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF94A33526847674002A3D88 /* Example7View.swift */; };
-		FF94A338268476A2002A3D88 /* Example7View.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF94A337268476A2002A3D88 /* Example7View.xib */; };
-		FF94A33E268482E9002A3D88 /* customAlert.xib in Resources */ = {isa = PBXBuildFile; fileRef = FF94A33D268482E9002A3D88 /* customAlert.xib */; };
-		FF94A340268570DA002A3D88 /* customAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF94A33F268570DA002A3D88 /* customAlert.swift */; };
 		FF968B82266A1A20009D9404 /* ProjectVC-btn.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF968B81266A1A20009D9404 /* ProjectVC-btn.swift */; };
 		FF968B84266A1BD5009D9404 /* ProjectVC-Annotations.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF968B83266A1BD5009D9404 /* ProjectVC-Annotations.swift */; };
 		FF968B86266A24A9009D9404 /* BootomSheetVC-initProject.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF968B85266A24A9009D9404 /* BootomSheetVC-initProject.swift */; };
 		FF968B88266A3391009D9404 /* BootomSheet-btn.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF968B87266A3391009D9404 /* BootomSheet-btn.swift */; };
 		FF968B8A266A3623009D9404 /* BootomSheet-TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF968B89266A3623009D9404 /* BootomSheet-TableView.swift */; };
 		FF97EF6F2663A9C000C09CEA /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = FF97EF6E2663A9BF00C09CEA /* .gitignore */; };
-		FF9CD6A5265F61030048D6A3 /* test.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF9CD6A4265F61030048D6A3 /* test.swift */; };
 		FFA4B61F266CEA8A0000C995 /* CustomCalloutViewSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA4B61E266CEA8A0000C995 /* CustomCalloutViewSwift.swift */; };
 		FFA4B621266CEB4C0000C995 /* AnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA4B620266CEB4C0000C995 /* AnnotationView.swift */; };
 		FFA4B623266D045D0000C995 /* pointAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA4B622266D045D0000C995 /* pointAnnotationView.swift */; };
@@ -31,7 +26,6 @@
 		FFA4B62F266F10600000C995 /* dropdownDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA4B62E266F10600000C995 /* dropdownDate.swift */; };
 		FFA4B631266F194E0000C995 /* drpdownDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA4B630266F194E0000C995 /* drpdownDelegate.swift */; };
 		FFA4B636266F49910000C995 /* ChartData-req.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA4B635266F49910000C995 /* ChartData-req.swift */; };
-		FFA4B65D267048BF0000C995 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA4B65C267048BF0000C995 /* TestViewController.swift */; };
 		FFA4B663267094E30000C995 /* GNSSFilterInfoN.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA4B662267094E30000C995 /* GNSSFilterInfoN.swift */; };
 		FFA4B6652670D46B0000C995 /* GNSSFilterInfoE.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA4B6642670D46B0000C995 /* GNSSFilterInfoE.swift */; };
 		FFA4B6672670D5270000C995 /* GNSSFilterInfoH.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA4B6662670D5270000C995 /* GNSSFilterInfoH.swift */; };
@@ -39,7 +33,6 @@
 		FFA4B66B2670DBB50000C995 /* GNSSFilterInfoDeltaH.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA4B66A2670DBB50000C995 /* GNSSFilterInfoDeltaH.swift */; };
 		FFA4B66D2670DD110000C995 /* Heart.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA4B66C2670DD110000C995 /* Heart.swift */; };
 		FFA4B6712670DFA30000C995 /* TimeInterval.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA4B6702670DFA30000C995 /* TimeInterval.swift */; };
-		FFA4B6732672248E0000C995 /* ChartTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA4B6722672248D0000C995 /* ChartTable.swift */; };
 		FFA4B67526739F170000C995 /* DateTableVC-req.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA4B67426739F170000C995 /* DateTableVC-req.swift */; };
 		FFA8589A265DDF120067CA7D /* MeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA85899265DDF120067CA7D /* MeVC.swift */; };
 		FFA8589D265DDFAD0067CA7D /* Setting.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA8589C265DDFAD0067CA7D /* Setting.swift */; };
@@ -47,6 +40,8 @@
 		FFA858A3265DE0D10067CA7D /* ChangePasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA858A2265DE0D10067CA7D /* ChangePasswordVC.swift */; };
 		FFA858A5265E441D0067CA7D /* BootomSheetChartVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA858A4265E441D0067CA7D /* BootomSheetChartVC.swift */; };
 		FFD34FE22664BA8F00EF0ED2 /* LoginVC-accessToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD34FE12664BA8F00EF0ED2 /* LoginVC-accessToken.swift */; };
+		FFD9F7472696DE5000D57BF4 /* AlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FFD9F7462696DE5000D57BF4 /* AlertView.xib */; };
+		FFD9F7492696DFA300D57BF4 /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD9F7482696DFA300D57BF4 /* AlertView.swift */; };
 		FFDCEBF1265CB3C6006A306B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFDCEBF0265CB3C6006A306B /* AppDelegate.swift */; };
 		FFDCEBF3265CB3C6006A306B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFDCEBF2265CB3C6006A306B /* SceneDelegate.swift */; };
 		FFDCEBF5265CB3C6006A306B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFDCEBF4265CB3C6006A306B /* ViewController.swift */; };
@@ -58,7 +53,6 @@
 		FFDCEC0B265CBC2A006A306B /* ProjectVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFDCEC0A265CBC2A006A306B /* ProjectVC.swift */; };
 		FFDCEC0F265CBF34006A306B /* DateTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFDCEC0E265CBF34006A306B /* DateTableVC.swift */; };
 		FFDCEC12265CC007006A306B /* DateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFDCEC11265CC007006A306B /* DateTableViewCell.swift */; };
-		FFDCEC14265CC4C8006A306B /* ChartTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFDCEC13265CC4C8006A306B /* ChartTableVC.swift */; };
 		FFDCEC16265CC59E006A306B /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFDCEC15265CC59E006A306B /* Constant.swift */; };
 		FFDCEC1A265CCA60006A306B /* LMJDropdownMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = FFDCEC18265CCA60006A306B /* LMJDropdownMenu.m */; };
 		FFDCEC1D265CEFC2006A306B /* BootomSheetVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFDCEC1C265CEFC2006A306B /* BootomSheetVC.swift */; };
@@ -76,17 +70,12 @@
 		FF9062ED2665FB1F00331DDF /* Constant-req.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Constant-req.swift"; sourceTree = "<group>"; };
 		FF9062EF26660FCC00331DDF /* threeDES.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = threeDES.swift; sourceTree = "<group>"; };
 		FF9062F1266613D800331DDF /* md5.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = md5.swift; sourceTree = "<group>"; };
-		FF94A33526847674002A3D88 /* Example7View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Example7View.swift; sourceTree = "<group>"; usesTabs = 0; };
-		FF94A337268476A2002A3D88 /* Example7View.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Example7View.xib; sourceTree = "<group>"; };
-		FF94A33D268482E9002A3D88 /* customAlert.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = customAlert.xib; sourceTree = "<group>"; };
-		FF94A33F268570DA002A3D88 /* customAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = customAlert.swift; sourceTree = "<group>"; };
 		FF968B81266A1A20009D9404 /* ProjectVC-btn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProjectVC-btn.swift"; sourceTree = "<group>"; };
 		FF968B83266A1BD5009D9404 /* ProjectVC-Annotations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProjectVC-Annotations.swift"; sourceTree = "<group>"; };
 		FF968B85266A24A9009D9404 /* BootomSheetVC-initProject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BootomSheetVC-initProject.swift"; sourceTree = "<group>"; };
 		FF968B87266A3391009D9404 /* BootomSheet-btn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BootomSheet-btn.swift"; sourceTree = "<group>"; };
 		FF968B89266A3623009D9404 /* BootomSheet-TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BootomSheet-TableView.swift"; sourceTree = "<group>"; };
 		FF97EF6E2663A9BF00C09CEA /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
-		FF9CD6A4265F61030048D6A3 /* test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = test.swift; sourceTree = "<group>"; };
 		FFA4B61E266CEA8A0000C995 /* CustomCalloutViewSwift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCalloutViewSwift.swift; sourceTree = "<group>"; };
 		FFA4B620266CEB4C0000C995 /* AnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnotationView.swift; sourceTree = "<group>"; };
 		FFA4B622266D045D0000C995 /* pointAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = pointAnnotationView.swift; sourceTree = "<group>"; };
@@ -94,15 +83,13 @@
 		FFA4B62E266F10600000C995 /* dropdownDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dropdownDate.swift; sourceTree = "<group>"; };
 		FFA4B630266F194E0000C995 /* drpdownDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = drpdownDelegate.swift; sourceTree = "<group>"; };
 		FFA4B635266F49910000C995 /* ChartData-req.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ChartData-req.swift"; sourceTree = "<group>"; };
-		FFA4B65C267048BF0000C995 /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
-		FFA4B662267094E30000C995 /* GNSSFilterInfoN.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GNSSFilterInfoN.swift; sourceTree = "<group>"; };
+		FFA4B662267094E30000C995 /* GNSSFilterInfoN.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GNSSFilterInfoN.swift; sourceTree = "<group>"; wrapsLines = 1; };
 		FFA4B6642670D46B0000C995 /* GNSSFilterInfoE.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GNSSFilterInfoE.swift; sourceTree = "<group>"; };
 		FFA4B6662670D5270000C995 /* GNSSFilterInfoH.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GNSSFilterInfoH.swift; sourceTree = "<group>"; };
 		FFA4B6682670D5600000C995 /* GNSSFilterInfoDeltaD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GNSSFilterInfoDeltaD.swift; sourceTree = "<group>"; };
 		FFA4B66A2670DBB50000C995 /* GNSSFilterInfoDeltaH.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GNSSFilterInfoDeltaH.swift; sourceTree = "<group>"; };
 		FFA4B66C2670DD110000C995 /* Heart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Heart.swift; sourceTree = "<group>"; };
 		FFA4B6702670DFA30000C995 /* TimeInterval.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeInterval.swift; sourceTree = "<group>"; };
-		FFA4B6722672248D0000C995 /* ChartTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartTable.swift; sourceTree = "<group>"; };
 		FFA4B67426739F170000C995 /* DateTableVC-req.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateTableVC-req.swift"; sourceTree = "<group>"; };
 		FFA85899265DDF120067CA7D /* MeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeVC.swift; sourceTree = "<group>"; };
 		FFA8589C265DDFAD0067CA7D /* Setting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Setting.swift; sourceTree = "<group>"; };
@@ -110,6 +97,8 @@
 		FFA858A2265DE0D10067CA7D /* ChangePasswordVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordVC.swift; sourceTree = "<group>"; };
 		FFA858A4265E441D0067CA7D /* BootomSheetChartVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BootomSheetChartVC.swift; sourceTree = "<group>"; };
 		FFD34FE12664BA8F00EF0ED2 /* LoginVC-accessToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LoginVC-accessToken.swift"; sourceTree = "<group>"; };
+		FFD9F7462696DE5000D57BF4 /* AlertView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AlertView.xib; sourceTree = "<group>"; };
+		FFD9F7482696DFA300D57BF4 /* AlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
 		FFDCEBED265CB3C5006A306B /* Bjdc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bjdc.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFDCEBF0265CB3C6006A306B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FFDCEBF2265CB3C6006A306B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -123,7 +112,6 @@
 		FFDCEC0A265CBC2A006A306B /* ProjectVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectVC.swift; sourceTree = "<group>"; };
 		FFDCEC0E265CBF34006A306B /* DateTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateTableVC.swift; sourceTree = "<group>"; };
 		FFDCEC11265CC007006A306B /* DateTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateTableViewCell.swift; sourceTree = "<group>"; };
-		FFDCEC13265CC4C8006A306B /* ChartTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartTableVC.swift; sourceTree = "<group>"; };
 		FFDCEC15265CC59E006A306B /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		FFDCEC18265CCA60006A306B /* LMJDropdownMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMJDropdownMenu.m; sourceTree = "<group>"; };
 		FFDCEC19265CCA60006A306B /* LMJDropdownMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMJDropdownMenu.h; sourceTree = "<group>"; };
@@ -163,20 +151,11 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		FF94A32E26846171002A3D88 /* New Group */ = {
-			isa = PBXGroup;
-			children = (
-				FF94A337268476A2002A3D88 /* Example7View.xib */,
-				FF94A33526847674002A3D88 /* Example7View.swift */,
-			);
-			path = "New Group";
-			sourceTree = "<group>";
-		};
 		FF94A3412685B4E1002A3D88 /* CustomAlert */ = {
 			isa = PBXGroup;
 			children = (
-				FF94A33D268482E9002A3D88 /* customAlert.xib */,
-				FF94A33F268570DA002A3D88 /* customAlert.swift */,
+				FFD9F7462696DE5000D57BF4 /* AlertView.xib */,
+				FFD9F7482696DFA300D57BF4 /* AlertView.swift */,
 			);
 			path = CustomAlert;
 			sourceTree = "<group>";
@@ -210,7 +189,6 @@
 			isa = PBXGroup;
 			children = (
 				FFA858A4265E441D0067CA7D /* BootomSheetChartVC.swift */,
-				FFA4B6722672248D0000C995 /* ChartTable.swift */,
 				FFA4B662267094E30000C995 /* GNSSFilterInfoN.swift */,
 				FFA4B6642670D46B0000C995 /* GNSSFilterInfoE.swift */,
 				FFA4B6662670D5270000C995 /* GNSSFilterInfoH.swift */,
@@ -265,9 +243,6 @@
 				FFDCEBF2265CB3C6006A306B /* SceneDelegate.swift */,
 				FFDCEBF4265CB3C6006A306B /* ViewController.swift */,
 				FFDCEBF6265CB3C6006A306B /* Main.storyboard */,
-				FFA4B65C267048BF0000C995 /* TestViewController.swift */,
-				FF94A32E26846171002A3D88 /* New Group */,
-				FF9CD6A4265F61030048D6A3 /* test.swift */,
 				FFDCEC15265CC59E006A306B /* Constant.swift */,
 				FF9062ED2665FB1F00331DDF /* Constant-req.swift */,
 				FFDCEC10265CBF3C006A306B /* Data */,
@@ -314,7 +289,6 @@
 				FFA4B67426739F170000C995 /* DateTableVC-req.swift */,
 				FFDCEC20265D0ED1006A306B /* DateTableDropdownMenu.swift */,
 				FFDCEC11265CC007006A306B /* DateTableViewCell.swift */,
-				FFDCEC13265CC4C8006A306B /* ChartTableVC.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -388,9 +362,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FFD9F7472696DE5000D57BF4 /* AlertView.xib in Resources */,
 				FF97EF6F2663A9C000C09CEA /* .gitignore in Resources */,
-				FF94A33E268482E9002A3D88 /* customAlert.xib in Resources */,
-				FF94A338268476A2002A3D88 /* Example7View.xib in Resources */,
 				FFDCEC00265CB3C9006A306B /* LaunchScreen.storyboard in Resources */,
 				FFDCEBFD265CB3C9006A306B /* Assets.xcassets in Resources */,
 				FFDCEBF8265CB3C6006A306B /* Main.storyboard in Resources */,
@@ -460,7 +433,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				FFA858A3265DE0D10067CA7D /* ChangePasswordVC.swift in Sources */,
-				FF94A33626847674002A3D88 /* Example7View.swift in Sources */,
 				FFA4B6712670DFA30000C995 /* TimeInterval.swift in Sources */,
 				FFA8589A265DDF120067CA7D /* MeVC.swift in Sources */,
 				FFDCEC1D265CEFC2006A306B /* BootomSheetVC.swift in Sources */,
@@ -473,13 +445,12 @@
 				FFA4B61F266CEA8A0000C995 /* CustomCalloutViewSwift.swift in Sources */,
 				FFDCEBF5265CB3C6006A306B /* ViewController.swift in Sources */,
 				FFDCEC21265D0ED1006A306B /* DateTableDropdownMenu.swift in Sources */,
-				FFA4B65D267048BF0000C995 /* TestViewController.swift in Sources */,
-				FFA4B6732672248E0000C995 /* ChartTable.swift in Sources */,
 				FFDCEC12265CC007006A306B /* DateTableViewCell.swift in Sources */,
 				FFDCEBF1265CB3C6006A306B /* AppDelegate.swift in Sources */,
 				FFDCEBF3265CB3C6006A306B /* SceneDelegate.swift in Sources */,
 				FFA4B663267094E30000C995 /* GNSSFilterInfoN.swift in Sources */,
 				FF968B82266A1A20009D9404 /* ProjectVC-btn.swift in Sources */,
+				FFD9F7492696DFA300D57BF4 /* AlertView.swift in Sources */,
 				FFDCEC0B265CBC2A006A306B /* ProjectVC.swift in Sources */,
 				FFA8589F265DE02C0067CA7D /* AccountSecurityVC.swift in Sources */,
 				FF968B8A266A3623009D9404 /* BootomSheet-TableView.swift in Sources */,
@@ -488,7 +459,6 @@
 				FFA4B67526739F170000C995 /* DateTableVC-req.swift in Sources */,
 				FFDCEC16265CC59E006A306B /* Constant.swift in Sources */,
 				FF9062F026660FCC00331DDF /* threeDES.swift in Sources */,
-				FF9CD6A5265F61030048D6A3 /* test.swift in Sources */,
 				FFA4B631266F194E0000C995 /* drpdownDelegate.swift in Sources */,
 				FFD34FE22664BA8F00EF0ED2 /* LoginVC-accessToken.swift in Sources */,
 				FF803ADF2669CAA8005B9ED7 /* BootomSheet-req.swift in Sources */,
@@ -502,12 +472,10 @@
 				FFA4B6672670D5270000C995 /* GNSSFilterInfoH.swift in Sources */,
 				FFDCEC23265D1089006A306B /* Demoable.swift in Sources */,
 				FFDCEC1F265D0AAF006A306B /* BootomSheetDropdownMenu.swift in Sources */,
-				FF94A340268570DA002A3D88 /* customAlert.swift in Sources */,
 				FF9062EE2665FB1F00331DDF /* Constant-req.swift in Sources */,
 				FFA4B623266D045D0000C995 /* pointAnnotationView.swift in Sources */,
 				FFA8589D265DDFAD0067CA7D /* Setting.swift in Sources */,
 				FFA4B6692670D5600000C995 /* GNSSFilterInfoDeltaD.swift in Sources */,
-				FFDCEC14265CC4C8006A306B /* ChartTableVC.swift in Sources */,
 				FFA858A5265E441D0067CA7D /* BootomSheetChartVC.swift in Sources */,
 				FF968B88266A3391009D9404 /* BootomSheet-btn.swift in Sources */,
 			);

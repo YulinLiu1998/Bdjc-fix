@@ -8,7 +8,7 @@
 import UIKit
 import SwiftyJSON
 import Charts
-class BootomSheetChartVC: UIViewController {
+class BootomSheetChartVC: UIViewController,UIScrollViewDelegate {
     
 
     //var stationUUID:String?
@@ -80,6 +80,7 @@ class BootomSheetChartVC: UIViewController {
     var chartView5: LineChartView!
     var chartView6: LineChartView!
     
+    var startCenter = CGPoint.zero
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -95,18 +96,78 @@ class BootomSheetChartVC: UIViewController {
         //显示图表
         showCharts()
 
+       
+    }
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView)
+    {
+        if  abs(scrollView.panGestureRecognizer.velocity(in: chartView1).y) > 200 {
+            
+            print("scroll移动chartView1")
+            chartView1.dragEnabled = false
+        }else if abs(scrollView.panGestureRecognizer.velocity(in: chartView1).y) < 200 {
+            
+            print("曲线平移chartView1")
+            chartView1.dragEnabled = true
+        }
+        if abs(scrollView.panGestureRecognizer.velocity(in: chartView2).y) > 200 {
+            
+            print("scroll移动chartView2")
+            chartView2.dragEnabled = false
+        }else if abs(scrollView.panGestureRecognizer.velocity(in: chartView2).y) < 200 {
+            
+            print("曲线平移chartView2")
+            chartView2.dragEnabled = true
+        }
+        if abs(scrollView.panGestureRecognizer.velocity(in: chartView3).y) > 200 {
+            
+            print("scroll移动chartView3")
+            chartView3.dragEnabled = false
+        }else if abs(scrollView.panGestureRecognizer.velocity(in: chartView3).y) < 200 {
+            
+            print("曲线平移chartView3")
+            chartView3.dragEnabled = true
+        }
+        if abs(scrollView.panGestureRecognizer.velocity(in: chartView4).y) > 200 {
+            
+            print("scroll移动chartView4")
+            chartView4.dragEnabled = false
+        }else if abs(scrollView.panGestureRecognizer.velocity(in: chartView4).y) < 200 {
+            
+            print("曲线平移chartView4")
+            chartView4.dragEnabled = true
+        }
+        if abs(scrollView.panGestureRecognizer.velocity(in: chartView5).y) > 200 {
+            
+            print("scroll移动chartView5")
+            chartView5.dragEnabled = false
+        }else if abs(scrollView.panGestureRecognizer.velocity(in: chartView5).y) < 200 {
+            
+            print("曲线平移chartView5")
+            chartView5.dragEnabled = true
+        }
         
     }
-    
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.isNavigationBarHidden = true
     }
     override func viewDidDisappear(_ animated: Bool) {
         self.navigationController?.isNavigationBarHidden = false
     }
+    override func viewDidAppear(_ animated: Bool) {
+        resetXScale()
+    }
+    
 
     @IBAction func backEvent(_ sender: Any) {
-        self.navigationController?.popViewController(animated: true)
+        if TabBarJump{
+            
+            self.tabBarController?.selectedIndex = 0
+            self.navigationController?.popViewController(animated: false)
+            TabBarJump = false
+        }else{
+            self.navigationController?.popViewController(animated: true)
+        }
+        
         
     }
     
@@ -116,23 +177,23 @@ class BootomSheetChartVC: UIViewController {
     
     func initViewCharts(){
         chartView1 = LineChartView()
-        chartView1.frame = CGRect(x: 20, y:80 , width: self.view.bounds.width  , height: 500)
+        chartView1.frame = CGRect(x: 20, y:80 , width: self.view.bounds.width  , height: 520)
         self.GNSSFilterInfoNCell.addSubview(chartView1)
         
         chartView2 = LineChartView()
-        chartView2.frame = CGRect(x: 20, y:80 , width: self.view.bounds.width , height: 500)
+        chartView2.frame = CGRect(x: 20, y:80 , width: self.view.bounds.width , height: 520)
         self.GNSSFilterInfoECell.addSubview(chartView2)
         
         chartView3 = LineChartView()
-        chartView3.frame = CGRect(x: 20, y:80 , width: self.view.bounds.width , height: 500)
+        chartView3.frame = CGRect(x: 20, y:80 , width: self.view.bounds.width , height: 520)
         self.GNSSFilterInfoHCell.addSubview(chartView3)
         
         chartView4 = LineChartView()
-        chartView4.frame = CGRect(x: 20, y:80 , width: self.view.bounds.width, height: 500)
+        chartView4.frame = CGRect(x: 20, y:80 , width: self.view.bounds.width, height: 520)
         self.GNSSFilterInfoDeltaD.addSubview(chartView4)
         
         chartView5 = LineChartView()
-        chartView5.frame = CGRect(x: 20, y:80 , width: self.view.bounds.width, height: 500)
+        chartView5.frame = CGRect(x: 20, y:80 , width: self.view.bounds.width, height: 520)
         self.GNSSFilterInfoDeltaHCell.addSubview(chartView5)
         
         chartView6 = LineChartView()
@@ -173,27 +234,27 @@ class BootomSheetChartVC: UIViewController {
         
         content = ChartData!["Content"]
         //GNSSFilterInfoNCell
-        print("GNSSFilterInfoNCell")
+        print("GNSSFilterInfoNCell1111111")
         GNSSFilterInfoN()
         NStart.text = StartTime
         Nend.text = EndTime
         //GNSSFilterInfoECell
-        print("GNSSFilterInfoECell")
+        print("GNSSFilterInfoECel111111111l")
         GNSSFilterInfoE()
         EStart.text = StartTime
         Eend.text = EndTime
         //GNSSFilterInfoHCell
-        print("GNSSFilterInfoHCell")
+        print("GNSSFilterInfoHCell1111111")
         GNSSFilterInfoH()
         Hstatr.text = StartTime
         Hend.text = EndTime
         //GNSSFilterInfoDeltaDCell
-        print("GNSSFilterInfoDeltaDCell")
+        print("GNSSFilterInfoDeltaDCell111111")
         GNSSFilterInfoDeltaDD()
         DeltaDstatr.text = StartTime
         DeltaDend.text = EndTime
         //GNSSFilterInfoDeltaHCell
-        print("GNSSFilterInfoDeltaHCell")
+        print("GNSSFilterInfoDeltaHCell11111")
         GNSSFilterInfoDeltaH()
         DeltaHstatr.text = StartTime
         DeltaHend.text = EndTime
@@ -202,12 +263,21 @@ class BootomSheetChartVC: UIViewController {
         HeartStart.text = StartTime
         HeartEnd.text = EndTime
     }
-    
-    @objc private func slide(pan: UIPanGestureRecognizer){
-        let translationY = pan.translation(in: scrollView).y
-        if pan.velocity(in: scrollView).y / scrollView.bounds.height > 0.5{
-            print("translationY",translationY)
-        }
-
+    func resetXScale(){
+        chartView1.setScaleMinima(1, scaleY: chartView1.scaleY)
+        chartView2.setScaleMinima(1, scaleY: chartView2.scaleY)
+        chartView3.setScaleMinima(1, scaleY: chartView3.scaleY)
+        chartView4.setScaleMinima(1, scaleY: chartView4.scaleY)
+        chartView5.setScaleMinima(1, scaleY: chartView5.scaleY)
+        chartView6.setScaleMinima(1, scaleY: chartView6.scaleY)
     }
+    
 }
+extension BootomSheetChartVC {
+    //持续型手势-持续调用这个函数
+   
+    
+}
+
+
+

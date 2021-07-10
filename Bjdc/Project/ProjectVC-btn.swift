@@ -59,29 +59,29 @@ extension ProjectVC{
     }
     //初始化地图页面
     func initMapView() {
-      mapView = MAMapView(frame: self.view.bounds)
-        mapView.showsCompass = false
-        mapView.delegate = self
-        self.view.addSubview(mapView)
+        MapView = MAMapView(frame: self.view.bounds)
+        MapView.showsCompass = false
+        MapView.delegate = self
+        self.view.addSubview(MapView)
     }
     
     //MARK:- event handling
     @objc func zoomPlusAction() {
         let oldZoom = self.mapView.zoomLevel
-        self.mapView.setZoomLevel(oldZoom+1, animated: true)
+        MapView.setZoomLevel(oldZoom+1, animated: true)
     }
     
     @objc func zoomMinusAction() {
         let oldZoom = self.mapView.zoomLevel
-        self.mapView.setZoomLevel(oldZoom-1, animated: true)
+        MapView.setZoomLevel(oldZoom-1, animated: true)
     }
     @objc func gpsAction() {
         flage = !flage
         if flage {
-            mapView.mapType = .satellite
+            MapView.mapType = .satellite
             viewButton.setTitle("卫星", for: .normal)
         }else{
-            mapView.mapType = .standard
+            MapView.mapType = .standard
             viewButton.setTitle("标准", for: .normal)
         }
         

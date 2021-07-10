@@ -237,25 +237,28 @@ extension BootomSheetChartVC{
         getFilterGraphicData()
     }
     func customSetting(){
-        let customAlert = customAlert.instantiateFromNib()
-        CustomAlert = customAlert
-        let alert = Malert(title: "自定义查询时间", customView: customAlert)
+        //自定义查询时间界面
+        //let customAlert = customAlert.instantiateFromNib()
+        let AlertView = AlertView.instantiateFromNib()
+        //CustomAlert = customAlert
+        alertView = AlertView
+        let alert = Malert(title: "自定义查询时间", customView: alertView)
         alert.textAlign = .center
         alert.textColor = .gray
         alert.titleFont = UIFont.systemFont(ofSize: 20)
         alert.margin = 16//左右边距
         alert.buttonsAxis = .horizontal
         alert.separetorColor = .clear
-
+        //取消按钮
         let registerAction = MalertAction(title: "取消", backgroundColor: UIColor(red:0.96, green:0.96, blue:0.96, alpha:1.0)){
             print("取消")
         }
         registerAction.tintColor = .gray
         alert.addAction(registerAction)
-        
-        let loginAction = MalertAction(title: "确定", backgroundColor: UIColor(red:0.10, green:0.14, blue:0.49, alpha:1.0)){ [self] in
+        //确定按钮
+        let loginAction = MalertAction(title: "查询", backgroundColor: UIColor(red:0.10, green:0.14, blue:0.49, alpha:1.0)){ [self] in
             print("确定")
-            
+        
             StartTime = CustomStartTime
             EndTime = CustomEndTime
             let start = StartTime!.toDate()
@@ -422,7 +425,7 @@ extension BootomSheetChartVC{
         let endDate = end
         var time = date - endDate
         time = time / 60
-        let points = Int(time / 120)
+        let points = Int(time / 180)
         TimeInterval_Custom = [String]()
         TimeDateInterval = [String]()
         for i in 0..<points {
@@ -432,19 +435,19 @@ extension BootomSheetChartVC{
                 }else if date.day == 15 {
                     TimeInterval_Custom.append("\(date.toFormat("yyyy-MM-dd"))")
                 }else{
-                    TimeInterval_Custom.append("\(date.toFormat("yyyy-MM-dd"))")
+                    TimeInterval_Custom.append("\(date.toFormat(""))")
                 }
             }else{
                 TimeInterval_Custom.append("")
             }
             TimeDateInterval.append("\(date.toFormat("yyyy-MM-dd"))")
-            date = date + 2.hours
+            date = date + 3.hours
         }
         TimeDateInterval.append("\(date.toFormat("yyyy-MM-dd"))")
         TimeInterval_Custom.append("\(date.toFormat("yyyy-MM-dd"))")
         TimeIntervalKind[7] = TimeInterval_Custom
         VisibleXRangeMaximum[7] = points / 2
-        DeltaTime[7] = "7200"
+        DeltaTime[7] = "10800"
         AxisMaximum[7] = points + points / 10
         AxisGranularity[7] = 12
         print(VisibleXRangeMaximum[7])

@@ -9,8 +9,10 @@ import UIKit
 import Charts
 import Malert
 import SwiftDate
+
 class TestViewController: UIViewController {
 
+    @IBOutlet var pageView: UIView!
     @IBOutlet weak var View1: UIView!
     @IBOutlet weak var View2: UIView!
     @IBOutlet weak var Time: UIButton!
@@ -29,42 +31,15 @@ class TestViewController: UIViewController {
       
     }
     @IBAction func SetTime(_ sender: Any) {
-   
-        let customAlert = customAlert.instantiateFromNib()
-        CustomAlert = customAlert
-        let alert = Malert(title: "自定义查询时间", customView: customAlert)
-        alert.textAlign = .center
-        alert.textColor = .gray
-        alert.titleFont = UIFont.systemFont(ofSize: 20)
-        alert.margin = 16//左右边距
-        alert.buttonsAxis = .horizontal
-        alert.separetorColor = .clear
-        
-        
-        let registerAction = MalertAction(title: "取消", backgroundColor: UIColor(red:0.96, green:0.96, blue:0.96, alpha:1.0))
-        registerAction.tintColor = .gray
-        alert.addAction(registerAction)
-        
-        let loginAction = MalertAction(title: "查询", backgroundColor: UIColor(red:0.10, green:0.14, blue:0.49, alpha:1.0)){
-            StartTime = CustomStartTime
-            EndTime = CustomEndTime
-            let start = StartTime!.toDate()
-            print("日期：", start!.date)
-            let end = EndTime!.toDate()
-            print("日期：", end!.date)
-
-
-            
-
-        }
-        loginAction.tintColor = .white
-        alert.addAction(loginAction)
-        present(alert, animated: true)
+      
+        //print(CGPoint(pageView.bounds.width))
+        //ios长度1 代表1pt 0.16mm
+        // 6.25 个pt 为 1cm
     }
     func chart1() {
         chartView1 = LineChartView()
         chartView1.frame = CGRect(x: 20, y: 80, width: self.view.bounds.width - 40,
-                                        height: 300)
+                                        height: 300 )
         //折线图无数据时显示的提示文字
         chartView1.noDataText = "暂无数据"
         chartView1.noDataFont = UIFont.systemFont(ofSize: 50)
@@ -88,7 +63,19 @@ class TestViewController: UIViewController {
                let chartData = LineChartData(dataSets: [chartDataSet])
                //设置折现图数据
         chartView1.xAxis.labelRotationAngle = 90 //刻度文字倾斜角度
+        chartView1.xAxis.gridLineDashLengths = [10, 10]
+        chartView1.leftAxis.gridLineDashLengths = [10, 10]
+        chartView1.rightAxis.gridLineDashLengths = [10, 10]
+        chartView1.xAxis.spaceMin = 1
+        chartView1.xAxis.spaceMax = 1
+        chartView1.xAxis.granularity = 1
+        chartView1.rightAxis.enabled = false
+        chartView1.scaleXEnabled = true
+        chartView1.scaleYEnabled = true
+        chartView1.leftAxis.granularity = 1
         chartView1.data = chartData
+        chartView1.setScaleEnabled(true)
+        //chartView1.setScaleMinima(1, scaleY: 2)
     }
     func chart2() {
        

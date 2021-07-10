@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="F36-RZ-amD" customClass="AlertView" customModule="Bjdc" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="95"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="atG-SK-K9H">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="开始时间：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SUL-EK-J4F">
+                            <rect key="frame" x="0.0" y="12" width="87" height="20.5"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r9g-K2-iTc">
+                            <rect key="frame" x="87" y="7" width="288" height="30"/>
+                            <state key="normal" title="Button"/>
+                            <connections>
+                                <action selector="SetStartTime:" destination="F36-RZ-amD" eventType="touchUpInside" id="d2d-0a-YQD"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="jjR-rE-f3P"/>
+                    </constraints>
+                </stackView>
+                <stackView opaque="NO" contentMode="scaleToFill" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="vG9-KM-eU5">
+                    <rect key="frame" x="0.0" y="50" width="375" height="44"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="结束时间：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Ll-gn-MZx">
+                            <rect key="frame" x="0.0" y="12" width="87" height="20.5"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Or5-af-xIN">
+                            <rect key="frame" x="87" y="7" width="288" height="30"/>
+                            <state key="normal" title="Button"/>
+                            <connections>
+                                <action selector="SetEndTime:" destination="F36-RZ-amD" eventType="touchUpInside" id="N3X-G4-V7A"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <viewLayoutGuide key="safeArea" id="nJd-6t-caW"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="Kck-2k-hpv"/>
+                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="44" id="u97-5z-WZL"/>
+                    </constraints>
+                </stackView>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="rB0-rK-Y0B"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="rB0-rK-Y0B" firstAttribute="bottom" secondItem="vG9-KM-eU5" secondAttribute="bottom" constant="1" id="CaP-ao-M4N"/>
+                <constraint firstItem="vG9-KM-eU5" firstAttribute="trailing" secondItem="rB0-rK-Y0B" secondAttribute="trailing" id="CpG-LA-vca"/>
+                <constraint firstAttribute="trailing" secondItem="atG-SK-K9H" secondAttribute="trailing" id="FnI-dA-DiR"/>
+                <constraint firstItem="atG-SK-K9H" firstAttribute="leading" secondItem="F36-RZ-amD" secondAttribute="leading" id="Nls-hq-79p"/>
+                <constraint firstItem="atG-SK-K9H" firstAttribute="top" secondItem="F36-RZ-amD" secondAttribute="top" id="hcs-UC-CL2"/>
+                <constraint firstItem="vG9-KM-eU5" firstAttribute="top" secondItem="atG-SK-K9H" secondAttribute="bottom" constant="6" id="uEM-iY-ANf"/>
+                <constraint firstItem="vG9-KM-eU5" firstAttribute="leading" secondItem="rB0-rK-Y0B" secondAttribute="leading" id="wI2-nF-khg"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="Endbtn" destination="Or5-af-xIN" id="SBP-B8-XIt"/>
+                <outlet property="Startbtn" destination="r9g-K2-iTc" id="CL3-Cz-m62"/>
+            </connections>
+            <point key="canvasLocation" x="93.478260869565219" y="-194.53125"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

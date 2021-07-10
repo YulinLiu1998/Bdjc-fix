@@ -34,13 +34,18 @@ extension BootomSheetChartVC{
         chartView4.leftAxis.labelFont = .systemFont(ofSize: 12)
         chartView4.leftAxis.granularity = 0.01 //最小间隔
         
-        let min = ChartData!["Min"][5].stringValue
-        //min = min.subStringFrom(startIndex: 1)
+        var min = ChartData!["Min"][5].stringValue
+        min = min.subStringFrom(startIndex: 1)
         chartView4.leftAxis.axisMinimum = Double(min)! - 0.1//最小刻度值
-        let max = ChartData!["Max"][5].stringValue
-        //max = max.subStringFrom(startIndex: 1)
+        var max = ChartData!["Max"][5].stringValue
+        max = max.subStringFrom(startIndex: 1)
         chartView4.leftAxis.axisMaximum =  Double(max)! + 0.1//最大刻度值
-                 
+        //设置Y轴距离
+        let length_Y = (Double(max)! + 0.1 - Double(min)! + 0.1)
+        let portion_Y = (length_Y / 0.01)
+        let Num_Y = portion_Y * 62.5
+        let Scale_Y = Num_Y / Double(chartView4.bounds.height)
+        
         //折线图无数据时显示的提示文字
         chartView4.noDataText = "暂无数据"
                  
@@ -89,12 +94,13 @@ extension BootomSheetChartVC{
         chartView4.data = chartData
         
         //设置缩放
-        chartView4.setScaleMinima(1, scaleY: 3)
+        chartView4.setScaleMinima(2, scaleY: CGFloat(Scale_Y))
         //图表最多显示点书
         chartView4.setVisibleXRangeMaximum(Double(VisibleXRangeMaximum[CurrentTimeInterval!]))
         //默认显示最一个数据
         chartView4.moveViewToY(Double(ChartData!["Average"][5].stringValue)!, axis: .left
         )
+        chartView4.scaleYEnabled = false //取消Y轴缩放
     }
     func updateDeltaD(){
        
@@ -119,16 +125,18 @@ extension BootomSheetChartVC{
         
         chartView4.leftAxis.granularity = 0.01 //最小间隔
         
-        let min = ChartData!["Min"][5].stringValue
-        //min = min.subStringFrom(startIndex: 1)
-        chartView4.leftAxis.axisMinimum = Double(min)! - 0.05//最小刻度值
-        print("min",min)
-        print("最小刻度值",Double(min)! - 0.05)
-        let max = ChartData!["Max"][5].stringValue
-        //max = max.subStringFrom(startIndex: 1)
-        chartView4.leftAxis.axisMaximum =  Double(max)! + 0.05//最大刻度值
-        let length_Y = Double(max)! + 0.05 - Double(min)! + 0.05
-        print("刻度差值：",length_Y )
+        var min = ChartData!["Min"][5].stringValue
+        min = min.subStringFrom(startIndex: 1)
+        chartView4.leftAxis.axisMinimum = Double(min)! - 0.1//最小刻度值
+        var max = ChartData!["Max"][5].stringValue
+        max = max.subStringFrom(startIndex: 1)
+        chartView4.leftAxis.axisMaximum =  Double(max)! + 0.1//最大刻度值
+        //设置Y轴距离
+        let length_Y = (Double(max)! + 0.1 - Double(min)! + 0.1)
+        let portion_Y = (length_Y / 0.01)
+        let Num_Y = portion_Y * 62.5
+        let Scale_Y = Num_Y / Double(chartView4.bounds.height)
+
      
         //设置交互样式
         chartView4.scaleYEnabled = true //取消Y轴缩放
@@ -284,11 +292,8 @@ extension BootomSheetChartVC{
         HeartChart = false
         chartView4.data = chartData
         //设置缩放
-        if length_Y > 0.14 {
-            chartView4.setScaleMinima(1, scaleY: 1.6)
-        }else{
-            chartView4.setScaleMinima(1, scaleY: 1.5)
-        }
+        chartView4.setScaleMinima(2, scaleY: CGFloat(Scale_Y))
+    
         
         //图表最多显示点书
         chartView4.setVisibleXRangeMaximum(Double(VisibleXRangeMaximum[CurrentTimeInterval!]))

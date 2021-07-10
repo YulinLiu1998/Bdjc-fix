@@ -162,18 +162,9 @@ extension BootomSheetVC{
                             if GraphicData["ResponseCode"] == "200" {
                                 //操作成功  //vc.performSegue(withIdentifier: "viewData", sender: nil)
                                 ChartData = GraphicData
-                               
-                                self.performSegue(withIdentifier: "showChart", sender: nil)
-                               
-                                //self.tabBarController?.selectedIndex = 1
-//                                let vc = self.storyboard?.instantiateViewController(withIdentifier: "DateTableChart") as! DateTableVC
-//                                vc.showChart()
-                               // let vc1 = self.storyboard?.instantiateViewController(withIdentifier: "BootomSheetChart") as! BootomSheetChartVC
-                                //vc.navigationController?.pushViewController(vc1, animated: true)
-                               // vc.navigationController?.present(vc1, animated: true, completion: nil)
-                               // vc.present(vc1, animated: true, completion: nil)
+                                //self.performSegue(withIdentifier: "showChart", sender: nil)
+                                self.tabBarController?.selectedIndex = 1
                                 
-                               
                             }else if GraphicData["ResponseCode"] == "400"{
                                 //操作失败/参数非法
                                 print("\(GraphicData["ResponseCode"])")

@@ -110,7 +110,6 @@ extension BootomSheetChartVC{
         var j = 30
         for i in 0..<1488 {
             if i%48 == 0 {
-
                 let date0  = date - j.days
                 let str = date0.toFormat("MM-dd")
                 TimeInterval_Month.append("\(str)")
@@ -135,14 +134,12 @@ extension BootomSheetChartVC{
         TimeDateInterval = [String]()
         for _ in 0..<365 {
             
-//            if start.date == start.dateAtStartOf(.month){
-//                let str = start.toFormat("yyyy-MM-dd")
-//                TimeInterval_Year.append("\(str)")
-//            }else{
-//                TimeInterval_Year.append("")
-//            }
-            let str = start.toFormat("yyyy-MM-dd")
-            TimeInterval_Year.append("\(str)")
+            if start  == start.dateAtStartOf(.month){
+                let str = start.toFormat("yyyy-MM-dd")
+                TimeInterval_Year.append("\(str)")
+            }else{
+                TimeInterval_Year.append("\(start.toFormat("yyyy-MM-dd"))")
+            }
             TimeDateInterval.append("\(start.toFormat("yyyy-MM-dd HH:mm"))")
             start = start + 1.days
         }

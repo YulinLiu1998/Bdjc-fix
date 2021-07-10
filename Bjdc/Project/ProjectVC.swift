@@ -17,16 +17,18 @@ class ProjectVC: UIViewController,UpdateMapView {
     var flage = false
     var mapflage = false
     
-    //定义标记数组
-    var annotations: Array<MAPointAnnotation>!
+//    //定义标记数组
+//    var annotations: Array<MAPointAnnotation>!
     var annotationsUpadate: Array<MAPointAnnotation>!
     
     @IBOutlet weak var ContainerView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+       
         //初始化地图页面
         initMapView()
+        mapView = MapView
         //初始化地图标记
         initAnnotations()
         //zoomPannelView
@@ -34,25 +36,8 @@ class ProjectVC: UIViewController,UpdateMapView {
         //let bootom = (storyboard?.instantiateViewController(identifier: "BootomSheet")) as! BootomSheetVC
        //bootom.delegate = self
         BootomSheetVC.openDemo(from: self, in: self.view)
-        MapView = mapView
+        //MapView = mapView
        
-    }
-
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        
-        //向地图窗口添加一组标注
-        mapView.addAnnotations(annotations)
-        //设置地图使其可以显示数组中所有的annotation, 如果数组中只有一个则直接设置地图中心为annotation的位置
- 
-        mapView.showAnnotations(annotations, animated: true)
-    
-       
-        mapView.setZoomLevel(17, animated: true)
-        mapView.setCenter(annotations[0].coordinate, animated: true)
-        //选中标注数据对应的view
-        mapView.selectAnnotation(annotations.first, animated: true)
     }
     
     override func didReceiveMemoryWarning() {
@@ -61,7 +46,7 @@ class ProjectVC: UIViewController,UpdateMapView {
        
     }
     func updateMap() {
-        MapView.removeAnnotations(annotations)
+        
         annotations = Array()
         
         var coordinates = [CLLocationCoordinate2D]()
@@ -112,13 +97,16 @@ class ProjectVC: UIViewController,UpdateMapView {
     }
     func updateMapView() {
        
-        DispatchQueue.main.async{
+        DispatchQueue.main.async{ [self] in
+          
+            MapView.removeAnnotations(annotations)
             self.updateMap()
         }
     }
     func removeAnnotationsMapView() {
        
         DispatchQueue.main.async{ [self] in
+         
             MapView.removeAnnotations(annotations)
         }
     }

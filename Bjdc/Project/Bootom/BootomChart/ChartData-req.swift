@@ -97,7 +97,7 @@ extension BootomSheetChartVC:UIDocumentInteractionControllerDelegate{
                                     Heart()
                                     HeartStart.text = StartTime
                                     HeartEnd.text = EndTime
-                                    
+                                    resetXScale()
                                 }else if GraphicData["ResponseCode"] == "400"{
                                     //操作失败/参数非法
                                     print("\(GraphicData["ResponseCode"])")
