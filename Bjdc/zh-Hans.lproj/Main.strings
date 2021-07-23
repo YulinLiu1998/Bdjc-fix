@@ -1,0 +1,231 @@
+
+/* Class = "UITextField"; placeholder = "再次确认填写"; ObjectID = "13j-15-JAn"; */
+"13j-15-JAn.placeholder" = "再次确认填写";
+
+/* Class = "UILabel"; text = "基准站"; ObjectID = "14q-3d-Tp3"; */
+"14q-3d-Tp3.text" = "基准站";
+
+/* Class = "UILabel"; text = "N"; ObjectID = "1ea-c7-Wdj"; */
+"1ea-c7-Wdj.text" = "N";
+
+/* Class = "UILabel"; text = "设置"; ObjectID = "2az-e3-TfQ"; */
+"2az-e3-TfQ.text" = "设置";
+
+/* Class = "UILabel"; text = "H"; ObjectID = "352-fD-Wji"; */
+"352-fD-Wji.text" = "H";
+
+/* Class = "UIButton"; normalTitle = "导出报表"; ObjectID = "3RE-zs-LFv"; */
+"3RE-zs-LFv.normalTitle" = "导出报表";
+
+/* Class = "UIButton"; normalTitle = "完成"; ObjectID = "3gF-5T-ttu"; */
+"3gF-5T-ttu.normalTitle" = "完成";
+
+/* Class = "UITabBarItem"; title = "预警"; ObjectID = "4Go-s2-kwg"; */
+"4Go-s2-kwg.title" = "预警";
+
+/* Class = "UILabel"; text = "WGS84坐标｜"; ObjectID = "4ax-Y2-Sx0"; */
+"4ax-Y2-Sx0.text" = "WGS84坐标｜";
+
+/* Class = "UILabel"; text = "2021-05-21 00:00:00"; ObjectID = "5ak-cr-RaN"; */
+"5ak-cr-RaN.text" = "2021-05-21 00:00:00";
+
+/* Class = "UILabel"; text = "心型图"; ObjectID = "5ve-FT-wjQ"; */
+"5ve-FT-wjQ.text" = "心型图";
+
+/* Class = "UIBarButtonItem"; title = " "; ObjectID = "76Q-gc-Z1s"; */
+"76Q-gc-Z1s.title" = " ";
+
+/* Class = "UILabel"; text = "修改密码"; ObjectID = "7Kr-Ds-myY"; */
+"7Kr-Ds-myY.text" = "修改密码";
+
+/* Class = "UILabel"; text = "垂直位移图"; ObjectID = "7xC-5q-Uun"; */
+"7xC-5q-Uun.text" = "垂直位移图";
+
+/* Class = "UILabel"; text = "密码登录"; ObjectID = "9GZ-g1-4Uy"; */
+"9GZ-g1-4Uy.text" = "密码登录";
+
+/* Class = "UILabel"; text = "新密码必须是12-64位的数字、大小写字母、特殊符号组合"; ObjectID = "9R5-TW-qxL"; */
+"9R5-TW-qxL.text" = "新密码必须是12-64位的数字、大小写字母、特殊符号组合";
+
+/* Class = "UIButton"; normalTitle = "登录"; ObjectID = "A3b-ma-uK2"; */
+"A3b-ma-uK2.normalTitle" = "登录";
+
+/* Class = "UILabel"; text = "2021-05-21 00:00:00"; ObjectID = "CSM-7g-UJG"; */
+"CSM-7g-UJG.text" = "2021-05-21 00:00:00";
+
+/* Class = "UILabel"; text = "暂无数据"; ObjectID = "Crn-cC-bQa"; */
+"Crn-cC-bQa.text" = "暂无数据";
+
+/* Class = "UILabel"; text = "2021年05月25日 12:15:29"; ObjectID = "D6m-0y-uBM"; */
+"D6m-0y-uBM.text" = "2021年05月25日 12:15:29";
+
+/* Class = "UIButton"; normalTitle = "退出登录"; ObjectID = "E1D-Io-YLl"; */
+"E1D-Io-YLl.normalTitle" = "退出登录";
+
+/* Class = "UILabel"; text = "～"; ObjectID = "EFH-YI-JCS"; */
+"EFH-YI-JCS.text" = "～";
+
+/* Class = "UITextField"; placeholder = "填写原密码"; ObjectID = "ELq-gj-xQU"; */
+"ELq-gj-xQU.placeholder" = "填写原密码";
+
+/* Class = "UILabel"; text = "qwerASD5"; ObjectID = "FSM-qU-Z6X"; */
+"FSM-qU-Z6X.text" = "qwerASD5";
+
+/* Class = "UILabel"; text = "～"; ObjectID = "G9W-NS-AeJ"; */
+"G9W-NS-AeJ.text" = "～";
+
+/* Class = "UILabel"; text = "2021-05-21 00:00:00"; ObjectID = "Gpe-Ag-JPv"; */
+"Gpe-Ag-JPv.text" = "2021-05-21 00:00:00";
+
+/* Class = "UILabel"; text = "确认密码："; ObjectID = "HRb-j9-MKZ"; */
+"HRb-j9-MKZ.text" = "确认密码：";
+
+/* Class = "UILabel"; text = "更新于："; ObjectID = "HRb-wG-Lak"; */
+"HRb-wG-Lak.text" = "更新于：";
+
+/* Class = "UILabel"; text = "2021-05-20 00:00:00"; ObjectID = "HUE-Oj-Ibl"; */
+"HUE-Oj-Ibl.text" = "2021-05-20 00:00:00";
+
+/* Class = "UILabel"; text = "原密码："; ObjectID = "JC9-44-acs"; */
+"JC9-44-acs.text" = "原密码：";
+
+/* Class = "UILabel"; text = "新密码："; ObjectID = "JsI-IH-mBs"; */
+"JsI-IH-mBs.text" = "新密码：";
+
+/* Class = "UILabel"; text = "12"; ObjectID = "KBA-zC-d4f"; */
+"KBA-zC-d4f.text" = "12";
+
+/* Class = "UILabel"; text = "暂无数据"; ObjectID = "LQZ-WS-vEP"; */
+"LQZ-WS-vEP.text" = "暂无数据";
+
+/* Class = "UILabel"; text = "基准站"; ObjectID = "Lzo-mI-sbr"; */
+"Lzo-mI-sbr.text" = "基准站";
+
+/* Class = "UITextField"; text = "qwertyuiiopASDFG5*"; ObjectID = "Mr4-IG-mCr"; */
+"Mr4-IG-mCr.text" = "qwertyuiiopASDFG5*";
+
+/* Class = "UILabel"; text = "WGS84坐标｜"; ObjectID = "NA0-x3-aHc"; */
+"NA0-x3-aHc.text" = "WGS84坐标｜";
+
+/* Class = "UILabel"; text = "2015-05-19   18:02:11"; ObjectID = "Pjw-aY-mk2"; */
+"Pjw-aY-mk2.text" = "2015-05-19   18:02:11";
+
+/* Class = "UIButton"; normalTitle = "查看数据"; ObjectID = "QKM-EC-cjE"; */
+"QKM-EC-cjE.normalTitle" = "查看数据";
+
+/* Class = "UILabel"; text = "账户安全"; ObjectID = "Qam-mF-WFU"; */
+"Qam-mF-WFU.text" = "账户安全";
+
+/* Class = "UILabel"; text = "暂无数据"; ObjectID = "R1V-NB-sqE"; */
+"R1V-NB-sqE.text" = "暂无数据";
+
+/* Class = "UILabel"; text = "4LC-01"; ObjectID = "SEU-9N-xrC"; */
+"SEU-9N-xrC.text" = "4LC-01";
+
+/* Class = "UILabel"; text = "2021-05-20 00:00:00"; ObjectID = "T15-lI-W5h"; */
+"T15-lI-W5h.text" = "2021-05-20 00:00:00";
+
+/* Class = "UILabel"; text = "水平位移图"; ObjectID = "TUE-t8-wOp"; */
+"TUE-t8-wOp.text" = "水平位移图";
+
+/* Class = "UILabel"; text = "账号："; ObjectID = "Uw5-bN-cU2"; */
+"Uw5-bN-cU2.text" = "账号：";
+
+/* Class = "UILabel"; text = "～"; ObjectID = "VAz-3j-dAa"; */
+"VAz-3j-dAa.text" = "～";
+
+/* Class = "UILabel"; text = "2015-05-19   18:02:11"; ObjectID = "WJQ-QU-oT6"; */
+"WJQ-QU-oT6.text" = "2015-05-19   18:02:11";
+
+/* Class = "UILabel"; text = "～"; ObjectID = "XaW-z6-rD2"; */
+"XaW-z6-rD2.text" = "～";
+
+/* Class = "UILabel"; text = "2021-05-21 00:00:00"; ObjectID = "YPb-Bh-7ph"; */
+"YPb-Bh-7ph.text" = "2021-05-21 00:00:00";
+
+/* Class = "UILabel"; text = "暂无数据"; ObjectID = "YfX-OV-jCa"; */
+"YfX-OV-jCa.text" = "暂无数据";
+
+/* Class = "UILabel"; text = "E"; ObjectID = "ZMC-Ag-Ltz"; */
+"ZMC-Ag-Ltz.text" = "E";
+
+/* Class = "UITextField"; text = "qwerASD5"; ObjectID = "afI-L3-LOO"; */
+"afI-L3-LOO.text" = "qwerASD5";
+
+/* Class = "UITextField"; placeholder = "填写新密码"; ObjectID = "axC-r8-uXq"; */
+"axC-r8-uXq.placeholder" = "填写新密码";
+
+/* Class = "UILabel"; text = "暂无数据"; ObjectID = "bER-JC-Qob"; */
+"bER-JC-Qob.text" = "暂无数据";
+
+/* Class = "UILabel"; text = "修改密码"; ObjectID = "bFk-wb-bRU"; */
+"bFk-wb-bRU.text" = "修改密码";
+
+/* Class = "UILabel"; text = "～"; ObjectID = "bep-hk-qZW"; */
+"bep-hk-qZW.text" = "～";
+
+/* Class = "UILabel"; text = "WGS84坐标｜"; ObjectID = "d93-x3-GBP"; */
+"d93-x3-GBP.text" = "WGS84坐标｜";
+
+/* Class = "UILabel"; text = "2021-05-20 00:00:00"; ObjectID = "dCo-hx-TgY"; */
+"dCo-hx-TgY.text" = "2021-05-20 00:00:00";
+
+/* Class = "UILabel"; text = "2021-05-21 00:00:00"; ObjectID = "dLm-tC-k7o"; */
+"dLm-tC-k7o.text" = "2021-05-21 00:00:00";
+
+/* Class = "UILabel"; text = "2021-05-21 00:00:00"; ObjectID = "dNB-4s-CME"; */
+"dNB-4s-CME.text" = "2021-05-21 00:00:00";
+
+/* Class = "UILabel"; text = "监测点总数："; ObjectID = "dlk-7m-DUN"; */
+"dlk-7m-DUN.text" = "监测点总数：";
+
+/* Class = "UITabBarItem"; title = "数据"; ObjectID = "equ-Qf-PwL"; */
+"equ-Qf-PwL.title" = "数据";
+
+/* Class = "UILabel"; text = "2021-05-20 00:00:00"; ObjectID = "f4e-Dq-3Wb"; */
+"f4e-Dq-3Wb.text" = "2021-05-20 00:00:00";
+
+/* Class = "UILabel"; text = "WGS84坐标｜"; ObjectID = "igt-16-mba"; */
+"igt-16-mba.text" = "WGS84坐标｜";
+
+/* Class = "UILabel"; text = "～"; ObjectID = "ih3-RH-Pnu"; */
+"ih3-RH-Pnu.text" = "～";
+
+/* Class = "UILabel"; text = "2021-05-20 00:00:00"; ObjectID = "l4q-gC-nTc"; */
+"l4q-gC-nTc.text" = "2021-05-20 00:00:00";
+
+/* Class = "UILabel"; text = "WGS84坐标｜"; ObjectID = "lZc-Eh-eHx"; */
+"lZc-Eh-eHx.text" = "WGS84坐标｜";
+
+/* Class = "UILabel"; text = "账户安全"; ObjectID = "m1H-vM-ePI"; */
+"m1H-vM-ePI.text" = "账户安全";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "pH9-Tc-8GL"; */
+"pH9-Tc-8GL.text" = "Title";
+
+/* Class = "UITabBarItem"; title = "工程"; ObjectID = "qML-nY-lz4"; */
+"qML-nY-lz4.title" = "工程";
+
+/* Class = "UILabel"; text = "设置"; ObjectID = "rrh-gR-WPd"; */
+"rrh-gR-WPd.text" = "设置";
+
+/* Class = "UILabel"; text = "WGS84坐标｜"; ObjectID = "s87-Sq-0eE"; */
+"s87-Sq-0eE.text" = "WGS84坐标｜";
+
+/* Class = "UILabel"; text = "暂无数据"; ObjectID = "u0g-mj-jQ6"; */
+"u0g-mj-jQ6.text" = "暂无数据";
+
+/* Class = "UIButton"; normalTitle = "查看数据"; ObjectID = "wWe-8Z-Jco"; */
+"wWe-8Z-Jco.normalTitle" = "查看数据";
+
+/* Class = "UITabBarItem"; title = "我的"; ObjectID = "wkk-Hk-0l4"; */
+"wkk-Hk-0l4.title" = "我的";
+
+/* Class = "UILabel"; text = "4LC-01"; ObjectID = "x2b-1a-DLE"; */
+"x2b-1a-DLE.text" = "4LC-01";
+
+/* Class = "UILabel"; text = "2021-05-20 00:00:00"; ObjectID = "yE5-s9-Tho"; */
+"yE5-s9-Tho.text" = "2021-05-20 00:00:00";
+
+/* Class = "UILabel"; text = "密码："; ObjectID = "yhR-Yt-ChK"; */
+"yhR-Yt-ChK.text" = "密码：";

@@ -69,34 +69,36 @@ extension LoginVC{
                     
     }
     func doLogin(sema: DispatchSemaphore){
-         
         let key = SessionUUIDmd5?.lowercased()
         let iv = key![24...]
-        let text = self.passwordStr
+        let text = Password
         var encryptText:String?
-        encryptText = text.tripleDESEncryptOrDecrypt(op: CCOperation(kCCEncrypt), key: key!, iv: iv)
+        encryptText = text!.tripleDESEncryptOrDecrypt(op: CCOperation(kCCEncrypt), key: key!, iv: iv)
 
         
-        Username = self.accountStr
         
         
         let parameters = ["AccessToken":AccessToken,
                           "SessionUUID":SessionUUID,
-                          "Username":self.accountStr,
+                          "Username":Username,
                           "Password":encryptText
         ]
-
+        DispatchQueue.main.async{
+           self.showLoadHUD("正在登录")
+        }
         AF.request("\(networkInterface)doLogin.php",
                    method: HTTPMethod.post,
                    parameters: parameters,
                    encoder: JSONParameterEncoder.default).responseJSON(completionHandler: { response in
-
+                    self.hideLoadHUD()
                     switch response.result {
                         case .success(let value):
                             let loginMessage = JSON(value)
+                            LoginMessage = loginMessage["ResponseMsg"].stringValue
                             print("loginMessage",loginMessage)
                             if loginMessage["ResponseCode"] == "200" {
-                                //成功登
+                                //成功
+                                LoginState = true
                                 sema.signal()
                             }else if loginMessage["ResponseCode"] == "400"{
                                 //若输入的密码格式错误，则返回400错误码，错误信息为“请输入正确的账号密码
@@ -111,7 +113,7 @@ extension LoginVC{
                                 print(loginMessage["ResponseMsg"])
                             }
                         case .failure(let error):
-                        
+                            LoginMessage = "网络链接存在问题，无法登陆！"
                             print(error)
                             sema.signal()
                         }
@@ -123,11 +125,14 @@ extension LoginVC{
         let parameters = ["AccessToken":AccessToken,
                           "SessionUUID":SessionUUID
         ]
-        
+        DispatchQueue.main.async{
+          self.showLoadHUD("正在获取工程数据")
+        }
         AF.request("\(networkInterface)getProjects.php",
                    method: HTTPMethod.post,
                    parameters: parameters,
                    encoder: JSONParameterEncoder.default).responseJSON(completionHandler: { response in
+                    self.hideLoadHUD()
                     switch response.result {
                         case .success(let value):
                             let getProjectsMessage = JSON(value)
@@ -142,7 +147,6 @@ extension LoginVC{
                                     projectTitles.append(name)
                                     //MARK: -获取工程站点状态
                                     let projectStationStatus:JSON = ProjectList![i]["ProjectStationStatus"]
-                                    print("projectStationStatus",projectStationStatus)
                                     //警告
                                     let warning = projectStationStatus["Warning"].stringValue
                                     pssWarning.append(warning)
@@ -180,10 +184,14 @@ extension LoginVC{
                                         ltlist.append(time)
                                         //经度
                                         let longitude = ProjectList![i]["StationList"][j]["StationLongitude"].stringValue
-                                        longitudeList.append(longitude)
+                                        if longitude != ""{
+                                            longitudeList.append(longitude)
+                                        }
                                         //纬度
                                         let latitude = ProjectList![i]["StationList"][j]["StationLatitude"].stringValue
-                                        latitudeList.append(latitude)
+                                        if latitude != "" {
+                                            latitudeList.append(latitude)
+                                        }
                                     }
                                     stationNames.append(snlist)
                                     stationTypes.append(tylist)

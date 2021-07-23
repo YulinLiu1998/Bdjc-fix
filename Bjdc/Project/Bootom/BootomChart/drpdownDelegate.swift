@@ -155,11 +155,9 @@ extension BootomSheetChartVC{
             date = date + (60 - ( date.minute % 60)).minutes
         }
         EndTime = date.toFormat("yyyy-MM-dd HH:mm:ss")
-        //EndTime = "2021-03-09 \(date.toFormat("yyyy-MM-dd"))"
         date = date - 12.hours
        
         StartTime = date.toFormat("yyyy-MM-dd HH:mm:ss")
-        //StartTime = "2021-03-09 \(date.toFormat("HH:mm:ss"))"
         CurrentTimeInterval = 2
         
         TimeInterval_twelveHours = [String]()
@@ -206,11 +204,9 @@ extension BootomSheetChartVC{
         let date0  = date - 30.days
         let str = date0.toFormat("yyyy-MM-dd")
         StartTime = "\(str) 00:00:00"
-        //StartTime = "2021-02-08 00:00:00"
         let date1  = date + 1.days
         let str1 = date1.toFormat("yyyy-MM-dd")
         EndTime = "\(str1) 00:00:00"
-        //EndTime = "2021-03-10 00:00:00"
         CurrentTimeInterval = 5
         TimeInterval_Month = [String]()
         MonthTimeInterval(date2: date)
@@ -238,7 +234,6 @@ extension BootomSheetChartVC{
     }
     func customSetting(){
         //自定义查询时间界面
-        //let customAlert = customAlert.instantiateFromNib()
         let AlertView = AlertView.instantiateFromNib()
         //CustomAlert = customAlert
         alertView = AlertView
@@ -435,7 +430,7 @@ extension BootomSheetChartVC{
                 }else if date.day == 15 {
                     TimeInterval_Custom.append("\(date.toFormat("yyyy-MM-dd"))")
                 }else{
-                    TimeInterval_Custom.append("\(date.toFormat(""))")
+                    TimeInterval_Custom.append("\(date.toFormat("yyyy-MM-dd"))")
                 }
             }else{
                 TimeInterval_Custom.append("")
@@ -535,7 +530,7 @@ extension BootomSheetChartVC{
         getFilterGraphicData()
     }
     func moreOneDays(start:DateInRegion,end:DateInRegion){
-        //大于1天小于等于3天 5分钟一条数据 轴标签间隔 6时
+        //大于1天小于等于3天 10分钟一条数据 轴标签间隔 6时
         print("大于1天小于等于3天")
         var date = start
         var hour = (DiffDateComponents?.hour)!
@@ -545,23 +540,23 @@ extension BootomSheetChartVC{
             hour = hour + ( 6 - (hour  % 6))
         }
         var points = hour * 60
-        points = points / 5
+        points = points / 10
         TimeInterval_Custom = [String]()
         TimeDateInterval = [String]()
         for i in 0..<points {
-            if i % 36 == 0 {
+            if i % 18 == 0 {
                 TimeInterval_Custom.append("\(date.toFormat("MM-dd HH"))")
             }else{
                 TimeInterval_Custom.append("")
             }
             TimeDateInterval.append("\(date.toFormat("yyyy-MM-dd HH:mm"))")
-            date = date + 5.minutes
+            date = date + 10.minutes
         }
         TimeDateInterval.append("\(date.toFormat("yyyy-MM-dd HH:mm"))")
         TimeInterval_Custom.append("\(date.toFormat("MM-dd HH"))")
         TimeIntervalKind[7] = TimeInterval_Custom
         VisibleXRangeMaximum[7] = points / 2 + points / 10
-        DeltaTime[7] = "300"
+        DeltaTime[7] = "600"
         AxisMaximum[7] = points + points / 10
         AxisGranularity[7] = 36
         print(VisibleXRangeMaximum[7])
@@ -570,6 +565,41 @@ extension BootomSheetChartVC{
         print(AxisGranularity[7])
         print("poins",points)
         getFilterGraphicData()
+        //大于1天小于等于3天 5分钟一条数据 轴标签间隔 6时
+//        print("大于1天小于等于3天")
+//        var date = start
+//        var hour = (DiffDateComponents?.hour)!
+//        let day = (DiffDateComponents?.day)!
+//        hour = day * 24 + hour
+//        if ((hour  % 6) != 0) {
+//            hour = hour + ( 6 - (hour  % 6))
+//        }
+//        var points = hour * 60
+//        points = points / 5
+//        TimeInterval_Custom = [String]()
+//        TimeDateInterval = [String]()
+//        for i in 0..<points {
+//            if i % 36 == 0 {
+//                TimeInterval_Custom.append("\(date.toFormat("MM-dd HH"))")
+//            }else{
+//                TimeInterval_Custom.append("")
+//            }
+//            TimeDateInterval.append("\(date.toFormat("yyyy-MM-dd HH:mm"))")
+//            date = date + 5.minutes
+//        }
+//        TimeDateInterval.append("\(date.toFormat("yyyy-MM-dd HH:mm"))")
+//        TimeInterval_Custom.append("\(date.toFormat("MM-dd HH"))")
+//        TimeIntervalKind[7] = TimeInterval_Custom
+//        VisibleXRangeMaximum[7] = points / 2 + points / 10
+//        DeltaTime[7] = "300"
+//        AxisMaximum[7] = points + points / 10
+//        AxisGranularity[7] = 36
+//        print(VisibleXRangeMaximum[7])
+//        print(DeltaTime[7])
+//        print(AxisMaximum[7])
+//        print(AxisGranularity[7])
+//        print("poins",points)
+//        getFilterGraphicData()
     }
     func moreTweleveHours(start:DateInRegion,end:DateInRegion){
         //大于12小于等于24小时 一分钟请求一条数据 轴标签间隔 2时
@@ -606,28 +636,28 @@ extension BootomSheetChartVC{
         getFilterGraphicData()
     }
     func lessEqualTweleveHours(start:DateInRegion,end:DateInRegion){
-        //小于等于12个小时 一分钟请求一条数据 轴标签间隔1时
+        //小于等于12个小时 2分钟请求一条数据 轴标签间隔1时
         print("小于等于12个小时")
        var date = start
-        let points = (DiffDateComponents?.hour)! * 60
+        let points = (DiffDateComponents?.hour)! * 60 / 2
         TimeDateInterval = [String]()
         TimeInterval_Custom = [String]()
         for i in 0..<points {
-            if i % 60 == 0 {
+            if i % 30 == 0 {
                 TimeInterval_Custom.append("\(date.toFormat("MM-dd HH"))")
             }else{
                 TimeInterval_Custom.append("")
             }
             //记录每一个间隔点的表示的时间数据
             TimeDateInterval.append("\(date.toFormat("yyyy-MM-dd HH:mm"))")
-            date = date + 1.minutes
+            date = date + 2.minutes
         }
         TimeInterval_Custom.append("\(date.toFormat("MM-dd HH"))")
         TimeDateInterval.append("\(date.toFormat("yyyy-MM-dd HH:mm"))")
         
         TimeIntervalKind[7] = TimeInterval_Custom
         VisibleXRangeMaximum[7] = points / 2 + points / 10
-        DeltaTime[7] = "60"
+        DeltaTime[7] = "120"
         AxisMaximum[7] = points + points / 10
         AxisGranularity[7] = 30
         print( VisibleXRangeMaximum[7])

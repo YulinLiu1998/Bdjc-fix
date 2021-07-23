@@ -13,17 +13,21 @@ extension BootomSheetVC{
         let parameters = ["AccessToken":AccessToken,
                           "SessionUUID":SessionUUID
         ]
-     
-        showLoadHUD()
+        
+        BootomSheetVC.showGlobalLoadHUD("正在更新工程数据")
         AF.request("\(networkInterface)getProjects.php",
                    method: HTTPMethod.post,
                    parameters: parameters,
-                   encoder: JSONParameterEncoder.default).responseJSON(completionHandler: { response in
-                    self.hideLoadHUD()
+                   encoder: JSONParameterEncoder.default).responseJSON(completionHandler: {  response in
+                    BootomSheetVC.hideGlobalHUD()
                     switch response.result {
                         case .success(let value):
                             let getProjectsMessage = JSON(value)
                             if getProjectsMessage["ResponseCode"] == "200" {
+                                
+                                self.view.showSuccess("成功更新工程数据")
+                                print("获取数据")
+                                self.ProjectDateState = true
                                 //获取项目列表
                                 ProjectList = getProjectsMessage["ProjectList"]
                                 //获取项目总数
@@ -34,7 +38,6 @@ extension BootomSheetVC{
                                     projectTitles.append(name)
                                     //MARK: -获取工程站点状态
                                     let projectStationStatus:JSON = ProjectList![i]["ProjectStationStatus"]
-                                    print("projectStationStatus",projectStationStatus)
                                     //警告
                                     let warning = projectStationStatus["Warning"].stringValue
                                     pssWarning.append(warning)
@@ -74,71 +77,24 @@ extension BootomSheetVC{
                                     stationLastTime.append(ltlist)
                                     stationStatus.append(sdlist)
                                 }
-                
                             }else if getProjectsMessage["ResponseCode"] == "400"{
-                                //若输入的密码格式错误，则返回400错误码，错误信息为“请输入正确的账号密码
                                 print("400")
-                                print(getProjectsMessage["ResponseMsg"],getProjectsMessage["ResponseCode"])
-                  
+                                self.ProjectDateStr = getProjectsMessage["ResponseMsg"].stringValue
                             }else{
                                 //其他错误
-                                print("其他错误qqqqqqqqqq")
-                                print(getProjectsMessage["ResponseCode"])
-                                print(getProjectsMessage["ResponseMsg"])
+                                print("其他错误")
+                                self.ProjectDateStr = getProjectsMessage["ResponseMsg"].stringValue
                             }
                         case .failure(let error):
-                            print(error)
-                 
+                            print("error",error)
+                            self.ProjectDateStr  = error.localizedDescription
                         }
+                    //更新数据
+                    self.updateData()
                    })
   
     }
-    func getGraphicData0(sema: DispatchSemaphore){
-        
-        let parameters = ["AccessToken":AccessToken,
-                          "SessionUUID":SessionUUID,
-                          "StationUUID":StationUUID,
-                          "GraphicType":"GNSSFilterInfo",
-                          "StartTime":"2021-03-09 00:00:00",
-                          "EndTime":"2021-03-09 23:59:59",
-                          "DeltaTime":"60"
-        ]
-        
-        AF.request("\(networkInterface)getGraphicData.php",
-                   method: HTTPMethod.post,
-                   parameters: parameters,
-                   encoder: JSONParameterEncoder.default).responseJSON(completionHandler: { response in
-                    switch response.result {
-                        case .success(let value):
-                            let GraphicData = JSON(value)
-                            if GraphicData["ResponseCode"] == "200" {
-                                //操作成功
-                               // print("GraphicData",GraphicData)
-                                ChartData = GraphicData
-                               
-                                print(ChartData!["Content"][0])
-                                print(ChartData!["Content"][0][3])
-                                print(ChartData!["Content"][0][3].stringValue)
-                                sema.signal()
-                                //self.Processingdata(GraphicData: GraphicData)
-                            }else if GraphicData["ResponseCode"] == "400"{
-                                //操作失败/参数非法
-                                print("\(GraphicData["ResponseCode"])")
-                                print("\(GraphicData["ResponseMsg"])")
-                                sema.signal()
-                            }else{
-                                print("\(GraphicData["ResponseCode"])")
-                                print("\(GraphicData["ResponseMsg"])")
-                                sema.signal()
-                            }
-                            
-                        case .failure(let error):
-                            print(error)
-                            sema.signal()
-                        }
-                  
-                   })
-    }
+   
     func getGraphicData1(){
         
     
@@ -150,37 +106,40 @@ extension BootomSheetVC{
                           "EndTime":EndTime,
                           "DeltaTime":"60"
         ]
-        showLoadHUD("正在加载图表")
+        self.view.showLoad("正在加载图表")
         AF.request("\(networkInterface)getGraphicData.php",
                    method: HTTPMethod.post,
                    parameters: parameters,
                    encoder: JSONParameterEncoder.default).responseJSON(completionHandler: { response in
-                    self.hideLoadHUD()
+                    self.view.hideLoad()
                     switch response.result {
                         case .success(let value):
                             let GraphicData = JSON(value)
                             if GraphicData["ResponseCode"] == "200" {
-                                //操作成功  //vc.performSegue(withIdentifier: "viewData", sender: nil)
+                                //操作成功
                                 ChartData = GraphicData
-                                //self.performSegue(withIdentifier: "showChart", sender: nil)
                                 self.tabBarController?.selectedIndex = 1
-                                
                             }else if GraphicData["ResponseCode"] == "400"{
                                 //操作失败/参数非法
+                                self.view.showError(GraphicData["ResponseCode"].stringValue)
                                 print("\(GraphicData["ResponseCode"])")
                                 print("\(GraphicData["ResponseMsg"])")
                                
                             }else{
+                                self.view.showError(GraphicData["ResponseCode"].stringValue)
                                 print("\(GraphicData["ResponseCode"])")
                                 print("\(GraphicData["ResponseMsg"])")
-                          
                             }
                             
                         case .failure(let error):
                             print(error)
-                    
+                            self.view.showError(error.localizedDescription)
                         }
                   
                    })
     }
+}
+
+extension BootomSheetVC:UITabBarControllerDelegate{
+    
 }

@@ -32,7 +32,7 @@ var SessionUUID:String = "00000000-0000-0000-0000-000000000000"
 //MARK: -账号密码登录
 var SessionUUIDmd5:String?
 var Username:String?
-
+var Password:String?
 //MARK: -工程项目
 var ProjectList:JSON?
 //当前项目
@@ -155,9 +155,9 @@ var CustomStatus:String?
 //设置可见点数
 var VisibleXRangeMaximum = [35,190,360,750,500,500,120,0]
 //设置请求数据的间隔 用于请求函数
-var DeltaTime = ["60","60","60","60","300","1800","86400","0"]
+var DeltaTime = ["60","60","120","60","300","1800","86400","0"]
 //设置x轴对应的最大值
-var AxisMaximum = [65,370,740,1500,2050,1500,370,0]
+var AxisMaximum = [65,370,380,1500,2050,1500,370,0]
 var AxisGranularity = [5,30,30,120,144,48,1,0]
 
 

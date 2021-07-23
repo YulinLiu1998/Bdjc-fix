@@ -93,8 +93,7 @@ class BootomSheetChartVC: UIViewController,UIScrollViewDelegate {
         chartTitle.text = currentDrodownTitle
         //初始化图表
         initViewCharts()
-        //显示图表
-        showCharts()
+       
 
        
     }
@@ -148,6 +147,8 @@ class BootomSheetChartVC: UIViewController,UIScrollViewDelegate {
         
     }
     override func viewWillAppear(_ animated: Bool) {
+        //显示图表
+        showCharts()
         self.navigationController?.isNavigationBarHidden = true
     }
     override func viewDidDisappear(_ animated: Bool) {

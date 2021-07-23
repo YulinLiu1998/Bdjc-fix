@@ -8,7 +8,13 @@
 import Foundation
 extension BootomSheetVC{
     func updateData(){
-        getProjects()
+        guard ProjectDateState else {
+            if ProjectDateStr == nil { ProjectDateStr = "您的网络已断开！" }
+            self.view.showErrorDetail("获取数据失败", ProjectDateStr!)
+            ProjectDateState = false
+            return
+        }
+        print("更新数据")
         let now = Date()
         // 创建一个日期格式器
         let dformatter = DateFormatter()
@@ -16,7 +22,7 @@ extension BootomSheetVC{
         currentTime = dformatter.string(from: now)
         updateTime.text = currentTime
         //重置列表显示信息
-        CurrentProject = 0
+        //CurrentProject = 0
         NavMenu1?.title = projectTitles[CurrentProject!]
         //MARK: -监测点总数
         self.stationNums.text = pssTotal[CurrentProject!]

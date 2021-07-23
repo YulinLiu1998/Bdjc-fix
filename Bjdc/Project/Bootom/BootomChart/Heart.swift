@@ -97,7 +97,9 @@ extension BootomSheetChartVC{
 //if cur == nil {
 //    return
 //}
-//111
+
+
+//BarLineScatterCandleBubbleChartRenderer111
 //fileprivate init(min: Int, max: Int) {
 //    if min < max{
 //        self.iterator = (min...max).makeIterator()
@@ -106,6 +108,8 @@ extension BootomSheetChartVC{
 //    }
 //   
 //}
+
+
 //76BarLineScatterCandleBubbleRenderer.swift
 //let phaseX = Swift.max(0.0, Swift.min(1.0, animator?.phaseX ?? 1.0))
 //
@@ -121,42 +125,22 @@ extension BootomSheetChartVC{
 //self.min = 0
 //self.max = Int(chart.highestVisibleX)
 //range = Int(Double(self.max - self.min) * phaseX)
-//        let scrollView = self.superview?.superview?.superview as! UIScrollView
+
+//{
+//    let phaseX = Swift.max(0.0, Swift.min(1.0, animator?.phaseX ?? 1.0))
 //
-//        print(recognizer.velocity(in: scrollView).y)
-//        if abs(recognizer.velocity(in: scrollView).y ) > 200 {
-//            //平移
-//            var translation = recognizer.translation(in: scrollView)
-//            if recognizer.state == .began{
-//                _isDragging = false
-//            }
-//            //.began, .changed, .ended 状态时更新panlabel的位置（改center）
-//            if recognizer.state != .cancelled{
-//                print("translation.y",translation.y)
-//                translation.y = -translation.y
-//                let yNum = scrollView.contentOffset.y + translation.y
-//                if yNum > 0 {
-//                    scrollView.setContentOffset(CGPoint(x: 0, y: yNum), animated: true)
-//                }
+////            let low = chart.lowestVisibleX
+////            let high = chart.highestVisibleX
+////
+////            let entryFrom = dataSet.entryForXValue(low, closestToY: .nan, rounding: .down)
+////            let entryTo = dataSet.entryForXValue(high, closestToY: .nan, rounding: .up)
+////
+////            self.min = entryFrom == nil ? 0 : dataSet.entryIndex(entry: entryFrom!)
+////            self.max = entryTo == nil ? 0 : dataSet.entryIndex(entry: entryTo!)
+//    //range = Int(Double(self.max - self.min) * phaseX)
+//    self.min = 0
+//    self.max = Int(chart.highestVisibleX)
+//    range = Int(Double(self.max - self.min) * phaseX)
 //
-//            }
-//        }else if abs(recognizer.velocity(in: scrollView).y ) > 200 {
-//            //滑动
-//            if recognizer.state == .began{
-//                _isDragging = false
-//            }
-//            //.began, .changed, .ended 状态时更新panlabel的位置（改center）
-//            if recognizer.state != .cancelled{
-//                if recognizer.velocity(in: self).y > 0 {
-//                    var yNum = scrollView.contentOffset.y - 550
-//                    yNum = yNum < 0 ? 0 : yNum
-//                    scrollView.setContentOffset(CGPoint(x: 0,y: yNum), animated: true)
-//                }else{
-//                    var yNum = scrollView.contentOffset.y + 550
-//                    yNum = yNum > 3000 ? 3000 : yNum
-//                    scrollView.setContentOffset(CGPoint(x: 0,y: yNum), animated: true)
-//                }
-//            }
-//        }
-//        let scrollView = self.superview?.superview?.superview as! UIScrollView
-// var translation = recognizer.translation(in: scrollView)
+//}
+//}

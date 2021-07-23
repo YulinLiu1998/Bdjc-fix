@@ -18,7 +18,8 @@ class BootomSheetVC: UIViewController, Demoable {
     
     
     var delegate:UpdateMapView?
-    
+    var ProjectDateState:Bool = false
+    var ProjectDateStr:String?
     static var name: String { "bootomsheet" }
     
     @IBOutlet weak var tableView: UITableView!
@@ -68,10 +69,10 @@ class BootomSheetVC: UIViewController, Demoable {
             
             showTotalData(totalBtn!)        }
     }
-    
+    //更新表单
     @IBAction func updateTimeEvent(_ sender: Any) {
-        
-        updateData()
+        //获取数据
+        getProjects()
     }
     
     @IBAction func showOnlineData(_ sender: Any) {
@@ -105,7 +106,7 @@ class BootomSheetVC: UIViewController, Demoable {
         let controller = storyboard.instantiateViewController(identifier: "BootomSheet") as! BootomSheetVC
         let sheet = SheetViewController(
             controller: controller,
-            sizes: [.fixed(105), .fixed(200), .fixed(300), .fixed(450), .marginFromTop(50)],
+            sizes: [.fixed(55), .fixed(200), .fixed(300), .fixed(450), .marginFromTop(50)],
             options: SheetOptions(useInlineMode: useInlineMode))
         
         sheet.dismissOnPull = false

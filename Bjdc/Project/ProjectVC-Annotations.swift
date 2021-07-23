@@ -9,6 +9,11 @@ import Foundation
 extension ProjectVC:MAMapViewDelegate{
     //初始化地图标记
     func initAnnotations() {
+        guard StationLongitudes[CurrentProject!].count != 0 || StationLatitudes[CurrentProject!].count != 0  else {
+            self.view.showInfolong("当前工程检测点无位置信息，无法显示标记！")
+            print("当前工程检测点无位置信息，无法显示标记！")
+            return
+        }
         updateMap()
     }
     

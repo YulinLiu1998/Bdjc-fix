@@ -16,4 +16,5 @@ target 'Bjdc' do
   pod 'SwiftDate', '~> 5.0'
   pod 'Malert'
   pod 'PGDatePicker'
+  pod 'RealmSwift'
 end

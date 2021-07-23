@@ -9,6 +9,9 @@ import Foundation
 import UIKit
 
 
+//登陆
+var LoginState = false
+var LoginMessage:String?
 var btnTag:Int?
 var TabBarJump = false
 var alertView: AlertView?
@@ -29,8 +32,9 @@ var annotations: Array<MAPointAnnotation>!
 
 let kPhoneRegEx = "^1\\d{10}$"
 let kAuthCodeRegEx = "^\\d{6}$"
-let kPasswordRegEx = "^[0-9a-zA-Z].{6,64}$"
+let kPasswordRegEx = "(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[\\W_]).{12,64}"
 let kAccountRegEx = "^[a-zA-Z][0-9a-zA-Z]{5,32}$"
+@IBDesignable
 extension UIView{
     @IBInspectable
     var radius: CGFloat{
@@ -61,6 +65,7 @@ extension UIView{
     }
 }
 
+@IBDesignable
 extension CALayer {
     
     @IBInspectable
@@ -149,7 +154,15 @@ extension UIViewController{
             MBProgressHUD.hide(for: self.view, animated: true)
         }
     }
-    
+    static func showGlobalLoadHUD(_ title: String? = nil){
+        let hud = MBProgressHUD.showAdded(to: UIApplication.shared.windows.last!, animated: true)
+        hud.label.text = title
+    }
+    static func hideGlobalHUD(){
+        DispatchQueue.main.async {
+            MBProgressHUD.hide(for: UIApplication.shared.windows.last!, animated: true)
+        }
+    }
     
     // MARK: 提示框--自动隐藏
     func showTextHUD(_ title: String, _ inCurrentView: Bool = true, _ subTitle: String? = nil){
@@ -163,7 +176,17 @@ extension UIViewController{
         hud.detailsLabel.text = subTitle
         hud.hide(animated: true, afterDelay: 2)
     }
-   
+    func showTextHUDlong(_ title: String, _ inCurrentView: Bool = true, _ subTitle: String? = nil){
+        var viewToShow = view!
+        if !inCurrentView{
+            viewToShow = UIApplication.shared.windows.last!
+        }
+        let hud = MBProgressHUD.showAdded(to: viewToShow, animated: true)
+        //hud.mode = .text //不指定的话显示菊花和下面配置的文本
+        hud.label.text = title
+        hud.detailsLabel.text = subTitle
+        hud.hide(animated: true, afterDelay: 5)
+    }
 }
 
 extension UITextField {
@@ -267,46 +290,99 @@ extension  UIImage  {
    
 }
 extension UIView {
+    //加载
+    func showLoad(_ title: String? = nil){
+        let hud = MBProgressHUD.showAdded(to: self, animated: true)
+        hud.label.text = title
+    }
+    func hideLoad(){
+        DispatchQueue.main.async {
+            MBProgressHUD.hide(for: self, animated: true)
+        }
+    }
     //显示等待消息
     func showWait(_ title: String) {
         let hud = MBProgressHUD.showAdded(to: self, animated: true)
         hud.label.text = title
         hud.removeFromSuperViewOnHide = true
         //HUD窗口显示1秒后自动隐藏
-        hud.hide(animated: true, afterDelay: 1)
+        hud.hide(animated: true, afterDelay: 2)
     }
      
     //显示普通消息
     func showInfo(_ title: String) {
         let hud = MBProgressHUD.showAdded(to: self, animated: true)
         hud.mode = .customView //模式设置为自定义视图
-        hud.customView = UIImageView(image: UIImage(named: "info")!) //自定义视图显示图片
+        let largeFont = UIFont.systemFont(ofSize: 44)
+        let configuration = UIImage.SymbolConfiguration(font: largeFont)
+        let image = UIImage(systemName: "pencil.slash",withConfiguration: configuration )!
+        hud.customView = UIImageView(image:image)
+        hud.customView?.tintColor = .systemBlue
         hud.label.text = title
         hud.removeFromSuperViewOnHide = true
+        //HUD窗口显示1秒后自动隐藏
+        hud.hide(animated: true, afterDelay: 2)
     }
-     
+    func showInfolong(_ title: String) {
+        let hud = MBProgressHUD.showAdded(to: self, animated: true)
+        hud.mode = .customView //模式设置为自定义视图
+        let largeFont = UIFont.systemFont(ofSize: 44)
+        let configuration = UIImage.SymbolConfiguration(font: largeFont)
+        let image = UIImage(systemName: "pencil.slash",withConfiguration: configuration )!
+        hud.customView = UIImageView(image:image)
+        hud.customView?.tintColor = .systemBlue
+        hud.label.text = title
+        hud.removeFromSuperViewOnHide = true
+        //HUD窗口显示1秒后自动隐藏
+        hud.hide(animated: true, afterDelay: 5)
+    }
     //显示成功消息
     func showSuccess(_ title: String) {
         let hud = MBProgressHUD.showAdded(to: self, animated: true)
         hud.mode = .customView //模式设置为自定义视图
-        hud.customView = UIImageView(image: UIImage(named: "tick")!) //自定义视图显示图片
+        let largeFont = UIFont.systemFont(ofSize: 44)
+        let configuration = UIImage.SymbolConfiguration(font: largeFont)
+        let image = UIImage(systemName: "checkmark.circle",withConfiguration: configuration )!
+        hud.customView = UIImageView(image:image)
+        hud.customView?.tintColor = .systemGreen
         hud.label.text = title
         hud.removeFromSuperViewOnHide = true
         //HUD窗口显示1秒后自动隐藏
-        hud.hide(animated: true, afterDelay: 1)
+        hud.hide(animated: true, afterDelay: 2)
     }
  
     //显示失败消息
     func showError(_ title: String) {
         let hud = MBProgressHUD.showAdded(to: self, animated: true)
         hud.mode = .customView //模式设置为自定义视图
-       // hud.customView = UIImageView(image: UIImage(named: "cross")!) //自定义视图显示图片
+        let largeFont = UIFont.systemFont(ofSize: 44)
+        let configuration = UIImage.SymbolConfiguration(font: largeFont)
+        let image = UIImage(systemName: "xmark.circle",withConfiguration: configuration )!
+        hud.customView = UIImageView(image:image)
+        hud.customView?.tintColor = .systemRed
         hud.label.text = title
         hud.removeFromSuperViewOnHide = true
+        
         //HUD窗口显示1秒后自动隐藏
-        hud.hide(animated: true, afterDelay: 1)
+        hud.hide(animated: true, afterDelay: 2)
+    }
+    func showErrorDetail(_ title: String,_ details: String) {
+        let hud = MBProgressHUD.showAdded(to: self, animated: true)
+        hud.mode = .customView //模式设置为自定义视图
+        let largeFont = UIFont.systemFont(ofSize: 44)
+        let configuration = UIImage.SymbolConfiguration(font: largeFont)
+        let image = UIImage(systemName: "xmark.circle",withConfiguration: configuration )!
+        hud.customView = UIImageView(image:image)
+        hud.customView?.tintColor = .systemRed
+        hud.label.text = title
+        hud.detailsLabel.text = details
+        hud.removeFromSuperViewOnHide = true
+        
+        //HUD窗口显示1秒后自动隐藏
+        hud.hide(animated: true, afterDelay: 2)
     }
 }
+
 
 extension String{
     /// 获取字符串某个索引的字符（从前往后）

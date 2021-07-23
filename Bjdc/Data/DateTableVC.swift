@@ -17,26 +17,29 @@ class DateTableVC: UITableViewController {
     
     var tableRows:Int?
     var Cell: DateTableViewCell?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        if TabBarJump {
-            DispatchQueue.main.async {
-                self.showTextHUD("正在加载")
-            }
-            
-        }
+//        if TabBarJump {
+//            DispatchQueue.main.async {
+//               self.showTextHUDlong("正在加载")
+//            }
+//        }
         tableFlage = true
         dropdownMenuDateTable()
-        
     }
     override func viewWillAppear(_ animated: Bool) {
         if TabBarJump {
-            self.performSegue(withIdentifier: "viewData", sender: nil)
+            //self.performSegue(withIdentifier: "viewData", sender: nil)
+            let vc =  self.storyboard?.instantiateViewController(withIdentifier: "BootomSheetChart") as! BootomSheetChartVC
+            self.navigationController?.pushViewController(vc, animated: false)
+        }else {
+            if tableFlage {
+                NavMenu?.title = projectTitles[CurrentProject!]
+                tableView.reloadData()
+            }
         }
-        if tableFlage {
-            NavMenu?.title = projectTitles[CurrentProject!]
-            tableView.reloadData()
-        }
+       
         self.navigationController?.isNavigationBarHidden = false
         
     }

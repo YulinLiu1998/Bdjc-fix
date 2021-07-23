@@ -36,8 +36,6 @@ class ProjectVC: UIViewController,UpdateMapView {
         //let bootom = (storyboard?.instantiateViewController(identifier: "BootomSheet")) as! BootomSheetVC
        //bootom.delegate = self
         BootomSheetVC.openDemo(from: self, in: self.view)
-        //MapView = mapView
-       
     }
     
     override func didReceiveMemoryWarning() {
@@ -105,8 +103,7 @@ class ProjectVC: UIViewController,UpdateMapView {
     }
     func removeAnnotationsMapView() {
        
-        DispatchQueue.main.async{ [self] in
-         
+        DispatchQueue.main.async{
             MapView.removeAnnotations(annotations)
         }
     }

@@ -23,21 +23,23 @@ extension Setting{
                    encoder: JSONParameterEncoder.default).responseJSON(completionHandler: { response in
                     switch response.result {
                         case .success(let value):
-                            let loginMessage = JSON(value)
-                            print(loginMessage)
-                            if loginMessage["ResponseCode"] == "205" {
+                            let logoutMessage = JSON(value)
+                            print(logoutMessage)
+                            if logoutMessage["ResponseCode"] == "205" {
                                 //成功注销
-                                print(loginMessage["ResponseMsg"],loginMessage["ResponseCode"])
+                                print(logoutMessage["ResponseMsg"],logoutMessage["ResponseCode"])
                                 print("SessionUUID",SessionUUID)
                                 self.dismiss(animated: true, completion: nil)
-                            }else if loginMessage["ResponseCode"] == "400"{
+                            }else if logoutMessage["ResponseCode"] == "400"{
                                 //操作失败/参数非法
-                                print(loginMessage["ResponseMsg"],loginMessage["ResponseCode"])
+                                self.WarningAlert(alertContent: logoutMessage["ResponseMsg"].stringValue)
+                                print(logoutMessage["ResponseMsg"],logoutMessage["ResponseCode"])
                             }else{
                                 //其他错误
+                                self.WarningAlert(alertContent: logoutMessage["ResponseMsg"].stringValue)
                                 print("其他错误")
-                                print(loginMessage["ResponseCode"])
-                                print(loginMessage["ResponseMsg"])
+                                print(logoutMessage["ResponseCode"])
+                                print(logoutMessage["ResponseMsg"])
                             }
                         case .failure(let error):
                             print(error)
@@ -83,15 +85,18 @@ extension ChangePasswordVC{
                                 self.dismiss(animated: true, completion: nil)
                             }else if setPasswordMessage["ResponseCode"] == "400"{
                                 //操作失败/参数非法
+                                self.view.showError(setPasswordMessage["ResponseMsg"].stringValue)
                                 print(setPasswordMessage["ResponseMsg"],setPasswordMessage["ResponseCode"])
                             }else{
                                 //其他错误
+                                self.view.showError(setPasswordMessage["ResponseMsg"].stringValue)
                                 print("其他错误")
                                 print(setPasswordMessage["ResponseCode"])
                                 print(setPasswordMessage["ResponseMsg"])
                             }
                         case .failure(let error):
                             print(error)
+                            self.view.showError(error.localizedDescription)
                         }
                    })
         

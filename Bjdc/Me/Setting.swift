@@ -38,7 +38,13 @@ class Setting: UIViewController {
         //注销登录操作
     }
     
-    
+    func WarningAlert( alertTitle:String = "提示",  alertContent:String){
+        let alert = UIAlertController(title: alertTitle, message: alertContent, preferredStyle: .alert)
+        let action1 = UIAlertAction(title: "确认", style: .cancel)
+        
+        alert.addAction(action1)
+        self.present(alert,animated: true)
+    }
     /*
     // MARK: - Navigation
 

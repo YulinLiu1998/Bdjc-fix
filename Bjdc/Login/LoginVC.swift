@@ -9,6 +9,8 @@
 import UIKit
 import MBProgressHUD
 import SwiftDate
+import RealmSwift
+
 class LoginVC: UIViewController {
    
     @IBOutlet weak var account: UITextField!
@@ -17,8 +19,12 @@ class LoginVC: UIViewController {
     @IBOutlet weak var loginBtn: UIButton!
     var accountStr:String {account.unwrappedText }
     var passwordStr:String {password.unwrappedText}
+    let realm = try! Realm()
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        print(Realm.Configuration.defaultConfiguration.fileURL!)
         CurrentProject = 0
         //请求Token令牌
         accessToken()
@@ -43,43 +49,67 @@ class LoginVC: UIViewController {
     @IBAction func TFEditingChanged(_ sender: Any) {
         if accountStr.isAccount && passwordStr.isPassword{
             loginBtn.setToEnabled()
-            Username = accountStr
         }else{
             loginBtn.setToDisabled()
         }
     }
+    func saveRealmDatebase(){
+        let userAccountReaml =  UserAccountReaml()
+        userAccountReaml.account = Username!
+        userAccountReaml.password = Password!
+        guard realm.objects(UserAccountReaml.self).filter("account = %@", Username!).count == 0 else {
+            print("用户信息已存在")
+            return
+        }
+        do{
+            print("正在添加用户信息")
+            try realm.write {
+                realm.add(userAccountReaml)
+            }
+        }catch{
+            print(error)
+        }
+    }
     
-        
-    
-    
+    @IBAction func loginPrepare(_ sender: Any) {
+        DispatchQueue.main.async { [self] in
+            Username = accountStr
+            Password = passwordStr
+        }
+    }
     @IBAction func loginEvent(_ sender: UIButton) {
+        
+        
         let workingGroup = DispatchGroup()
         let workingQueue = DispatchQueue(label: "request_queue")
+        
         workingGroup.enter() // 开始
         workingQueue.async {
-            DispatchQueue.main.async{
-                self.showLoadHUD("正在登录")
-            }
             let sema = DispatchSemaphore(value: 0)
             self.doLogin(sema: sema)
-            self.hideLoadHUD()
             sema.wait() // 等待任务结束, 否则一直阻塞
             workingGroup.leave() // 结束
         }
+
         workingGroup.enter() // 开始
         workingQueue.async {
-            DispatchQueue.main.async{
-                self.showLoadHUD("正在获取工程数据")
+            if LoginState {
+                
+                
+                let sema = DispatchSemaphore(value: 0)
+                self.getProjects(sema: sema)
+                sema.wait() // 等待任务结束, 否则一直阻塞
             }
-
-            let sema = DispatchSemaphore(value: 0)
-            self.getProjects(sema: sema)
-            self.hideLoadHUD()
-            sema.wait() // 等待任务结束, 否则一直阻塞
             workingGroup.leave() // 结束
         }
         workingGroup.notify(queue: DispatchQueue.main) {
             // 全部调用完成后回到主线程,更新UI
+            guard LoginState else {
+                self.view.showError(LoginMessage!)
+                return
+            }
+            //登录成功表明账号密码可行可以存储
+            self.saveRealmDatebase()
             let now = Date()
             // 创建一个日期格式器
             let dformatter = DateFormatter()

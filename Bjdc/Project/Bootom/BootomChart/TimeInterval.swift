@@ -43,14 +43,14 @@ extension BootomSheetChartVC{
     func TwelveHoursTimeInterval(date0:Date){
         var  date = date0
         TimeDateInterval = [String]()
-        for i in 0..<720 {
-            if i % 60 == 0 {
+        for i in 0..<360 {
+            if i % 30 == 0 {
                 TimeInterval_twelveHours.append("\(date.toFormat("HH:mm"))")
             }else{
                 TimeInterval_twelveHours.append("")
             }
             TimeDateInterval.append("\(date.toFormat("yyyy-MM-dd HH:mm"))")
-            date = date + 1.minutes
+            date = date + 2.minutes
         }
         TimeDateInterval.append("\(date.toFormat("yyyy-MM-dd HH:mm"))")
         TimeInterval_twelveHours.append("\(date.toFormat("HH:mm"))")
@@ -113,10 +113,9 @@ extension BootomSheetChartVC{
                 let date0  = date - j.days
                 let str = date0.toFormat("MM-dd")
                 TimeInterval_Month.append("\(str)")
-                print(i,j)
                 j = j-1
             }else{
-                TimeInterval_Month.append("")
+                TimeInterval_Month.append("\(start.toFormat("MM-dd"))")
             }
             TimeDateInterval.append("\(start.toFormat("yyyy-MM-dd HH:mm"))")
             start = start + 30.minutes
@@ -124,7 +123,6 @@ extension BootomSheetChartVC{
         let date1 = date + 1.days
         TimeDateInterval.append("\(start.toFormat("yyyy-MM-dd HH:mm"))")
         TimeInterval_Month.append("\(date1.toFormat("MM-dd"))")
-        print(TimeInterval_Month)
     }
     //一年
     func YearTimeInterval(date2:Date){

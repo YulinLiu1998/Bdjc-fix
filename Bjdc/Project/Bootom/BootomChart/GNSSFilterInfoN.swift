@@ -129,7 +129,7 @@ extension BootomSheetChartVC{
         let portion_Y = (length_Y / 0.01)
         let Num_Y = portion_Y * 62.5
         let Scale_Y = Num_Y / Double(chartView1.bounds.height)
-
+        print("Scale_Y",Scale_Y)
         //设置交互样式
         chartView1.scaleYEnabled = true //取消Y轴缩放
         chartView1.doubleTapToZoomEnabled = true //双击缩放
@@ -145,7 +145,7 @@ extension BootomSheetChartVC{
         for i in 0..<(xValues.count - 1) {
             if CurrentTimeInterval == 7{
                 //自定义
-                if  CustomStatus == "lessEqualTweleveHours" || CustomStatus == "moreTweleveHours"{
+                if   CustomStatus == "moreTweleveHours"{
                     if j < content!.count{
                         if TimeDateInterval[i] == content![j][0].stringValue.subStringTo(endIndex: 15) {
                             let y = Double(content![j][2].stringValue)
@@ -154,7 +154,7 @@ extension BootomSheetChartVC{
                             j = j + 1
                         }
                     }
-                }else if CustomStatus == "moreOneDays" || CustomStatus == "moreThreeDays"{
+                }else if CustomStatus == "lessEqualTweleveHours" || CustomStatus == "moreOneDays" || CustomStatus == "moreThreeDays"{
                     if j < content!.count{
                         if TimeDateInterval[i].subStringTo(endIndex: 14) == content![j][0].stringValue.subStringTo(endIndex: 14) {
                             let y = Double(content![j][2].stringValue)
@@ -163,7 +163,7 @@ extension BootomSheetChartVC{
                             j = j + 1
                         }
                     }
-                }else if CustomStatus == "moreSevenDays"{
+                }else if CustomStatus == "moreSevenDays"  {
                     if j < content!.count{
                         if TimeDateInterval[i] == content![j][0].stringValue.subStringTo(endIndex: 12) {
                             let y = Double(content![j][2].stringValue)
@@ -208,6 +208,7 @@ extension BootomSheetChartVC{
                 }
             }else if CurrentTimeInterval == 4{
                 //一周  显示精度为10分钟
+                
                 if j < content!.count{
                     if TimeDateInterval[i].getString(startIndex: 5, endIndex: 14) == content![j][0].stringValue.getString(startIndex: 5, endIndex: 14) {
 
@@ -232,8 +233,7 @@ extension BootomSheetChartVC{
             }else if CurrentTimeInterval == 2{
                 //十二小时  显示精度为一分钟
                 if j < content!.count{
-
-                    if TimeDateInterval[i] == content![j][0].stringValue.getString(startIndex: 0, endIndex: 15) {
+                    if TimeDateInterval[i].getString(startIndex: 0, endIndex: 14) == content![j][0].stringValue.getString(startIndex: 0, endIndex: 14) {
                         let y = Double(content![j][2].stringValue)
                         let entry = ChartDataEntry.init(x: Double(i), y: y!)
                         dataEntries.append(entry)

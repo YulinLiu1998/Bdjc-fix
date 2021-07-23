@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		92A3667A81D09DEFB033DDE3 /* Pods_Bjdc.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF3D1D0F157C649DFF777056 /* Pods_Bjdc.framework */; };
+		FF5EC81926A6E123002B2D81 /* UserConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5EC81826A6E123002B2D81 /* UserConfig.swift */; };
 		FF803ADD26674E65005B9ED7 /* MeVC-req.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF803ADC26674E65005B9ED7 /* MeVC-req.swift */; };
 		FF803ADF2669CAA8005B9ED7 /* BootomSheet-req.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF803ADE2669CAA8005B9ED7 /* BootomSheet-req.swift */; };
 		FF9062EE2665FB1F00331DDF /* Constant-req.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF9062ED2665FB1F00331DDF /* Constant-req.swift */; };
@@ -65,6 +66,9 @@
 		4E7B6E7F5DBED1D35E7B693B /* Pods-Bjdc.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bjdc.release.xcconfig"; path = "Pods/Target Support Files/Pods-Bjdc/Pods-Bjdc.release.xcconfig"; sourceTree = "<group>"; };
 		65E241DCC05B5599C5A44CCD /* Pods-Bjdc.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bjdc.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Bjdc/Pods-Bjdc.debug.xcconfig"; sourceTree = "<group>"; };
 		FF3D1D0F157C649DFF777056 /* Pods_Bjdc.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Bjdc.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FF5EC81826A6E123002B2D81 /* UserConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserConfig.swift; sourceTree = "<group>"; };
+		FF5EC81A26A92DF9002B2D81 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
+		FF5EC81B26A92DFC002B2D81 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		FF803ADC26674E65005B9ED7 /* MeVC-req.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MeVC-req.swift"; sourceTree = "<group>"; };
 		FF803ADE2669CAA8005B9ED7 /* BootomSheet-req.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BootomSheet-req.swift"; sourceTree = "<group>"; };
 		FF9062ED2665FB1F00331DDF /* Constant-req.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Constant-req.swift"; sourceTree = "<group>"; };
@@ -266,6 +270,7 @@
 				FFD34FE12664BA8F00EF0ED2 /* LoginVC-accessToken.swift */,
 				FF9062EF26660FCC00331DDF /* threeDES.swift */,
 				FF9062F1266613D800331DDF /* md5.swift */,
+				FF5EC81826A6E123002B2D81 /* UserConfig.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -346,6 +351,7 @@
 			knownRegions = (
 				en,
 				Base,
+				"zh-Hans",
 			);
 			mainGroup = FFDCEBE4265CB3C5006A306B;
 			productRefGroup = FFDCEBEE265CB3C5006A306B /* Products */;
@@ -474,6 +480,7 @@
 				FFDCEC1F265D0AAF006A306B /* BootomSheetDropdownMenu.swift in Sources */,
 				FF9062EE2665FB1F00331DDF /* Constant-req.swift in Sources */,
 				FFA4B623266D045D0000C995 /* pointAnnotationView.swift in Sources */,
+				FF5EC81926A6E123002B2D81 /* UserConfig.swift in Sources */,
 				FFA8589D265DDFAD0067CA7D /* Setting.swift in Sources */,
 				FFA4B6692670D5600000C995 /* GNSSFilterInfoDeltaD.swift in Sources */,
 				FFA858A5265E441D0067CA7D /* BootomSheetChartVC.swift in Sources */,
@@ -488,6 +495,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				FFDCEBF7265CB3C6006A306B /* Base */,
+				FF5EC81A26A92DF9002B2D81 /* zh-Hans */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -496,6 +504,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				FFDCEBFF265CB3C9006A306B /* Base */,
+				FF5EC81B26A92DFC002B2D81 /* zh-Hans */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -507,6 +516,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -568,6 +578,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";

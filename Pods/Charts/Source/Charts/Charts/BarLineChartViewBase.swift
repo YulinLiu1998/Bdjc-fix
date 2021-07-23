@@ -751,31 +751,6 @@ open class BarLineChartViewBase: ChartViewBase, BarLineScatterCandleBubbleChartD
         }
         else if recognizer.state == NSUIGestureRecognizerState.changed
         {
-//           print("recognizer.velocity(in: scrollView).y",recognizer.velocity(in: scrollView).y)
-//            if abs(recognizer.velocity(in: scrollView).y ) > 100 {
-//                print("scroll移动")
-////                if recognizer.velocity(in: self).y > 0 {
-////                    var yNum = scrollView.contentOffset.y - 600
-////                    yNum = yNum < 0 ? 0 : yNum
-////                    yNum = CGFloat(Int(yNum / 600) * 600)
-////                    scrollView.setContentOffset(CGPoint(x: 0,y: yNum), animated: true)
-////                    print("yNum",yNum)
-////                    print("scrollView.contentOffset",scrollView.contentOffset)
-////                }else{
-////                    var yNum = scrollView.contentOffset.y + 600
-////                    yNum = yNum > 3000 ? 3000 : yNum
-////                    yNum = CGFloat(Int(yNum / 600) * 600)
-////                    scrollView.setContentOffset(CGPoint(x: 0,y: yNum), animated: true)
-////                    print("yNum",yNum)
-////                    print("scrollView.contentOffset",scrollView.contentOffset)
-////                }
-//                self.dragEnabled = false //启用拖动手势
-//
-//            }else {
-//                print("图表平移")
-//                self.dragEnabled = true //启用拖动手势
-//
-//            }
             if _isDragging
             {
                 let originalTranslation = recognizer.translation(in: self)
