@@ -27,6 +27,7 @@ extension Setting{
                             print(logoutMessage)
                             if logoutMessage["ResponseCode"] == "205" {
                                 //成功注销
+                                projectTitles = [String]()
                                 print(logoutMessage["ResponseMsg"],logoutMessage["ResponseCode"])
                                 print("SessionUUID",SessionUUID)
                                 self.dismiss(animated: true, completion: nil)
@@ -77,6 +78,8 @@ extension ChangePasswordVC{
                    encoder: JSONParameterEncoder.default).responseJSON(completionHandler: { response in
                     switch response.result {
                         case .success(let value):
+                            //更新Session有效期
+                            UpdateSessionAccessTime()
                             let setPasswordMessage = JSON(value)
                             print(setPasswordMessage)
                             if setPasswordMessage["ResponseCode"] == "200" {

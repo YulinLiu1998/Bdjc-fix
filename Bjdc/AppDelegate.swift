@@ -3,11 +3,12 @@
 //  Bjdc
 //
 //  Created by 徐煜 on 2021/5/25.
-//
+// BjutSoftware806Bjdc.Bjdc
 
 import UIKit
 import CoreData
-
+import SwiftDate
+import RealmSwift
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -15,10 +16,43 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        //高德地图
         AMapServices.shared().apiKey = "3ec4096519eb98ebaf864c97a99fb812"
+        //Token定时器
+        TokenTimer = Timer.scheduledTimer(timeInterval: 3600, target: self, selector:#selector(UpdateToken), userInfo: nil, repeats: true)
+        //每次启动App 对比SessionStringTime 是否过期 若过期则跳转页面重新登录，反之则直接登录
+        if let time = realm.objects(SessionRealm.self).first?.SessionAccessTime {
+            print("数据库存在Session过期时间",time)
+            let date = Date()
+            print("date",date)
+            print("time",time)
+            print("LoginStatues",realm.objects(UserAccountReaml.self).first?.LoginStatues)
+            if date > time {
+                print("Session过期")
+                SessionInvalid = true
+            }else{
+                print("Session未过期")
+                SessionInvalid = false
+            }
+            if realm.objects(UserAccountReaml.self).first?.LoginStatues == "false" {
+                //处于未登录状态
+                print("Session过期")
+                SessionInvalid = true
+            }
+        }
         return true
     }
-
+    @objc func UpdateToken() {
+            print("Token即将过期正在重新获取")
+            accessTokenTimer()
+        }
+    func applicationWillTerminate(_ application: UIApplication) {
+        // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+        // Saves changes in the application's managed object context before the application terminates.
+        print("程序即将终止")
+        TokenTimer!.invalidate()
+    }
+    
     // MARK: UISceneSession Lifecycle
 
     func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {

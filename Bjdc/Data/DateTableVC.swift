@@ -18,19 +18,14 @@ class DateTableVC: UITableViewController {
     var tableRows:Int?
     var Cell: DateTableViewCell?
     
+    @IBOutlet weak var footerLabel: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
-//        if TabBarJump {
-//            DispatchQueue.main.async {
-//               self.showTextHUDlong("正在加载")
-//            }
-//        }
         tableFlage = true
         dropdownMenuDateTable()
     }
     override func viewWillAppear(_ animated: Bool) {
         if TabBarJump {
-            //self.performSegue(withIdentifier: "viewData", sender: nil)
             let vc =  self.storyboard?.instantiateViewController(withIdentifier: "BootomSheetChart") as! BootomSheetChartVC
             self.navigationController?.pushViewController(vc, animated: false)
         }else {
@@ -39,7 +34,11 @@ class DateTableVC: UITableViewController {
                 tableView.reloadData()
             }
         }
-       
+        if  pssTotal[CurrentProject!] != "" && pssTotal[CurrentProject!] != "0" {
+            footerLabel.text = "当前工程站点信息已显示完全"
+        }else{
+            footerLabel.text = "当前工程未部署监测点！"
+        }
         self.navigationController?.isNavigationBarHidden = false
         
     }

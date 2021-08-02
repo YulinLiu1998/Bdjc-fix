@@ -8,6 +8,8 @@
 import Foundation
 import Alamofire
 import SwiftyJSON
+import RealmSwift
+import CryptoSwift
 extension LoginVC{
     func accessToken(){
 
@@ -27,6 +29,27 @@ extension LoginVC{
                             if tokenMessage["ResponseCode"] == "200" {
                                 AccessToken = tokenMessage["AccessToken"].stringValue
                                 ExpireTimestamp = tokenMessage["ExpireTimestamp"].int
+                                //TokenRealm
+                                let tokenRealm = TokenRealm()
+                                tokenRealm.TokenString = AccessToken!
+                                //若TokenRealm数据库中存在值，则将其删除后再添加，保证数据库只有一个值（保证Token唯一性）
+                                if realm.objects(TokenRealm.self).count != 0{
+                                    do{
+                                        try realm.write {
+                                            realm.delete(realm.objects(TokenRealm.self).first!)
+                                        }
+                                    }catch{
+                                        print(error)
+                                    }
+                                }
+                                do{
+                                    print("正在添加Token")
+                                    try realm.write {
+                                        realm.add(tokenRealm)
+                                    }
+                                }catch{
+                                    print(error)
+                                }
                             }else{
                                 print(tokenMessage["ResponseCode"])
                                 print(tokenMessage["ResponseMsg"])
@@ -57,7 +80,28 @@ extension LoginVC{
                             if doSessionMessage["ResponseCode"] == "202" {
                                 //未登录时
                                 SessionUUID = doSessionMessage["SessionUUID"].stringValue
-                                SessionUUIDmd5 = SessionUUID.md5
+                                //SessionUUIDmd5 = SessionUUID.md5
+                                //sessionRealm
+                                let sessionRealm = SessionRealm()
+                                sessionRealm.SessionString = SessionUUID
+                                //若sessionRealm数据库中存在值，则将其删除后再添加，保证数据库只有一个值（保证Token唯一性）
+                                if realm.objects(SessionRealm.self).count != 0{
+                                    do{
+                                        try realm.write {
+                                            realm.delete(realm.objects(SessionRealm.self).first!)
+                                        }
+                                    }catch{
+                                        print(error)
+                                    }
+                                }
+                                do{
+                                    print("正在添加Session")
+                                    try realm.write {
+                                        realm.add(sessionRealm)
+                                    }
+                                }catch{
+                                    print(error)
+                                }
                             }else if doSessionMessage["ResponseCode"] == "201"{
                                 //已登录时
                                 print("\(doSessionMessage["UserName"])")
@@ -69,6 +113,7 @@ extension LoginVC{
                     
     }
     func doLogin(sema: DispatchSemaphore){
+        SessionUUIDmd5 = SessionUUID.md5()
         let key = SessionUUIDmd5?.lowercased()
         let iv = key![24...]
         let text = Password
@@ -102,10 +147,12 @@ extension LoginVC{
                                 sema.signal()
                             }else if loginMessage["ResponseCode"] == "400"{
                                 //若输入的密码格式错误，则返回400错误码，错误信息为“请输入正确的账号密码
+                                LoginState = false
                                 sema.signal()
                                 print("400")
                                 print(loginMessage["ResponseMsg"],loginMessage["ResponseCode"])
                             }else{
+                                LoginState = false
                                 sema.signal()
                                 //其他错误
                                 print("其他错误loginMessage")
@@ -115,6 +162,7 @@ extension LoginVC{
                         case .failure(let error):
                             LoginMessage = "网络链接存在问题，无法登陆！"
                             print(error)
+                            LoginState = false
                             sema.signal()
                         }
                    })
@@ -208,7 +256,7 @@ extension LoginVC{
                                 sema.signal()
                             }else{
                                 //其他错误
-                                print("其他错误qqqqqqqqqq")
+                                print("其他错误getProjects")
                                 print(getProjectsMessage["ResponseCode"])
                                 print(getProjectsMessage["ResponseMsg"])
                                 sema.signal()

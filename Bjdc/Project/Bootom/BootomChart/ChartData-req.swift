@@ -20,7 +20,7 @@ extension BootomSheetChartVC:UIDocumentInteractionControllerDelegate{
                               "EndTime":EndTime,
                               "DeltaTime":DeltaTime[CurrentTimeInterval!]
             ]
-        print(parameters)
+
             showLoadHUD("正在加载图表")
             AF.request("\(networkInterface)getGraphicData.php",
                        method: HTTPMethod.post,
@@ -32,6 +32,8 @@ extension BootomSheetChartVC:UIDocumentInteractionControllerDelegate{
                                 let GraphicData = JSON(value)
                                 if GraphicData["ResponseCode"] == "200" {
                                     //操作成功
+                                    //更新Session有效期
+                                    UpdateSessionAccessTime()
                                     ChartData = GraphicData
                                     print(ChartData!["Content"].count)
                                     guard ChartData!["Content"].count != 0 else{
@@ -119,8 +121,8 @@ extension BootomSheetChartVC:UIDocumentInteractionControllerDelegate{
         let parameters = ["AccessToken":AccessToken,
                           "SessionUUID":SessionUUID,
                           "StationUUID":StationUUID,
-                          "StartTime":"00:00:00",
-                          "EndTime":"23:59:59"
+                          "StartTime":StartTime,
+                          "EndTime":EndTime
         ]
        
         showLoadHUD()
@@ -135,8 +137,11 @@ extension BootomSheetChartVC:UIDocumentInteractionControllerDelegate{
                             let StationReportMessage = JSON(value)
                             if StationReportMessage["ResponseCode"] == "200" {
                                 //操作成功
+                                //更新Session有效期
+                                UpdateSessionAccessTime()
                                 StationReport = StationReportMessage
                                 let url = StationReport!["ReportFilePath"].stringValue
+                                print("进入下载")
                                 self.download(url: url)
                             }else if StationReportMessage["ResponseCode"] == "400"{
                                 //操作失败/参数非法
@@ -158,7 +163,9 @@ extension BootomSheetChartVC:UIDocumentInteractionControllerDelegate{
             switch response.result {
             
                 case .success(let value):
-                
+                    //更新Session有效期
+                    print("下载成功")
+                    UpdateSessionAccessTime()
                 let alert = UIAlertController(title: "提示", message: "您要打开文件吗？", preferredStyle: .alert)
                 let action1 = UIAlertAction(title: "取消", style: .cancel)
                 let action2 = UIAlertAction(title: "确认", style: .default) { _ in

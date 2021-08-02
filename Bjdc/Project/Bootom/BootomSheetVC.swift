@@ -39,6 +39,7 @@ class BootomSheetVC: UIViewController, Demoable {
     @IBOutlet weak var warningBtn: UIButton!
     @IBOutlet weak var offlineBtn: UIButton!
     @IBOutlet weak var errorBtn: UIButton!
+    @IBOutlet weak var footerLabel: UILabel!
     var Cell: DateTableViewCell?
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,6 +52,11 @@ class BootomSheetVC: UIViewController, Demoable {
         
     }
     override func viewWillAppear(_ animated: Bool) {
+        if  pssTotal[CurrentProject!] != "" && pssTotal[CurrentProject!] != "0" {
+            footerLabel.text = "当前工程站点信息已显示完全"
+        }else{
+            footerLabel.text = "当前工程未部署监测点！"
+        }
         if tableFlage {
             NavMenu1?.title = projectTitles[CurrentProject!]
             //MARK: -监测点总数

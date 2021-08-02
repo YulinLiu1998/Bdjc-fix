@@ -234,9 +234,7 @@ extension BootomSheetChartVC{
     }
     func customSetting(){
         //自定义查询时间界面
-        let AlertView = AlertView.instantiateFromNib()
-        //CustomAlert = customAlert
-        alertView = AlertView
+        alertView = AlertView.instantiateFromNib()
         let alert = Malert(title: "自定义查询时间", customView: alertView)
         alert.textAlign = .center
         alert.textColor = .gray

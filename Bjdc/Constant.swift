@@ -7,8 +7,10 @@
 
 import Foundation
 import UIKit
+import RealmSwift
 
-
+//初始化数据库
+let realm = try! Realm()
 //登陆
 var LoginState = false
 var LoginMessage:String?
@@ -34,7 +36,7 @@ let kPhoneRegEx = "^1\\d{10}$"
 let kAuthCodeRegEx = "^\\d{6}$"
 let kPasswordRegEx = "(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[\\W_]).{12,64}"
 let kAccountRegEx = "^[a-zA-Z][0-9a-zA-Z]{5,32}$"
-@IBDesignable
+
 extension UIView{
     @IBInspectable
     var radius: CGFloat{
@@ -65,7 +67,7 @@ extension UIView{
     }
 }
 
-@IBDesignable
+
 extension CALayer {
     
     @IBInspectable

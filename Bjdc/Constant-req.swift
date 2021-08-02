@@ -9,7 +9,8 @@ import Foundation
 import SwiftyJSON
 
 
-
+var TokenTimer : Timer?
+var SessionInvalid:Bool = true
 //地图
 var MapView: MAMapView!
 //StationUUID

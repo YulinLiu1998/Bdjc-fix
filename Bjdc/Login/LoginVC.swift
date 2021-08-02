@@ -19,24 +19,53 @@ class LoginVC: UIViewController {
     @IBOutlet weak var loginBtn: UIButton!
     var accountStr:String {account.unwrappedText }
     var passwordStr:String {password.unwrappedText}
-    let realm = try! Realm()
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         print(Realm.Configuration.defaultConfiguration.fileURL!)
         CurrentProject = 0
-        //请求Token令牌
-        accessToken()
         account.becomeFirstResponder()
         hideKeyboardWhenTappedAround()
-        //loginBtn.setToDisabled()
         password.isSecureBeginClear = false
     }
     override func viewWillAppear(_ animated: Bool) {
-        //校验用户会话
-        doSession()
-        
+        if SessionInvalid{
+            //Session 过期进入登陆界面
+            //请求Token令牌
+            accessToken()
+            print("Session  过期进入登陆界面")
+            //校验用户会话
+            doSession()
+        }else {
+            //Session 未过期跳转主页面
+            print("即将进入主页main")
+            print("设置SessionToken")
+            AccessToken = realm.objects(TokenRealm.self).first!.TokenString
+            SessionUUID = realm.objects(SessionRealm.self).first!.SessionString
+            print("请求工程数据")
+            let workingGroup = DispatchGroup()
+            let workingQueue = DispatchQueue(label: "request_AutoLogin")
+            
+            workingGroup.enter() // 开始
+            workingQueue.async {
+                    let sema = DispatchSemaphore(value: 0)
+                    self.getProjects(sema: sema)
+                    sema.wait() // 等待任务结束, 否则一直阻塞
+                workingGroup.leave() // 结束
+            }
+            workingGroup.notify(queue: DispatchQueue.main) {
+                // 全部调用完成后回到主线程,更新UI
+                //更新Session有效期
+                UpdateSessionAccessTime()
+                let now = Date()
+                // 创建一个日期格式器
+                let dformatter = DateFormatter()
+                dformatter.dateFormat = "yyyy年MM月dd日 HH:mm:ss"
+                currentTime = dformatter.string(from: now)
+                print("当前日期时间：\(dformatter.string(from: now))")
+                self.performSegue(withIdentifier: "LoginToTabBar", sender: nil)
+            }
+        }
     }
     @IBAction func changeDisplayStatus(_ sender: UIButton) {
         print("之前：\(plaintTextDisplay.isSelected)")
@@ -57,15 +86,28 @@ class LoginVC: UIViewController {
         let userAccountReaml =  UserAccountReaml()
         userAccountReaml.account = Username!
         userAccountReaml.password = Password!
+        userAccountReaml.LoginStatues = "true"
         guard realm.objects(UserAccountReaml.self).filter("account = %@", Username!).count == 0 else {
-            print("用户信息已存在")
+            print("用户信息已存在,只需更改用户状态")
+            do{
+                print("LoginStatues",realm.objects(UserAccountReaml.self).first?.LoginStatues)
+                try realm.write {
+                    realm.objects(UserAccountReaml.self).first?.LoginStatues = "true"
+                }
+                print("LoginStatues",realm.objects(UserAccountReaml.self).first?.LoginStatues)
+            }catch{
+                print(error)
+            }
+            
             return
         }
         do{
             print("正在添加用户信息")
+            print("LoginStatues",realm.objects(UserAccountReaml.self).first?.LoginStatues)
             try realm.write {
                 realm.add(userAccountReaml)
             }
+            print("LoginStatues",realm.objects(UserAccountReaml.self).first?.LoginStatues)
         }catch{
             print(error)
         }
@@ -110,6 +152,8 @@ class LoginVC: UIViewController {
             }
             //登录成功表明账号密码可行可以存储
             self.saveRealmDatebase()
+            //更新Session有效期
+            UpdateSessionAccessTime()
             let now = Date()
             // 创建一个日期格式器
             let dformatter = DateFormatter()

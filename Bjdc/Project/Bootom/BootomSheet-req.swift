@@ -24,7 +24,8 @@ extension BootomSheetVC{
                         case .success(let value):
                             let getProjectsMessage = JSON(value)
                             if getProjectsMessage["ResponseCode"] == "200" {
-                                
+                                //更新Session有效期
+                                UpdateSessionAccessTime()
                                 self.view.showSuccess("成功更新工程数据")
                                 print("获取数据")
                                 self.ProjectDateState = true
@@ -117,6 +118,8 @@ extension BootomSheetVC{
                             let GraphicData = JSON(value)
                             if GraphicData["ResponseCode"] == "200" {
                                 //操作成功
+                                //更新Session有效期
+                                UpdateSessionAccessTime()
                                 ChartData = GraphicData
                                 self.tabBarController?.selectedIndex = 1
                             }else if GraphicData["ResponseCode"] == "400"{

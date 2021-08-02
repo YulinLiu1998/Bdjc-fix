@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		10C1944126AE867E00FB98D2 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 10C1944026AE867E00FB98D2 /* README.md */; };
+		10C1944926AEA90200FB98D2 /* ReqFunc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C1944826AEA90200FB98D2 /* ReqFunc.swift */; };
 		92A3667A81D09DEFB033DDE3 /* Pods_Bjdc.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF3D1D0F157C649DFF777056 /* Pods_Bjdc.framework */; };
 		FF5EC81926A6E123002B2D81 /* UserConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5EC81826A6E123002B2D81 /* UserConfig.swift */; };
 		FF803ADD26674E65005B9ED7 /* MeVC-req.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF803ADC26674E65005B9ED7 /* MeVC-req.swift */; };
@@ -19,7 +21,6 @@
 		FF968B86266A24A9009D9404 /* BootomSheetVC-initProject.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF968B85266A24A9009D9404 /* BootomSheetVC-initProject.swift */; };
 		FF968B88266A3391009D9404 /* BootomSheet-btn.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF968B87266A3391009D9404 /* BootomSheet-btn.swift */; };
 		FF968B8A266A3623009D9404 /* BootomSheet-TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF968B89266A3623009D9404 /* BootomSheet-TableView.swift */; };
-		FF97EF6F2663A9C000C09CEA /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = FF97EF6E2663A9BF00C09CEA /* .gitignore */; };
 		FFA4B61F266CEA8A0000C995 /* CustomCalloutViewSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA4B61E266CEA8A0000C995 /* CustomCalloutViewSwift.swift */; };
 		FFA4B621266CEB4C0000C995 /* AnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA4B620266CEB4C0000C995 /* AnnotationView.swift */; };
 		FFA4B623266D045D0000C995 /* pointAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA4B622266D045D0000C995 /* pointAnnotationView.swift */; };
@@ -63,6 +64,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		10C1944026AE867E00FB98D2 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		10C1944826AEA90200FB98D2 /* ReqFunc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReqFunc.swift; sourceTree = "<group>"; };
 		4E7B6E7F5DBED1D35E7B693B /* Pods-Bjdc.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bjdc.release.xcconfig"; path = "Pods/Target Support Files/Pods-Bjdc/Pods-Bjdc.release.xcconfig"; sourceTree = "<group>"; };
 		65E241DCC05B5599C5A44CCD /* Pods-Bjdc.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bjdc.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Bjdc/Pods-Bjdc.debug.xcconfig"; sourceTree = "<group>"; };
 		FF3D1D0F157C649DFF777056 /* Pods_Bjdc.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Bjdc.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -79,7 +82,6 @@
 		FF968B85266A24A9009D9404 /* BootomSheetVC-initProject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BootomSheetVC-initProject.swift"; sourceTree = "<group>"; };
 		FF968B87266A3391009D9404 /* BootomSheet-btn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BootomSheet-btn.swift"; sourceTree = "<group>"; };
 		FF968B89266A3623009D9404 /* BootomSheet-TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BootomSheet-TableView.swift"; sourceTree = "<group>"; };
-		FF97EF6E2663A9BF00C09CEA /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		FFA4B61E266CEA8A0000C995 /* CustomCalloutViewSwift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCalloutViewSwift.swift; sourceTree = "<group>"; };
 		FFA4B620266CEB4C0000C995 /* AnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnotationView.swift; sourceTree = "<group>"; };
 		FFA4B622266D045D0000C995 /* pointAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = pointAnnotationView.swift; sourceTree = "<group>"; };
@@ -138,6 +140,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		10C1944C26AEB1A800FB98D2 /* Configer */ = {
+			isa = PBXGroup;
+			children = (
+				FFDCEC15265CC59E006A306B /* Constant.swift */,
+				FF9062ED2665FB1F00331DDF /* Constant-req.swift */,
+				10C1944826AEA90200FB98D2 /* ReqFunc.swift */,
+				FF5EC81826A6E123002B2D81 /* UserConfig.swift */,
+			);
+			name = Configer;
+			sourceTree = "<group>";
+		};
 		94AE6387D14F96D678D71D70 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -224,7 +237,7 @@
 		FFDCEBE4265CB3C5006A306B = {
 			isa = PBXGroup;
 			children = (
-				FF97EF6E2663A9BF00C09CEA /* .gitignore */,
+				10C1944026AE867E00FB98D2 /* README.md */,
 				FFDCEBEF265CB3C5006A306B /* Bjdc */,
 				FFDCEBEE265CB3C5006A306B /* Products */,
 				94AE6387D14F96D678D71D70 /* Pods */,
@@ -247,8 +260,7 @@
 				FFDCEBF2265CB3C6006A306B /* SceneDelegate.swift */,
 				FFDCEBF4265CB3C6006A306B /* ViewController.swift */,
 				FFDCEBF6265CB3C6006A306B /* Main.storyboard */,
-				FFDCEC15265CC59E006A306B /* Constant.swift */,
-				FF9062ED2665FB1F00331DDF /* Constant-req.swift */,
+				10C1944C26AEB1A800FB98D2 /* Configer */,
 				FFDCEC10265CBF3C006A306B /* Data */,
 				FFDCEC0D265CBC68006A306B /* Project */,
 				FFDCEC09265CBB96006A306B /* Login */,
@@ -270,7 +282,6 @@
 				FFD34FE12664BA8F00EF0ED2 /* LoginVC-accessToken.swift */,
 				FF9062EF26660FCC00331DDF /* threeDES.swift */,
 				FF9062F1266613D800331DDF /* md5.swift */,
-				FF5EC81826A6E123002B2D81 /* UserConfig.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -368,8 +379,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				10C1944126AE867E00FB98D2 /* README.md in Resources */,
 				FFD9F7472696DE5000D57BF4 /* AlertView.xib in Resources */,
-				FF97EF6F2663A9C000C09CEA /* .gitignore in Resources */,
 				FFDCEC00265CB3C9006A306B /* LaunchScreen.storyboard in Resources */,
 				FFDCEBFD265CB3C9006A306B /* Assets.xcassets in Resources */,
 				FFDCEBF8265CB3C6006A306B /* Main.storyboard in Resources */,
@@ -450,6 +461,7 @@
 				FFA4B66D2670DD110000C995 /* Heart.swift in Sources */,
 				FFA4B61F266CEA8A0000C995 /* CustomCalloutViewSwift.swift in Sources */,
 				FFDCEBF5265CB3C6006A306B /* ViewController.swift in Sources */,
+				10C1944926AEA90200FB98D2 /* ReqFunc.swift in Sources */,
 				FFDCEC21265D0ED1006A306B /* DateTableDropdownMenu.swift in Sources */,
 				FFDCEC12265CC007006A306B /* DateTableViewCell.swift in Sources */,
 				FFDCEBF1265CB3C6006A306B /* AppDelegate.swift in Sources */,
@@ -637,15 +649,16 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = YHK66637G9;
+				DEVELOPMENT_TEAM = U6N53BG576;
 				INFOPLIST_FILE = Bjdc/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = BjutSoftware806Bjdc.Bjdc;
+				PRODUCT_BUNDLE_IDENTIFIER = Lyl19980305Bjdc.Bjdc;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "/Users/xuyu/Desktop/806/Bjdc/Bjdc/Bdjc-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "/Users/mbp/Desktop/806/Bjdc/Bjdc/Bdjc-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -658,15 +671,16 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = YHK66637G9;
+				DEVELOPMENT_TEAM = U6N53BG576;
 				INFOPLIST_FILE = Bjdc/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = BjutSoftware806Bjdc.Bjdc;
+				PRODUCT_BUNDLE_IDENTIFIER = Lyl19980305Bjdc.Bjdc;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "/Users/xuyu/Desktop/806/Bjdc/Bjdc/Bdjc-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "/Users/mbp/Desktop/806/Bjdc/Bjdc/Bdjc-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
