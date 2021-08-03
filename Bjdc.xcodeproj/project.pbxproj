@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		106B69CA26B92F7100487AF0 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106B69C926B92F7000487AF0 /* TabBarController.swift */; };
 		10C1944126AE867E00FB98D2 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 10C1944026AE867E00FB98D2 /* README.md */; };
 		10C1944926AEA90200FB98D2 /* ReqFunc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C1944826AEA90200FB98D2 /* ReqFunc.swift */; };
 		92A3667A81D09DEFB033DDE3 /* Pods_Bjdc.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF3D1D0F157C649DFF777056 /* Pods_Bjdc.framework */; };
@@ -64,6 +65,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		106B69C926B92F7000487AF0 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		10C1944026AE867E00FB98D2 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		10C1944826AEA90200FB98D2 /* ReqFunc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReqFunc.swift; sourceTree = "<group>"; };
 		4E7B6E7F5DBED1D35E7B693B /* Pods-Bjdc.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bjdc.release.xcconfig"; path = "Pods/Target Support Files/Pods-Bjdc/Pods-Bjdc.release.xcconfig"; sourceTree = "<group>"; };
@@ -260,6 +262,7 @@
 				FFDCEBF2265CB3C6006A306B /* SceneDelegate.swift */,
 				FFDCEBF4265CB3C6006A306B /* ViewController.swift */,
 				FFDCEBF6265CB3C6006A306B /* Main.storyboard */,
+				106B69C926B92F7000487AF0 /* TabBarController.swift */,
 				10C1944C26AEB1A800FB98D2 /* Configer */,
 				FFDCEC10265CBF3C006A306B /* Data */,
 				FFDCEC0D265CBC68006A306B /* Project */,
@@ -488,6 +491,7 @@
 				FFDCEC1A265CCA60006A306B /* LMJDropdownMenu.m in Sources */,
 				FFA4B62F266F10600000C995 /* dropdownDate.swift in Sources */,
 				FFA4B6672670D5270000C995 /* GNSSFilterInfoH.swift in Sources */,
+				106B69CA26B92F7100487AF0 /* TabBarController.swift in Sources */,
 				FFDCEC23265D1089006A306B /* Demoable.swift in Sources */,
 				FFDCEC1F265D0AAF006A306B /* BootomSheetDropdownMenu.swift in Sources */,
 				FF9062EE2665FB1F00331DDF /* Constant-req.swift in Sources */,

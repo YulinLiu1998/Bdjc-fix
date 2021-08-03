@@ -173,7 +173,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="7bZ-n1-iHv">
             <objects>
-                <tabBarController storyboardIdentifier="TabBarCID" modalPresentationStyle="fullScreen" id="drh-VH-2nL" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="TabBarCID" modalPresentationStyle="fullScreen" id="drh-VH-2nL" customClass="TabBarController" customModule="Bjdc" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="jVf-T3-Xm0"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="ZS2-y5-5NO">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
@@ -201,7 +201,7 @@
                         <viewLayoutGuide key="safeArea" id="ruC-ok-vTd"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <tabBarItem key="tabBarItem" enabled="NO" title="预警" image="exclamationmark.circle" catalog="system" id="4Go-s2-kwg"/>
+                    <tabBarItem key="tabBarItem" tag="2" enabled="NO" title="预警" image="exclamationmark.circle" catalog="system" id="4Go-s2-kwg"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0gy-0c-9v0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -772,7 +772,7 @@
         <scene sceneID="pj1-Ck-o2E">
             <objects>
                 <navigationController storyboardIdentifier="UINavigationController-I9R-Sd-Ynb" automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="PX9-aS-q5z" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="数据" image="chart.bar" catalog="system" id="equ-Qf-PwL"/>
+                    <tabBarItem key="tabBarItem" tag="1" title="数据" image="chart.bar" catalog="system" id="equ-Qf-PwL"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="mZv-eO-jeE">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
@@ -1844,7 +1844,7 @@
         <scene sceneID="1jT-TN-dxc">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" navigationBarHidden="YES" id="vfd-tI-2MB" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="我的" image="person" catalog="system" id="wkk-Hk-0l4"/>
+                    <tabBarItem key="tabBarItem" tag="3" title="我的" image="person" catalog="system" id="wkk-Hk-0l4"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="aFi-nd-TIF">
                         <rect key="frame" x="0.0" y="-54" width="0.0" height="0.0"/>

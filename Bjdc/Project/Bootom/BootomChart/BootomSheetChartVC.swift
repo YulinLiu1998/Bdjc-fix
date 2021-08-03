@@ -83,8 +83,6 @@ class BootomSheetChartVC: UIViewController,UIScrollViewDelegate {
     var startCenter = CGPoint.zero
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-       
         //初始化站点名称下拉菜单
         dropdownName()
         //初始化日期选择下拉菜单
@@ -93,10 +91,9 @@ class BootomSheetChartVC: UIViewController,UIScrollViewDelegate {
         chartTitle.text = currentDrodownTitle
         //初始化图表
         initViewCharts()
-       
-
-       
+        
     }
+   
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView)
     {
         if  abs(scrollView.panGestureRecognizer.velocity(in: chartView1).y) > 200 {
@@ -150,7 +147,19 @@ class BootomSheetChartVC: UIViewController,UIScrollViewDelegate {
         //显示图表
         showCharts()
         self.navigationController?.isNavigationBarHidden = true
+        NotificationCenter.default.addObserver(self, selector: #selector(observeTabBarSecondItem), name: Notification.Name(rawValue: "ObserveTabBarSecondItem") , object: nil)
     }
+    @objc func observeTabBarSecondItem(){
+        print("正在监听第二个item")
+        if tabBarController!.selectedIndex == 1{
+            print("当前为选中页面")
+            TabBarJump = false
+        }
+    }
+    override func didReceiveMemoryWarning() {
+         //移除通知
+         NotificationCenter.default.removeObserver(self)
+     }
     override func viewDidDisappear(_ animated: Bool) {
         self.navigationController?.isNavigationBarHidden = false
     }
@@ -160,16 +169,14 @@ class BootomSheetChartVC: UIViewController,UIScrollViewDelegate {
     
 
     @IBAction func backEvent(_ sender: Any) {
+        
         if TabBarJump{
-            
             self.tabBarController?.selectedIndex = 0
             self.navigationController?.popViewController(animated: false)
             TabBarJump = false
         }else{
             self.navigationController?.popViewController(animated: true)
         }
-        
-        
     }
     
     @IBAction func exportFile(_ sender: Any) {
@@ -272,7 +279,6 @@ class BootomSheetChartVC: UIViewController,UIScrollViewDelegate {
         chartView5.setScaleMinima(1, scaleY: chartView5.scaleY)
         chartView6.setScaleMinima(1, scaleY: chartView6.scaleY)
     }
-    
 }
 extension BootomSheetChartVC {
     //持续型手势-持续调用这个函数

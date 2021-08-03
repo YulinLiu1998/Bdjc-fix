@@ -22,10 +22,12 @@ class DateTableVC: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableFlage = true
-        dropdownMenuDateTable()
+        //dropdownMenuDateTable()
     }
     override func viewWillAppear(_ animated: Bool) {
+        dropdownMenuDateTable()
         if TabBarJump {
+            
             let vc =  self.storyboard?.instantiateViewController(withIdentifier: "BootomSheetChart") as! BootomSheetChartVC
             self.navigationController?.pushViewController(vc, animated: false)
         }else {
