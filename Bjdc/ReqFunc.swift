@@ -10,6 +10,7 @@ import Alamofire
 import SwiftyJSON
 import RealmSwift
 import SwiftDate
+//Token定时器
 func accessTokenTimer(){
 
     let parameters = ["GrantType":"BDJC",
@@ -62,34 +63,38 @@ func accessTokenTimer(){
                 
               
 }
+//更新Session有效期
 func UpdateSessionAccessTime(){
     //realm.objects(SessionRealm.self)
     do{
         print("更新Session有效期")
         let date = Date()
-        print("session",realm.objects(SessionRealm.self).first?.SessionAccessTime)
         try realm.write {
             realm.objects(SessionRealm.self).first?.SessionAccessTime =  date + 1.hours
         }
-        print("session",realm.objects(SessionRealm.self).first?.SessionAccessTime)
     }catch{
         print(error)
     }
 }
+//使数据库中Session过期
 func DestorySessionAccessTime(){
     //realm.objects(SessionRealm.self)
     do{
-        print("使Session过期")
-        print("session",realm.objects(SessionRealm.self).first?.SessionAccessTime)
-        print("LoginStatues",realm.objects(UserAccountReaml.self).first?.LoginStatues)
+        print("使数据库中Session过期")
+        //SessionInvalid = true
         let date = Date()
         try realm.write {
             realm.objects(SessionRealm.self).first?.SessionAccessTime = date - 1.hours
             realm.objects(UserAccountReaml.self).first?.LoginStatues = "false"
         }
-        print("session",realm.objects(SessionRealm.self).first?.SessionAccessTime)
-        print("LoginStatues",realm.objects(UserAccountReaml.self).first?.LoginStatues)
     }catch{
         print(error)
     }
+}
+
+func RedirectApp(VC:UIViewController){
+    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+    let vc = storyboard.instantiateViewController(identifier: "LoginVCID") as! LoginVC
+    VC.present(vc, animated: true, completion: nil)
+    DestorySessionAccessTime()
 }

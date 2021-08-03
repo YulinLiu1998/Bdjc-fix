@@ -42,6 +42,9 @@ extension DateTableVC{
                                 print("\(GraphicData["ResponseMsg"])")
                                
                             }else{
+                                if GraphicData["ResponseCode"] == "400110"{
+                                    RedirectApp(VC: self)
+                                }
                                 print("\(GraphicData["ResponseCode"])")
                                 print("\(GraphicData["ResponseMsg"])")
                           

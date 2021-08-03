@@ -140,6 +140,7 @@ extension LoginVC{
                         case .success(let value):
                             let loginMessage = JSON(value)
                             LoginMessage = loginMessage["ResponseMsg"].stringValue
+                            LoginCode = loginMessage["ResponseCode"].stringValue
                             print("loginMessage",loginMessage)
                             if loginMessage["ResponseCode"] == "200" {
                                 //成功
@@ -184,7 +185,10 @@ extension LoginVC{
                     switch response.result {
                         case .success(let value):
                             let getProjectsMessage = JSON(value)
+                            AskProjectsMessage = getProjectsMessage["ResponseMsg"].stringValue
+                            AskProjectsCode = getProjectsMessage["ResponseCode"].stringValue
                             if getProjectsMessage["ResponseCode"] == "200" {
+                                AskProjectState = true
                                 //获取项目列表
                                 ProjectList = getProjectsMessage["ProjectList"]
                                 //获取项目总数
@@ -251,17 +255,21 @@ extension LoginVC{
                                 sema.signal()
                             }else if getProjectsMessage["ResponseCode"] == "400"{
                                 //若输入的密码格式错误，则返回400错误码，错误信息为“请输入正确的账号密码
+                                AskProjectState = false
                                 print("400")
                                 print(getProjectsMessage["ResponseMsg"],getProjectsMessage["ResponseCode"])
                                 sema.signal()
                             }else{
                                 //其他错误
+                                AskProjectState = false
                                 print("其他错误getProjects")
                                 print(getProjectsMessage["ResponseCode"])
                                 print(getProjectsMessage["ResponseMsg"])
                                 sema.signal()
                             }
                         case .failure(let error):
+                            AskProjectState = false
+                            AskProjectsMessage = "网络链接存在问题，无法登陆！"
                             print(error)
                             sema.signal()
                         }

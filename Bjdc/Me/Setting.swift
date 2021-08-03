@@ -31,7 +31,7 @@ class Setting: UIViewController {
         
         
         doLogout()
-        DestorySessionAccessTime()
+        //DestorySessionAccessTime()
         //返回登陆页面的方法1
         //let vc = storyboard?.instantiateViewController(identifier: "LoginVCID") as! LoginVC
         // vc.hidesBottomBarWhenPushed = true

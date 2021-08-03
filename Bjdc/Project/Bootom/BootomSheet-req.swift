@@ -83,6 +83,10 @@ extension BootomSheetVC{
                                 self.ProjectDateStr = getProjectsMessage["ResponseMsg"].stringValue
                             }else{
                                 //其他错误
+                                if getProjectsMessage["ResponseCode"] == "400110"{
+                                    RedirectApp(VC: self)
+                                }
+                                    
                                 print("其他错误")
                                 self.ProjectDateStr = getProjectsMessage["ResponseMsg"].stringValue
                             }
@@ -130,6 +134,9 @@ extension BootomSheetVC{
                                
                             }else{
                                 self.view.showError(GraphicData["ResponseCode"].stringValue)
+                                if GraphicData["ResponseCode"] == "400110"{
+                                    RedirectApp(VC: self)
+                                }
                                 print("\(GraphicData["ResponseCode"])")
                                 print("\(GraphicData["ResponseMsg"])")
                             }

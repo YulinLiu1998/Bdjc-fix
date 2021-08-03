@@ -30,7 +30,11 @@ extension Setting{
                                 projectTitles = [String]()
                                 print(logoutMessage["ResponseMsg"],logoutMessage["ResponseCode"])
                                 print("SessionUUID",SessionUUID)
-                                self.dismiss(animated: true, completion: nil)
+                                RedirectApp(VC: self)
+//                                let vc = self.storyboard?.instantiateViewController(identifier: "LoginVCID") as! LoginVC
+//                                self.present(vc, animated: true, completion: nil)
+                                
+                                //self.dismiss(animated: true, completion: nil)
                             }else if logoutMessage["ResponseCode"] == "400"{
                                 //操作失败/参数非法
                                 self.WarningAlert(alertContent: logoutMessage["ResponseMsg"].stringValue)

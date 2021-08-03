@@ -90,24 +90,19 @@ class LoginVC: UIViewController {
         guard realm.objects(UserAccountReaml.self).filter("account = %@", Username!).count == 0 else {
             print("用户信息已存在,只需更改用户状态")
             do{
-                print("LoginStatues",realm.objects(UserAccountReaml.self).first?.LoginStatues)
                 try realm.write {
                     realm.objects(UserAccountReaml.self).first?.LoginStatues = "true"
                 }
-                print("LoginStatues",realm.objects(UserAccountReaml.self).first?.LoginStatues)
             }catch{
                 print(error)
             }
-            
             return
         }
         do{
             print("正在添加用户信息")
-            print("LoginStatues",realm.objects(UserAccountReaml.self).first?.LoginStatues)
             try realm.write {
                 realm.add(userAccountReaml)
             }
-            print("LoginStatues",realm.objects(UserAccountReaml.self).first?.LoginStatues)
         }catch{
             print(error)
         }
@@ -146,8 +141,26 @@ class LoginVC: UIViewController {
         }
         workingGroup.notify(queue: DispatchQueue.main) {
             // 全部调用完成后回到主线程,更新UI
+            //登录错误处理
             guard LoginState else {
-                self.view.showError(LoginMessage!)
+                if LoginCode == "400110" {
+                    LoginMessage = "访问错误，请重新登录"
+                    self.view.showError(LoginMessage!)
+                    RedirectApp(VC: self)
+                }else{
+                    self.view.showError(LoginMessage!)
+                }
+                return
+            }
+            //请求数据错误处理
+            guard AskProjectState else {
+                if AskProjectsCode == "400110" {
+                    AskProjectsMessage = "访问错误，请重新登录"
+                    self.view.showError(AskProjectsMessage!)
+                    RedirectApp(VC: self)
+                }else{
+                    self.view.showError(AskProjectsMessage!)
+                }
                 return
             }
             //登录成功表明账号密码可行可以存储

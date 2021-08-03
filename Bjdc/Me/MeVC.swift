@@ -12,6 +12,9 @@ class MeVC: UIViewController {
     @IBOutlet weak var UserName: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
+        if Username == nil {
+            Username = realm.objects(UserAccountReaml.self).first?.account
+        }
         UserName.text = Username
     }
     

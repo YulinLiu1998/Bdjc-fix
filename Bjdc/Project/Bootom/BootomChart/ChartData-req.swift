@@ -105,6 +105,9 @@ extension BootomSheetChartVC:UIDocumentInteractionControllerDelegate{
                                     print("\(GraphicData["ResponseCode"])")
                                     print("\(GraphicData["ResponseMsg"])")
                                 }else{
+                                    if GraphicData["ResponseCode"] == "400110"{
+                                        RedirectApp(VC: self)
+                                    }
                                     print("\(GraphicData["ResponseCode"])")
                                     print("\(GraphicData["ResponseMsg"])")
                                 }
@@ -147,11 +150,15 @@ extension BootomSheetChartVC:UIDocumentInteractionControllerDelegate{
                                 //操作失败/参数非法
                                 print("\(StationReportMessage["ResponseMsg"])")
                             }else{
+                                if StationReportMessage["ResponseCode"] == "400110"{
+                                    RedirectApp(VC: self)
+                                }
                                 print("\(StationReportMessage["ResponseCode"])")
                                 print("\(StationReportMessage["ResponseMsg"])")
                             }
                         case .failure(let error):
                             print(error)
+                            self.view.showError("下载失败请重试！")
                         }
                    })
     }
@@ -163,23 +170,22 @@ extension BootomSheetChartVC:UIDocumentInteractionControllerDelegate{
             switch response.result {
             
                 case .success(let value):
-                    //更新Session有效期
-                    print("下载成功")
-                    UpdateSessionAccessTime()
-                let alert = UIAlertController(title: "提示", message: "您要打开文件吗？", preferredStyle: .alert)
-                let action1 = UIAlertAction(title: "取消", style: .cancel)
-                let action2 = UIAlertAction(title: "确认", style: .default) { _ in
+                  
+                    let alert = UIAlertController(title: "提示", message: "您要打开文件吗？", preferredStyle: .alert)
+                    let action1 = UIAlertAction(title: "取消", style: .cancel)
+                    let action2 = UIAlertAction(title: "确认", style: .default) { _ in
                     let documentController = UIDocumentInteractionController(url:value!.absoluteURL)
                     documentController.delegate = self
                     //documentController.presentPreview(animated: true)
                     documentController.presentOpenInMenu(from: self.exportBtn.frame, in: self.view, animated: true)
                     print("打开文件")
-                }
-                alert.addAction(action1)
-                alert.addAction(action2)
-                self.present(alert,animated: true)
+                    }
+                    alert.addAction(action1)
+                    alert.addAction(action2)
+                    self.present(alert,animated: true)
                 case .failure(let error):
                     print(error)
+                    self.view.showError("下载失败请重试！")
             }
         }
     }

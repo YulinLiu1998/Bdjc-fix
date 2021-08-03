@@ -14,6 +14,11 @@ let realm = try! Realm()
 //登陆
 var LoginState = false
 var LoginMessage:String?
+var LoginCode:String?
+var AskProjectState = false
+var AskProjectsMessage:String?
+var AskProjectsCode:String?
+
 var btnTag:Int?
 var TabBarJump = false
 var alertView: AlertView?
