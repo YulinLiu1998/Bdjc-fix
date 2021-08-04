@@ -18,7 +18,11 @@ class MeVC: UIViewController {
         UserName.text = Username
     }
     
-
+    @IBAction func toInfo(_ sender: Any) {
+        let vc = storyboard?.instantiateViewController(identifier: "PersonalInfoVC") as! PersonalInfo
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
     /*
     // MARK: - Navigation
 

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		106B69CA26B92F7100487AF0 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106B69C926B92F7000487AF0 /* TabBarController.swift */; };
+		106B69CC26BA35E300487AF0 /* PersonalInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106B69CB26BA35E300487AF0 /* PersonalInfo.swift */; };
 		10C1944126AE867E00FB98D2 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 10C1944026AE867E00FB98D2 /* README.md */; };
 		10C1944926AEA90200FB98D2 /* ReqFunc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C1944826AEA90200FB98D2 /* ReqFunc.swift */; };
 		92A3667A81D09DEFB033DDE3 /* Pods_Bjdc.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF3D1D0F157C649DFF777056 /* Pods_Bjdc.framework */; };
@@ -66,6 +67,7 @@
 
 /* Begin PBXFileReference section */
 		106B69C926B92F7000487AF0 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		106B69CB26BA35E300487AF0 /* PersonalInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalInfo.swift; sourceTree = "<group>"; };
 		10C1944026AE867E00FB98D2 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		10C1944826AEA90200FB98D2 /* ReqFunc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReqFunc.swift; sourceTree = "<group>"; };
 		4E7B6E7F5DBED1D35E7B693B /* Pods-Bjdc.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bjdc.release.xcconfig"; path = "Pods/Target Support Files/Pods-Bjdc/Pods-Bjdc.release.xcconfig"; sourceTree = "<group>"; };
@@ -229,6 +231,7 @@
 			children = (
 				FFA85899265DDF120067CA7D /* MeVC.swift */,
 				FF803ADC26674E65005B9ED7 /* MeVC-req.swift */,
+				106B69CB26BA35E300487AF0 /* PersonalInfo.swift */,
 				FFA8589C265DDFAD0067CA7D /* Setting.swift */,
 				FFA8589E265DE02C0067CA7D /* AccountSecurityVC.swift */,
 				FFA858A2265DE0D10067CA7D /* ChangePasswordVC.swift */,
@@ -495,6 +498,7 @@
 				FFDCEC23265D1089006A306B /* Demoable.swift in Sources */,
 				FFDCEC1F265D0AAF006A306B /* BootomSheetDropdownMenu.swift in Sources */,
 				FF9062EE2665FB1F00331DDF /* Constant-req.swift in Sources */,
+				106B69CC26BA35E300487AF0 /* PersonalInfo.swift in Sources */,
 				FFA4B623266D045D0000C995 /* pointAnnotationView.swift in Sources */,
 				FF5EC81926A6E123002B2D81 /* UserConfig.swift in Sources */,
 				FFA8589D265DDFAD0067CA7D /* Setting.swift in Sources */,

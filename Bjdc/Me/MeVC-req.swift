@@ -31,10 +31,6 @@ extension Setting{
                                 print(logoutMessage["ResponseMsg"],logoutMessage["ResponseCode"])
                                 print("SessionUUID",SessionUUID)
                                 RedirectApp(VC: self)
-//                                let vc = self.storyboard?.instantiateViewController(identifier: "LoginVCID") as! LoginVC
-//                                self.present(vc, animated: true, completion: nil)
-                                
-                                //self.dismiss(animated: true, completion: nil)
                             }else if logoutMessage["ResponseCode"] == "400"{
                                 //操作失败/参数非法
                                 self.WarningAlert(alertContent: logoutMessage["ResponseMsg"].stringValue)
@@ -42,6 +38,9 @@ extension Setting{
                             }else{
                                 //其他错误
                                 self.WarningAlert(alertContent: logoutMessage["ResponseMsg"].stringValue)
+                                if logoutMessage["ResponseCode"] == "400110"{
+                                    RedirectApp(VC: self)
+                                }
                                 print("其他错误")
                                 print(logoutMessage["ResponseCode"])
                                 print(logoutMessage["ResponseMsg"])
@@ -97,6 +96,9 @@ extension ChangePasswordVC{
                             }else{
                                 //其他错误
                                 self.view.showError(setPasswordMessage["ResponseMsg"].stringValue)
+                                if setPasswordMessage["ResponseCode"] == "400110"{
+                                    RedirectApp(VC: self)
+                                }
                                 print("其他错误")
                                 print(setPasswordMessage["ResponseCode"])
                                 print(setPasswordMessage["ResponseMsg"])
@@ -107,5 +109,43 @@ extension ChangePasswordVC{
                         }
                    })
         
+    }
+}
+extension PersonalInfo{
+    func getUserInformation(sema: DispatchSemaphore){
+                     
+        let parameters = ["AccessToken":AccessToken,
+                          "SessionUUID":SessionUUID
+        ]
+        
+        AF.request("\(networkInterface)getUserInformation.php",
+                   method: HTTPMethod.post,
+                   parameters: parameters,
+                   encoder: JSONParameterEncoder.default).responseJSON(completionHandler: { [self] response in
+                    switch response.result {
+                        case .success(let value):
+                            let UserInformation = JSON(value)
+                            InfoMessage = UserInformation["ResponseMsg"].stringValue
+                            InfoCode = UserInformation["ResponseCode"].stringValue
+                            if UserInformation["ResponseCode"] == "200" {
+                                //成功
+                                print(UserInformation["ResponseMsg"],UserInformation["ResponseCode"])
+                                //print(UserInformation["UserList"])
+                                self.UserList = UserInformation["UserList"]
+                                sema.signal()
+                            }else if UserInformation["ResponseCode"] == "400"{
+                                //操作失败/参数非法
+                                sema.signal()
+                            }else{
+                                //其他错误
+                               
+                                sema.signal()
+                            }
+                        case .failure(let error):
+                            InfoMessage = "网络请求错误！"
+                            print(error)
+                        }
+                   })
+                    
     }
 }
