@@ -6,7 +6,7 @@
 //
 
 import Foundation
-
+import RealmSwift
 
 extension DateTableVC{
     func dropdownMenuDateTable() {
@@ -46,6 +46,7 @@ extension DateTableVC{
         navMenu?.optionLineColor = .systemBackground
         navMenu?.optionIconSize = CGSize(width: 15, height: 15)
         self.navigationController?.navigationBar.addSubview(navMenu!)
+        //HeaderView?.addSubview(navMenu!)
     }
 }
 
@@ -73,6 +74,9 @@ extension DateTableVC:LMJDropdownMenuDelegate,LMJDropdownMenuDataSource{
         currentTitle = title
         //MARK: -当前工程索引
         CurrentProject = Int(index)
+        try? realm.write {
+            realm.objects(ProjectSelectedTag.self).first?.ProjectSelectedTagIndex = CurrentProject!
+        }
         //MARK: -标题
         currentTitle = title
         tableView.reloadData()

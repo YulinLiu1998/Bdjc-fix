@@ -44,7 +44,6 @@ class PersonalInfo: UIViewController {
                 }
                 return
             }
-            print("4")
             self.updateInfo()
         }
         

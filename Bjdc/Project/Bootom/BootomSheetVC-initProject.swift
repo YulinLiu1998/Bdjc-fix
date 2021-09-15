@@ -11,13 +11,13 @@ extension BootomSheetVC{
     func initProjectDisplay(){
         //MARK: -初始化
         //设置当前工程项目索引
-        CurrentProject = 0
+        //CurrentProject = 0
         //设置当前选中状态
         CurrentSelectedStatus = "Total"
         //设置当前选中状态的显示行数
         tableRows = Int(pssTotal[CurrentProject!])!
         //监测点总数
-        stationNums.text = pssTotal[0]
+        stationNums.text = pssTotal[CurrentProject!]
         //更新时间
         updateTime.text = currentTime
         //btn 操作

@@ -14,7 +14,7 @@ class DateTableVC: UITableViewController {
     var navMenu:LMJDropdownMenu?
     var btnTag:Int?
     var currentTitle: String?
-    
+    var HeaderView:UIView?
     var tableRows:Int?
     var Cell: DateTableViewCell?
     
@@ -22,19 +22,24 @@ class DateTableVC: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableFlage = true
-        //dropdownMenuDateTable()
-    }
-    override func viewWillAppear(_ animated: Bool) {
+        let frame =  CGRect(x: 0, y: 0, width: self.view.bounds.size.width, height: 44)
+        HeaderView = UIView(frame: frame)
         dropdownMenuDateTable()
+        navigationController?.navigationBar.isHidden = false
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
         if TabBarJump {
             
             let vc =  self.storyboard?.instantiateViewController(withIdentifier: "BootomSheetChart") as! BootomSheetChartVC
             self.navigationController?.pushViewController(vc, animated: false)
         }else {
-            if tableFlage {
-                NavMenu?.title = projectTitles[CurrentProject!]
-                tableView.reloadData()
-            }
+//            if tableFlage {
+//                NavMenu?.title = projectTitles[CurrentProject!]
+//                tableView.reloadData()
+//            }
+            NavMenu?.title = projectTitles[CurrentProject!]
+            tableView.reloadData()
         }
         if  pssTotal[CurrentProject!] != "" && pssTotal[CurrentProject!] != "0" {
             footerLabel.text = "当前工程站点信息已显示完全"
@@ -60,9 +65,6 @@ class DateTableVC: UITableViewController {
         DayTimeInterval()
         CurrentTimeInterval = 3
         TimeIntervalKind[CurrentTimeInterval!] = TimeInterval_day
-        DispatchQueue.main.async {
-            self.showTextHUD("正在加载")
-        }
         self.getGraphicData()
     }
     func DayTimeInterval(){
@@ -128,8 +130,12 @@ class DateTableVC: UITableViewController {
         return cell
     }
     
-
-
+//    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+//
+//
+//        return HeaderView
+//    }
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation

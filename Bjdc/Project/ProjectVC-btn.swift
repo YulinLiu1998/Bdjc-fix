@@ -54,7 +54,6 @@ extension ProjectVC{
         ret.layer.cornerRadius = 4
         ret.setTitle("标准", for: .normal)
         ret.addTarget(self, action: #selector(self.gpsAction), for: UIControl.Event.touchUpInside)
-        
         return ret
     }
     //初始化地图页面

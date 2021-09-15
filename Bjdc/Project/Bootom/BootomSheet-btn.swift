@@ -11,7 +11,9 @@ extension BootomSheetVC{
         guard ProjectDateState else {
             if ProjectDateStr == nil { ProjectDateStr = "您的网络已断开！" }
             self.view.showErrorDetail("获取数据失败", ProjectDateStr!)
-            ProjectDateState = false
+            if ProjectDateCode == "400110"{
+                RedirectApp(VC: self)
+            }
             return
         }
         print("更新数据")

@@ -102,9 +102,11 @@ extension BootomSheetChartVC:UIDocumentInteractionControllerDelegate{
                                     resetXScale()
                                 }else if GraphicData["ResponseCode"] == "400"{
                                     //操作失败/参数非法
+                                    self.view.showError(GraphicData["ResponseMsg"].stringValue)
                                     print("\(GraphicData["ResponseCode"])")
                                     print("\(GraphicData["ResponseMsg"])")
                                 }else{
+                                    self.view.showError(GraphicData["ResponseMsg"].stringValue)
                                     if GraphicData["ResponseCode"] == "400110"{
                                         RedirectApp(VC: self)
                                     }
@@ -114,7 +116,7 @@ extension BootomSheetChartVC:UIDocumentInteractionControllerDelegate{
                                 
                             case .failure(let error):
                                 print(error)
-                        
+                                self.view.showError("网络链接存在问题，无法获得图表数据！")
                             }
                       
                        })
@@ -149,7 +151,9 @@ extension BootomSheetChartVC:UIDocumentInteractionControllerDelegate{
                             }else if StationReportMessage["ResponseCode"] == "400"{
                                 //操作失败/参数非法
                                 print("\(StationReportMessage["ResponseMsg"])")
+                                self.view.showError("下载失败请重试！")
                             }else{
+                                self.view.showError("下载失败请重试！")
                                 if StationReportMessage["ResponseCode"] == "400110"{
                                     RedirectApp(VC: self)
                                 }
@@ -157,35 +161,46 @@ extension BootomSheetChartVC:UIDocumentInteractionControllerDelegate{
                                 print("\(StationReportMessage["ResponseMsg"])")
                             }
                         case .failure(let error):
+                            print("sdfasdf")
                             print(error)
                             self.view.showError("下载失败请重试！")
                         }
                    })
     }
     func download(url:String)  {
+        print("1")
         let destination = DownloadRequest.suggestedDownloadDestination(for: .documentDirectory)
-        showLoadHUD()
+        //showLoadHUD()
         AF.download(url, to: destination).response {response in
-            self.hideLoadHUD()
+            //self.hideLoadHUD()
+            print("2")
             switch response.result {
             
                 case .success(let value):
-                  
                     let alert = UIAlertController(title: "提示", message: "您要打开文件吗？", preferredStyle: .alert)
                     let action1 = UIAlertAction(title: "取消", style: .cancel)
                     let action2 = UIAlertAction(title: "确认", style: .default) { _ in
-                    let documentController = UIDocumentInteractionController(url:value!.absoluteURL)
-                    documentController.delegate = self
-                    //documentController.presentPreview(animated: true)
-                    documentController.presentOpenInMenu(from: self.exportBtn.frame, in: self.view, animated: true)
-                    print("打开文件")
+                        let docUrl = value?.absoluteURL
+                        
+                        let documentController = UIDocumentInteractionController(url:docUrl!)
+                        //let documentController = UIDocumentInteractionController(url:value!.absoluteURL)
+                        documentController.delegate = self
+                        documentController.presentPreview(animated: true)
+                        documentController.presentOpenInMenu(from: self.exportBtn.frame, in: self.view, animated: true)
+                        print("打开文件")
                     }
                     alert.addAction(action1)
                     alert.addAction(action2)
                     self.present(alert,animated: true)
                 case .failure(let error):
-                    print(error)
-                    self.view.showError("下载失败请重试！")
+                    
+                    print("asdfasdfasdfasdfasdfasf",error)
+                    if error.isDownloadedFileMoveError {
+                        self.view.showInfo("当前报表已下载！")
+                    }else {
+                        self.view.showError("下载失败请重试！")
+                    }
+                   
             }
         }
     }

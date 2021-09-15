@@ -563,41 +563,6 @@ extension BootomSheetChartVC{
         print(AxisGranularity[7])
         print("poins",points)
         getFilterGraphicData()
-        //大于1天小于等于3天 5分钟一条数据 轴标签间隔 6时
-//        print("大于1天小于等于3天")
-//        var date = start
-//        var hour = (DiffDateComponents?.hour)!
-//        let day = (DiffDateComponents?.day)!
-//        hour = day * 24 + hour
-//        if ((hour  % 6) != 0) {
-//            hour = hour + ( 6 - (hour  % 6))
-//        }
-//        var points = hour * 60
-//        points = points / 5
-//        TimeInterval_Custom = [String]()
-//        TimeDateInterval = [String]()
-//        for i in 0..<points {
-//            if i % 36 == 0 {
-//                TimeInterval_Custom.append("\(date.toFormat("MM-dd HH"))")
-//            }else{
-//                TimeInterval_Custom.append("")
-//            }
-//            TimeDateInterval.append("\(date.toFormat("yyyy-MM-dd HH:mm"))")
-//            date = date + 5.minutes
-//        }
-//        TimeDateInterval.append("\(date.toFormat("yyyy-MM-dd HH:mm"))")
-//        TimeInterval_Custom.append("\(date.toFormat("MM-dd HH"))")
-//        TimeIntervalKind[7] = TimeInterval_Custom
-//        VisibleXRangeMaximum[7] = points / 2 + points / 10
-//        DeltaTime[7] = "300"
-//        AxisMaximum[7] = points + points / 10
-//        AxisGranularity[7] = 36
-//        print(VisibleXRangeMaximum[7])
-//        print(DeltaTime[7])
-//        print(AxisMaximum[7])
-//        print(AxisGranularity[7])
-//        print("poins",points)
-//        getFilterGraphicData()
     }
     func moreTweleveHours(start:DateInRegion,end:DateInRegion){
         //大于12小于等于24小时 一分钟请求一条数据 轴标签间隔 2时

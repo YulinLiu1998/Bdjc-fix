@@ -23,6 +23,8 @@ extension BootomSheetVC{
                     switch response.result {
                         case .success(let value):
                             let getProjectsMessage = JSON(value)
+                            self.ProjectDateCode = getProjectsMessage["ResponseCode"].stringValue
+                            self.ProjectDateStr = getProjectsMessage["ResponseMsg"].stringValue
                             if getProjectsMessage["ResponseCode"] == "200" {
                                 //更新Session有效期
                                 UpdateSessionAccessTime()
@@ -80,19 +82,19 @@ extension BootomSheetVC{
                                 }
                             }else if getProjectsMessage["ResponseCode"] == "400"{
                                 print("400")
-                                self.ProjectDateStr = getProjectsMessage["ResponseMsg"].stringValue
+                                self.ProjectDateState = false
+                                
                             }else{
                                 //其他错误
-                                if getProjectsMessage["ResponseCode"] == "400110"{
-                                    RedirectApp(VC: self)
-                                }
                                     
                                 print("其他错误")
-                                self.ProjectDateStr = getProjectsMessage["ResponseMsg"].stringValue
+                                self.ProjectDateState = false
+                                
                             }
                         case .failure(let error):
                             print("error",error)
-                            self.ProjectDateStr  = error.localizedDescription
+                            self.ProjectDateState = false
+                            self.ProjectDateStr  = "网络链接存在问题，无法获取工程数据！"
                         }
                     //更新数据
                     self.updateData()
@@ -100,7 +102,7 @@ extension BootomSheetVC{
   
     }
    
-    func getGraphicData1(){
+    func getGraphicData(){
         
     
         let parameters = ["AccessToken":AccessToken,
@@ -125,6 +127,7 @@ extension BootomSheetVC{
                                 //更新Session有效期
                                 UpdateSessionAccessTime()
                                 ChartData = GraphicData
+                                TabBarJump = true
                                 self.tabBarController?.selectedIndex = 1
                             }else if GraphicData["ResponseCode"] == "400"{
                                 //操作失败/参数非法

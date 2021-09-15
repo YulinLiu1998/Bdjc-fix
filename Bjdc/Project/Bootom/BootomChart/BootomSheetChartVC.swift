@@ -91,7 +91,8 @@ class BootomSheetChartVC: UIViewController,UIScrollViewDelegate {
         chartTitle.text = currentDrodownTitle
         //初始化图表
         initViewCharts()
-        
+        //显示图表
+        showCharts()
     }
    
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView)
@@ -144,16 +145,17 @@ class BootomSheetChartVC: UIViewController,UIScrollViewDelegate {
         
     }
     override func viewWillAppear(_ animated: Bool) {
-        //显示图表
-        showCharts()
+       
         self.navigationController?.isNavigationBarHidden = true
         NotificationCenter.default.addObserver(self, selector: #selector(observeTabBarSecondItem), name: Notification.Name(rawValue: "ObserveTabBarSecondItem") , object: nil)
     }
     @objc func observeTabBarSecondItem(){
         print("正在监听第二个item")
-        if tabBarController!.selectedIndex == 1{
+        if tabBarController?.selectedIndex == 1{
             print("当前为选中页面")
             TabBarJump = false
+            self.navigationController?.popViewController(animated: false)
+            
         }
     }
     override func didReceiveMemoryWarning() {
@@ -285,6 +287,3 @@ extension BootomSheetChartVC {
    
     
 }
-
-
-

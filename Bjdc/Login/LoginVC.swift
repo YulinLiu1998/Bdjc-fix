@@ -3,7 +3,7 @@
 //  Bjdc
 //
 //  Created by 徐煜 on 2021/5/25.
-//
+// qwerASD5 qwertyuiiopASDFG5*
 
 
 import UIKit
@@ -23,12 +23,30 @@ class LoginVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         print(Realm.Configuration.defaultConfiguration.fileURL!)
-        CurrentProject = 0
         account.becomeFirstResponder()
         hideKeyboardWhenTappedAround()
         password.isSecureBeginClear = false
     }
     override func viewWillAppear(_ animated: Bool) {
+        //记录选中工程，以便退出后初始化访问
+        
+        CurrentProject = realm.objects(ProjectSelectedTag.self).first?.ProjectSelectedTagIndex
+        if CurrentProject == nil {
+            CurrentProject = 0
+            let projectSelectedTag =  ProjectSelectedTag()
+            projectSelectedTag.ProjectSelectedTagIndex = CurrentProject!
+            do{
+                print("正在记录选中工程")
+                try realm.write {
+                    realm.add(projectSelectedTag)
+                }
+            }catch{
+                print(error)
+            }
+        }
+        account.text = realm.objects(UserAccountReaml.self).first?.account
+        password.text = realm.objects(UserAccountReaml.self).first?.password
+        loginBtnStatues()
         if SessionInvalid{
             //Session 过期进入登陆界面
             //请求Token令牌
@@ -40,12 +58,14 @@ class LoginVC: UIViewController {
             //Session 未过期跳转主页面
             print("即将进入主页main")
             print("设置SessionToken")
+
+            
             AccessToken = realm.objects(TokenRealm.self).first!.TokenString
             SessionUUID = realm.objects(SessionRealm.self).first!.SessionString
             print("请求工程数据")
             let workingGroup = DispatchGroup()
             let workingQueue = DispatchQueue(label: "request_AutoLogin")
-            
+
             workingGroup.enter() // 开始
             workingQueue.async {
                     let sema = DispatchSemaphore(value: 0)
@@ -55,6 +75,17 @@ class LoginVC: UIViewController {
             }
             workingGroup.notify(queue: DispatchQueue.main) {
                 // 全部调用完成后回到主线程,更新UI
+                //请求数据错误处理
+                guard AskProjectState else {
+                    if AskProjectsCode == "400110" {
+                        AskProjectsMessage = "访问错误，请重新登录"
+                        self.view.showError(AskProjectsMessage!)
+                        RedirectApp(VC: self)
+                    }else{
+                        self.view.showError(AskProjectsMessage!)
+                    }
+                    return
+                }
                 //更新Session有效期
                 UpdateSessionAccessTime()
                 let now = Date()
@@ -76,6 +107,9 @@ class LoginVC: UIViewController {
     }
    
     @IBAction func TFEditingChanged(_ sender: Any) {
+        loginBtnStatues()
+    }
+    func loginBtnStatues() {
         if accountStr.isAccount && passwordStr.isPassword{
             loginBtn.setToEnabled()
         }else{
@@ -116,7 +150,21 @@ class LoginVC: UIViewController {
     }
     @IBAction func loginEvent(_ sender: UIButton) {
         
-        
+        guard SessionSuccess && TokenSuccess else {
+            
+            if TokenSuccess != true {
+                let message = "Token数据错误，正在重新请求！"
+                self.view.showError(message)
+                //请求Token令牌
+                accessToken()
+            }else if SessionSuccess != true {
+                let message = "Session数据错误，正在重新请求！"
+                self.view.showError(message)
+                //校验用户会话
+                doSession()
+            }
+            return
+        }
         let workingGroup = DispatchGroup()
         let workingQueue = DispatchQueue(label: "request_queue")
         
@@ -131,8 +179,6 @@ class LoginVC: UIViewController {
         workingGroup.enter() // 开始
         workingQueue.async {
             if LoginState {
-                
-                
                 let sema = DispatchSemaphore(value: 0)
                 self.getProjects(sema: sema)
                 sema.wait() // 等待任务结束, 否则一直阻塞
@@ -177,7 +223,13 @@ class LoginVC: UIViewController {
         }
         
     }
-
+    
+    @IBAction func privacyAgreement(_ sender: Any) {
+        let urlString = "https://yulinliu1998.github.io/"
+        let url = URL(string: urlString)!
+        UIApplication.shared.open(url)
+    }
+    
 }
 // MARK: - UITextFieldDelegate
 extension LoginVC: UITextFieldDelegate{

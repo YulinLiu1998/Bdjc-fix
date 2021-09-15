@@ -6,7 +6,7 @@
 //
 
 import Foundation
-
+import RealmSwift
 extension BootomSheetVC{
 
     
@@ -25,7 +25,7 @@ extension BootomSheetVC{
         navMenu1?.layer.borderWidth  = 0
         navMenu1?.layer.cornerRadius = 0
         
-        navMenu1?.title = projectTitles[0]
+        navMenu1?.title = projectTitles[CurrentProject!]
         currentTitle = navMenu1?.title
         navMenu1?.titleBgColor = .systemBackground
         navMenu1?.titleFont = .boldSystemFont(ofSize: 15)
@@ -70,6 +70,16 @@ extension BootomSheetVC:LMJDropdownMenuDelegate,LMJDropdownMenuDataSource{
         
         //MARK: -当前工程索引
         CurrentProject = Int(index)
+        do{
+            try realm.write {
+                realm.objects(UserAccountReaml.self).first?.LoginStatues = "true"
+            }
+        }catch{
+            print(error)
+        }
+        try? realm.write {
+            realm.objects(ProjectSelectedTag.self).first?.ProjectSelectedTagIndex = CurrentProject!
+        }
         //print("CurrentProject",CurrentProject as Any)
         //MARK: -标题
         currentTitle = title

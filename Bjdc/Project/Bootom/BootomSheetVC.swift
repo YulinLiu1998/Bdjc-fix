@@ -14,12 +14,14 @@ protocol UpdateMapView {
     func updateMapView()
     func removeAnnotationsMapView()
 }
+//ResizeSheetDelegate
 class BootomSheetVC: UIViewController, Demoable {
     
-    
+    var sheetTable:SheetViewController?
     var delegate:UpdateMapView?
     var ProjectDateState:Bool = false
     var ProjectDateStr:String?
+    var ProjectDateCode:String?
     static var name: String { "bootomsheet" }
     
     @IBOutlet weak var tableView: UITableView!
@@ -43,6 +45,7 @@ class BootomSheetVC: UIViewController, Demoable {
     var Cell: DateTableViewCell?
     override func viewDidLoad() {
         super.viewDidLoad()
+        //地图更新
         let Project = (storyboard?.instantiateViewController(identifier: "Project")) as! ProjectVC
         self.delegate = Project
         dropdownMenuBootomSheet()
@@ -110,22 +113,21 @@ class BootomSheetVC: UIViewController, Demoable {
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let controller = storyboard.instantiateViewController(identifier: "BootomSheet") as! BootomSheetVC
-        let sheet = SheetViewController(
+        sheet = SheetViewController(
             controller: controller,
-            sizes: [.fixed(55), .fixed(200), .fixed(300), .fixed(450), .marginFromTop(50)],
+            sizes: [.fixed(60), .fixed(200), .fixed(300), .fixed(450), .marginFromTop(50)],
             options: SheetOptions(useInlineMode: useInlineMode))
         
-        sheet.dismissOnPull = false
-        sheet.dismissOnOverlayTap = false
-        
-        sheet.overlayColor = UIColor.clear
-        sheet.allowGestureThroughOverlay = true
-        addSheetEventLogging(to: sheet)
+        sheet!.dismissOnPull = false
+        sheet!.dismissOnOverlayTap = true
+        sheet!.overlayColor = UIColor.clear
+        sheet!.allowGestureThroughOverlay = true
+        addSheetEventLogging(to: sheet!)
         
         if let view = view {
-            sheet.animateIn(to: view, in: parent)
+            sheet!.animateIn(to: view, in: parent)
         } else {
-            parent.present(sheet, animated: true, completion: nil)
+            parent.present(sheet!, animated: true, completion: nil)
         }
     }
 //showBootomChart
@@ -133,7 +135,7 @@ class BootomSheetVC: UIViewController, Demoable {
     @IBAction func showData(_ sender: Any) {
         let btn = sender as! UIButton
         btnTag = btn.tag
-        TabBarJump = true
+        //TabBarJump = true
         currentDrodownTitle = currentTitle
         currenSelectedStation = stationNames[CurrentProject!][btn.tag]
         StationUUID = ProjectList![CurrentProject!]["StationList"][btn.tag]["StationUUID"].stringValue
@@ -147,7 +149,7 @@ class BootomSheetVC: UIViewController, Demoable {
         DayTimeInterval()
         CurrentTimeInterval = 3
         TimeIntervalKind[CurrentTimeInterval!] = TimeInterval_day
-        self.getGraphicData1() 
+        self.getGraphicData()
     }
     func DayTimeInterval(){
         var date = Date()
@@ -175,6 +177,16 @@ class BootomSheetVC: UIViewController, Demoable {
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     }
-
+    
+//    func resizeSheetHight() {
+//
+//        BootomSheetVC().sheetViewController?.resize(to: .fixed(150))
+////            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+////            let controller = storyboard.instantiateViewController(identifier: "BootomSheet") as! BootomSheetVC
+////            controller.sheetViewController!.resize(to: .fixed(200))
+//            print("更改高度")
+//
+//    }
    
 }
+

@@ -17,11 +17,22 @@ class TabBarController: UITabBarController {
     override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
         print(item.tag)
                if item.tag == 1 {
-                    print("这是数据页")
                 NotificationCenter.default.post(name: NSNotification.Name(rawValue: "ObserveTabBarSecondItem"), object: nil)
                }
     }
-
+//    override func viewWillAppear(_ animated: Bool) {
+//        selectedViewController?.beginAppearanceTransition(true, animated: animated)
+//    }
+//    override func viewDidAppear(_ animated: Bool) {
+//        selectedViewController?.endAppearanceTransition()
+//    }
+//    override func viewWillDisappear(_ animated: Bool) {
+//        selectedViewController?.beginAppearanceTransition(false, animated: animated)
+//    }
+//    override func viewDidDisappear(_ animated: Bool) {
+//        selectedViewController?.endAppearanceTransition()
+//    }
+    
     /*
     // MARK: - Navigation
 

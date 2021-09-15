@@ -16,7 +16,11 @@ extension ProjectVC:MAMapViewDelegate{
         }
         updateMap()
     }
-    
+    //MARK:- MAMapviewDelegate
+    func mapView(_ mapView: MAMapView!, didSingleTappedAt coordinate: CLLocationCoordinate2D) {
+        print("点击地图")
+        sheet!.resize(to: .fixed(60))
+    }
     
     
     //MARK: - MAMapViewDelegate

@@ -9,6 +9,9 @@ import UIKit
 import CoreData
 import SwiftDate
 import RealmSwift
+import Alamofire
+import SwiftyJSON
+
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -19,14 +22,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //高德地图
         AMapServices.shared().apiKey = "3ec4096519eb98ebaf864c97a99fb812"
         //Token定时器
-        TokenTimer = Timer.scheduledTimer(timeInterval: 3600, target: self, selector:#selector(UpdateToken), userInfo: nil, repeats: true)
+        TokenTimer = Timer.scheduledTimer(timeInterval: 1800, target: self, selector:#selector(UpdateToken), userInfo: nil, repeats: true)
         //每次启动App 对比SessionStringTime 是否过期 若过期则跳转页面重新登录，反之则直接登录
         if let time = realm.objects(SessionRealm.self).first?.SessionAccessTime {
             print("数据库存在Session过期时间",time)
             let date = Date()
             print("date",date)
             print("time",time)
-            print("LoginStatues",realm.objects(UserAccountReaml.self).first?.LoginStatues)
             if date > time {
                 print("Session过期")
                 SessionInvalid = true
@@ -44,6 +46,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     @objc func UpdateToken() {
             print("Token即将过期正在重新获取")
+            let vc = getCurrentViewController()
+            vc?.showTextHUD("正在更新token")
             accessTokenTimer()
         }
     func applicationWillTerminate(_ application: UIApplication) {

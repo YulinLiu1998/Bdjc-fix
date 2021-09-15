@@ -28,25 +28,20 @@ extension Setting{
                             if logoutMessage["ResponseCode"] == "205" {
                                 //成功注销
                                 projectTitles = [String]()
-                                print(logoutMessage["ResponseMsg"],logoutMessage["ResponseCode"])
-                                print("SessionUUID",SessionUUID)
                                 RedirectApp(VC: self)
                             }else if logoutMessage["ResponseCode"] == "400"{
                                 //操作失败/参数非法
                                 self.WarningAlert(alertContent: logoutMessage["ResponseMsg"].stringValue)
-                                print(logoutMessage["ResponseMsg"],logoutMessage["ResponseCode"])
                             }else{
                                 //其他错误
                                 self.WarningAlert(alertContent: logoutMessage["ResponseMsg"].stringValue)
                                 if logoutMessage["ResponseCode"] == "400110"{
                                     RedirectApp(VC: self)
                                 }
-                                print("其他错误")
-                                print(logoutMessage["ResponseCode"])
-                                print(logoutMessage["ResponseMsg"])
                             }
                         case .failure(let error):
                             print(error)
+                            self.WarningAlert( alertContent: "出现未知错误，请重试！")
                         }
                    })
                     
@@ -87,21 +82,24 @@ extension ChangePasswordVC{
                             print(setPasswordMessage)
                             if setPasswordMessage["ResponseCode"] == "200" {
                                 //成功
-                                print(setPasswordMessage["ResponseMsg"],setPasswordMessage["ResponseCode"])
+                                self.view.showSuccess("重置密码成功！")
+                                do{
+                                    try realm.write {
+                                        realm.objects(UserAccountReaml.self).first!.password = ""
+                                    }
+                                }catch{
+                                    print(error)
+                                }
                                 self.dismiss(animated: true, completion: nil)
                             }else if setPasswordMessage["ResponseCode"] == "400"{
                                 //操作失败/参数非法
                                 self.view.showError(setPasswordMessage["ResponseMsg"].stringValue)
-                                print(setPasswordMessage["ResponseMsg"],setPasswordMessage["ResponseCode"])
                             }else{
                                 //其他错误
                                 self.view.showError(setPasswordMessage["ResponseMsg"].stringValue)
                                 if setPasswordMessage["ResponseCode"] == "400110"{
                                     RedirectApp(VC: self)
                                 }
-                                print("其他错误")
-                                print(setPasswordMessage["ResponseCode"])
-                                print(setPasswordMessage["ResponseMsg"])
                             }
                         case .failure(let error):
                             print(error)
@@ -138,7 +136,6 @@ extension PersonalInfo{
                                 sema.signal()
                             }else{
                                 //其他错误
-                               
                                 sema.signal()
                             }
                         case .failure(let error):

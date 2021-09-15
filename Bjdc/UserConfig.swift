@@ -3,7 +3,7 @@
 //  Bjdc
 //
 //  Created by 徐煜 on 2021/7/20.
-//
+// qwertyuiiopASDFG5*
 
 import Foundation
 import RealmSwift
@@ -23,3 +23,8 @@ class SessionRealm:Object{
     @objc dynamic var SessionString = ""
     @objc dynamic var SessionAccessTime = Date()
 }
+
+class ProjectSelectedTag:Object{
+    @objc dynamic var ProjectSelectedTagIndex = 0
+}
+

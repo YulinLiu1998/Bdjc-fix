@@ -8,6 +8,9 @@
 import Foundation
 import UIKit
 import RealmSwift
+import FittedSheets
+//地图
+var sheet: SheetViewController?
 
 //初始化数据库
 let realm = try! Realm()
@@ -18,6 +21,8 @@ var LoginCode:String?
 var AskProjectState = false
 var AskProjectsMessage:String?
 var AskProjectsCode:String?
+var TokenSuccess = false
+var SessionSuccess = false
 
 var btnTag:Int?
 var TabBarJump = false

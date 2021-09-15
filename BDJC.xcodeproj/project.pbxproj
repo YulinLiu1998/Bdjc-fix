@@ -109,7 +109,7 @@
 		FFD34FE12664BA8F00EF0ED2 /* LoginVC-accessToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LoginVC-accessToken.swift"; sourceTree = "<group>"; };
 		FFD9F7462696DE5000D57BF4 /* AlertView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AlertView.xib; sourceTree = "<group>"; };
 		FFD9F7482696DFA300D57BF4 /* AlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
-		FFDCEBED265CB3C5006A306B /* Bjdc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bjdc.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		FFDCEBED265CB3C5006A306B /* BDJC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BDJC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFDCEBF0265CB3C6006A306B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FFDCEBF2265CB3C6006A306B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		FFDCEBF4265CB3C6006A306B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -253,7 +253,7 @@
 		FFDCEBEE265CB3C5006A306B /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				FFDCEBED265CB3C5006A306B /* Bjdc.app */,
+				FFDCEBED265CB3C5006A306B /* BDJC.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -327,9 +327,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		FFDCEBEC265CB3C5006A306B /* Bjdc */ = {
+		FFDCEBEC265CB3C5006A306B /* BDJC */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = FFDCEC04265CB3C9006A306B /* Build configuration list for PBXNativeTarget "Bjdc" */;
+			buildConfigurationList = FFDCEC04265CB3C9006A306B /* Build configuration list for PBXNativeTarget "BDJC" */;
 			buildPhases = (
 				0DFF4CA9DB9AE8CCFF4E93CE /* [CP] Check Pods Manifest.lock */,
 				FFDCEBE9265CB3C5006A306B /* Sources */,
@@ -342,9 +342,9 @@
 			);
 			dependencies = (
 			);
-			name = Bjdc;
+			name = BDJC;
 			productName = Bjdc;
-			productReference = FFDCEBED265CB3C5006A306B /* Bjdc.app */;
+			productReference = FFDCEBED265CB3C5006A306B /* BDJC.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -361,7 +361,7 @@
 					};
 				};
 			};
-			buildConfigurationList = FFDCEBE8265CB3C5006A306B /* Build configuration list for PBXProject "Bjdc" */;
+			buildConfigurationList = FFDCEBE8265CB3C5006A306B /* Build configuration list for PBXProject "BDJC" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -375,7 +375,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				FFDCEBEC265CB3C5006A306B /* Bjdc */,
+				FFDCEBEC265CB3C5006A306B /* BDJC */,
 			);
 		};
 /* End PBXProject section */
@@ -664,7 +664,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = Lyl19980305Bjdc.Bjdc;
+				PRODUCT_BUNDLE_IDENTIFIER = Lyl19980305Bjdc.BDJC;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "/Users/mbp/Desktop/806/Bjdc/Bjdc/Bdjc-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
@@ -686,7 +686,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = Lyl19980305Bjdc.Bjdc;
+				PRODUCT_BUNDLE_IDENTIFIER = Lyl19980305Bjdc.BDJC;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "/Users/mbp/Desktop/806/Bjdc/Bjdc/Bdjc-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
@@ -697,7 +697,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		FFDCEBE8265CB3C5006A306B /* Build configuration list for PBXProject "Bjdc" */ = {
+		FFDCEBE8265CB3C5006A306B /* Build configuration list for PBXProject "BDJC" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				FFDCEC02265CB3C9006A306B /* Debug */,
@@ -706,7 +706,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		FFDCEC04265CB3C9006A306B /* Build configuration list for PBXNativeTarget "Bjdc" */ = {
+		FFDCEC04265CB3C9006A306B /* Build configuration list for PBXNativeTarget "BDJC" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				FFDCEC05265CB3C9006A306B /* Debug */,
