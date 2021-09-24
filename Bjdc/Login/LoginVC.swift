@@ -17,15 +17,20 @@ class LoginVC: UIViewController {
     @IBOutlet weak var password: UITextField!
     @IBOutlet weak var plaintTextDisplay: UIButton!
     @IBOutlet weak var loginBtn: UIButton!
+    @IBOutlet weak var platformView: UIView!
     var accountStr:String {account.unwrappedText }
     var passwordStr:String {password.unwrappedText}
-    
+    var platformMenue:LMJDropdownMenu?
+    var platformMenueTitles:Array<String>?
     override func viewDidLoad() {
         super.viewDidLoad()
         print(Realm.Configuration.defaultConfiguration.fileURL!)
         account.becomeFirstResponder()
         hideKeyboardWhenTappedAround()
         password.isSecureBeginClear = false
+        
+        //平台选择
+        dropdownMenuPlatform()
     }
     override func viewWillAppear(_ animated: Bool) {
         //记录选中工程，以便退出后初始化访问

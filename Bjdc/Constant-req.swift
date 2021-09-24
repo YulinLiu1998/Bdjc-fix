@@ -23,7 +23,15 @@ var currentDrodownTitle:String?
 //MARK: -网络接口
 //http://39.96.80.62/bdjc/API/doSession.php
 //http://172.18.7.86/dist/API/doSession.php
-let networkInterface = "http://39.96.80.62/bdjc/API/"
+var networkInterface = "http://39.96.80.62/bdjc/API/"
+//第一平台，南京
+let FIRST_BASE_URL = "http://39.107.99.169/bdjc/API/"
+//第二平台，北京和平里，实验室
+let SECOND_BASE_URL = "http://39.96.80.62/bdjc/API/"
+//第三平台，测试
+let THIRD_BASE_URL = "http://172.18.7.86/dist/API/"
+//第四平台，海淀
+let FOURTH_BASE_URL = "http://140.210.9.229/bdjc/API/";
 //MARK: -获取访问令牌
 var AccessToken:String?
 var ExpireTimestamp:Int?

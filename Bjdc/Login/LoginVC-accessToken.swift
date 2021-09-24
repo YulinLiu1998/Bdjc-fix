@@ -26,6 +26,8 @@ extension LoginVC{
                     switch response.result {
                         case .success(let value):
                             let tokenMessage = JSON(value)
+                            print(tokenMessage["ResponseCode"],"token")
+                            print(tokenMessage["ResponseMsg"])
                             if tokenMessage["ResponseCode"] == "200" {
                                 TokenSuccess = true
                                 AccessToken = tokenMessage["AccessToken"].stringValue
@@ -80,6 +82,8 @@ extension LoginVC{
                     switch response.result {
                         case .success(let value):
                             let doSessionMessage = JSON(value)
+                            print(doSessionMessage["ResponseCode"],"session")
+                            print(doSessionMessage["ResponseMsg"],"session")
                             if doSessionMessage["ResponseCode"] == "202" {
                                 //未登录时
                                 SessionSuccess = true
