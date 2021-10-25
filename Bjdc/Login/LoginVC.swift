@@ -4,12 +4,14 @@
 //
 //  Created by 徐煜 on 2021/5/25.
 // qwerASD5 qwertyuiiopASDFG5*
-
-
+// 每次登陆需要对比 账号是否发生改变，  否则 sesssion  token  报错
+//        mLoginAccountEt.setText("AdminBDS");
+//        mLoginCheckEt.setText("Beijing712*BDJC");
 import UIKit
 import MBProgressHUD
 import SwiftDate
 import RealmSwift
+
 
 class LoginVC: UIViewController {
    
@@ -29,12 +31,31 @@ class LoginVC: UIViewController {
         hideKeyboardWhenTappedAround()
         password.isSecureBeginClear = false
         
+        // MARK: 平台显示设置
+        //平台显示与上次退出时选中的平台相同
+        CurrentPlatform = realm.objects(PlatformSelectedTag.self).first?.PlatformSelectedTagIndex
+        if CurrentPlatform == nil {
+            CurrentPlatform = 1
+            let platformSelectedTag =  PlatformSelectedTag()
+            platformSelectedTag.PlatformSelectedTagIndex = CurrentPlatform!
+            do{
+                print("正在记录选中平台")
+                try realm.write {
+                    realm.add(platformSelectedTag)
+                }
+            }catch{
+                print(error)
+            }
+        }
+        //设置网络接口
+        networkInterface = NetAPI[CurrentPlatform!]
         //平台选择
         dropdownMenuPlatform()
     }
     override func viewWillAppear(_ animated: Bool) {
         //记录选中工程，以便退出后初始化访问
-        
+       
+        //进入工程后显示与上次退出时选中的工程相同
         CurrentProject = realm.objects(ProjectSelectedTag.self).first?.ProjectSelectedTagIndex
         if CurrentProject == nil {
             CurrentProject = 0
@@ -115,7 +136,7 @@ class LoginVC: UIViewController {
         loginBtnStatues()
     }
     func loginBtnStatues() {
-        if accountStr.isAccount && passwordStr.isPassword{
+        if accountStr.isBlank == false && passwordStr.isBlank == false{
             loginBtn.setToEnabled()
         }else{
             loginBtn.setToDisabled()
@@ -126,16 +147,25 @@ class LoginVC: UIViewController {
         userAccountReaml.account = Username!
         userAccountReaml.password = Password!
         userAccountReaml.LoginStatues = "true"
-        guard realm.objects(UserAccountReaml.self).filter("account = %@", Username!).count == 0 else {
-            print("用户信息已存在,只需更改用户状态")
+//        guard realm.objects(UserAccountReaml.self).filter("account = %@", Username!).count == 0 else {
+//            print("用户信息已存在,只需更改用户状态")
+//            do{
+//                try realm.write {
+//                    realm.objects(UserAccountReaml.self).first?.LoginStatues = "true"
+//                }
+//            }catch{
+//                print(error)
+//            }
+//            return
+//        }
+        if realm.objects(UserAccountReaml.self).count != 0  {
             do{
                 try realm.write {
-                    realm.objects(UserAccountReaml.self).first?.LoginStatues = "true"
+                    realm.delete(realm.objects(UserAccountReaml.self).first!)
                 }
             }catch{
                 print(error)
             }
-            return
         }
         do{
             print("正在添加用户信息")
@@ -190,7 +220,7 @@ class LoginVC: UIViewController {
             }
             workingGroup.leave() // 结束
         }
-        workingGroup.notify(queue: DispatchQueue.main) {
+        workingGroup.notify(queue: DispatchQueue.main) { [self] in
             // 全部调用完成后回到主线程,更新UI
             //登录错误处理
             guard LoginState else {
@@ -244,7 +274,7 @@ extension LoginVC: UITextFieldDelegate{
         let limit = textField == account ? 32 : 64
         let isExceed = range.location >= limit || (textField.unwrappedText.count + string.count) > limit
         if isExceed{
-            //showTextHUD("最多只能输入\(limit)位哦")
+            showTextHUD("最多只能输入\(limit)位哦")
             print("您输入字符长度不满足要求")
         }
         return !isExceed

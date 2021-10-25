@@ -11,12 +11,9 @@ import SwiftyJSON
 extension Setting{
     
     func doLogout(){
-                     
         let parameters = ["AccessToken":AccessToken,
                           "SessionUUID":SessionUUID,
-                          "Username":Username
         ]
-        
         AF.request("\(networkInterface)doLogout.php",
                    method: HTTPMethod.post,
                    parameters: parameters,
@@ -27,6 +24,7 @@ extension Setting{
                             print(logoutMessage)
                             if logoutMessage["ResponseCode"] == "205" {
                                 //成功注销
+
                                 projectTitles = [String]()
                                 RedirectApp(VC: self)
                             }else if logoutMessage["ResponseCode"] == "400"{
@@ -111,14 +109,27 @@ extension ChangePasswordVC{
 }
 extension PersonalInfo{
     func getUserInformation(sema: DispatchSemaphore){
-                     
-        let parameters = ["AccessToken":AccessToken,
-                          "SessionUUID":SessionUUID
-        ]
-        
+             
+        let stringArray : [String] = [Username!]
+//        let parameters = [
+//            "AccessToken":AccessToken!,
+//            "SessionUUID":SessionUUID,
+//
+//        ]
+//        print(parameters)
+        let tokenInfo = AccessToken!
+        let sessionInfo = SessionUUID
+        struct parameterInof: Encodable {
+            let AccessToken: String
+            let SessionUUID: String
+            let UserName: [String]
+        }
+
+        let ParameterInof = parameterInof(AccessToken: tokenInfo, SessionUUID: sessionInfo, UserName: stringArray)
+
         AF.request("\(networkInterface)getUserInformation.php",
                    method: HTTPMethod.post,
-                   parameters: parameters,
+                   parameters: ParameterInof,
                    encoder: JSONParameterEncoder.default).responseJSON(completionHandler: { [self] response in
                     switch response.result {
                         case .success(let value):
@@ -128,7 +139,7 @@ extension PersonalInfo{
                             if UserInformation["ResponseCode"] == "200" {
                                 //成功
                                 print(UserInformation["ResponseMsg"],UserInformation["ResponseCode"])
-                                //print(UserInformation["UserList"])
+                                print(UserInformation["UserList"])
                                 self.UserList = UserInformation["UserList"]
                                 sema.signal()
                             }else if UserInformation["ResponseCode"] == "400"{

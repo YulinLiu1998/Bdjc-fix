@@ -45,10 +45,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
     @objc func UpdateToken() {
-            print("Token即将过期正在重新获取")
-            let vc = getCurrentViewController()
-            vc?.showTextHUD("正在更新token")
-            accessTokenTimer()
+        print("Token即将过期正在重新获取")
+        let vc = getCurrentViewController()
+        vc?.showTextHUD("正在更新token")
+        print("定时器更新token")
+        accessTokenTimer()
         }
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.

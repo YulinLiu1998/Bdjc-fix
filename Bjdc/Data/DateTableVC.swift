@@ -25,7 +25,6 @@ class DateTableVC: UITableViewController {
         let frame =  CGRect(x: 0, y: 0, width: self.view.bounds.size.width, height: 44)
         HeaderView = UIView(frame: frame)
         dropdownMenuDateTable()
-        navigationController?.navigationBar.isHidden = false
     }
 
     override func viewWillAppear(_ animated: Bool) {

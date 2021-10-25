@@ -24,8 +24,13 @@ extension BootomSheetVC{
         navMenu1?.layer.borderUIColor = .black
         navMenu1?.layer.borderWidth  = 0
         navMenu1?.layer.cornerRadius = 0
+        if projectTitles != [] {
+            navMenu1?.title = projectTitles[CurrentProject!]
+        }else{
+            navMenu1?.title = "您并未建立工程！"
+        }
         
-        navMenu1?.title = projectTitles[CurrentProject!]
+        
         currentTitle = navMenu1?.title
         navMenu1?.titleBgColor = .systemBackground
         navMenu1?.titleFont = .boldSystemFont(ofSize: 15)
@@ -99,6 +104,8 @@ extension BootomSheetVC:LMJDropdownMenuDelegate,LMJDropdownMenuDataSource{
         
         //每次选择下拉菜单前都要重置列表显示信息
         CurrentSelectedStatus = "Total"
+        resizeButtonScale()
+        totalBtn.transform = CGAffineTransform(scaleX: 1.5, y: 1.5)
         //设置当前选中状态的显示行数
         tableRows = Int(pssTotal[CurrentProject!])!
         tableView.reloadData()

@@ -6,7 +6,9 @@
 //
 
 import Foundation
-
+import Alamofire
+import SwiftyJSON
+import RealmSwift
 extension LoginVC {
     func dropdownMenuPlatform() {
         platformMenueTitles = ["第一平台","第二平台","第三平台","海淀平台"]
@@ -21,7 +23,7 @@ extension LoginVC {
         platformMenue?.layer.cornerRadius = 0
         
         platformMenue?.backgroundColor = .purple
-        platformMenue?.title = platformMenueTitles![1]
+        platformMenue?.title = platformMenueTitles![CurrentPlatform!]
         platformMenue?.titleBgColor = .systemBackground
         platformMenue?.titleFont = .boldSystemFont(ofSize: 18)
         platformMenue?.titleColor = .label
@@ -60,7 +62,7 @@ extension LoginVC:LMJDropdownMenuDelegate,LMJDropdownMenuDataSource{
     }
     
     //MARK: -LMJDropdownMenuDelegate
-    func dropdownMenu(_ menu: LMJDropdownMenu, didSelectOptionAt index: UInt, optionTitle title: String) {
+    func dropdownMenu(_ menu: LMJDropdownMenu, didSelectOptionAt index: UInt, optionTitle title: String)  {
         print("您选择了index：\(index),title: \(title)")
         if index == 0 {
             //第一平台，南京
@@ -76,6 +78,135 @@ extension LoginVC:LMJDropdownMenuDelegate,LMJDropdownMenuDataSource{
             networkInterface = FOURTH_BASE_URL
         }
         
+        CurrentPlatform = Int(index)
+        try? realm.write {
+            realm.objects(PlatformSelectedTag.self).first?.PlatformSelectedTagIndex = CurrentPlatform!
+        }
         
+        print("更换接口 accessToken   dosession 重新请求")
+        SessionUUID = "00000000-0000-0000-0000-000000000000"
+        
+        let workingGroup = DispatchGroup()
+        let workingQueue = DispatchQueue(label: "request_updateTokenSession")
+        
+        workingGroup.enter() // 开始
+        workingQueue.async {
+            let sema = DispatchSemaphore(value: 0)
+            self.TokenRE(sema: sema)
+            sema.wait() // 等待任务结束, 否则一直阻塞
+            workingGroup.leave() // 结束
+        }
+
+        workingGroup.enter() // 开始
+        workingQueue.async {
+            let sema = DispatchSemaphore(value: 0)
+            self.SessionRE(sema: sema)
+            sema.wait() // 等待任务结束, 否则一直阻塞
+            workingGroup.leave() // 结束
+        }
+
+        
+    }
+    
+    func TokenRE(sema: DispatchSemaphore){
+
+        let parameters = ["GrantType":"BDJC",
+                          "AppID":"UzHky82L6hOKCAsI5MBQYImw",
+                          "AppSecret":"HCarvgfeeCQlFoWfo8lylh7aF61wNNBjv8FriEw"
+        ]
+        //showLoadHUD()
+        AF.request("\(networkInterface)getAccessToken.php",
+                   method: HTTPMethod.post,
+                   parameters: parameters,
+                   encoder: JSONParameterEncoder.default).responseJSON(completionHandler: { response in
+                    //self.hideLoadHUD()
+                    switch response.result {
+                        case .success(let value):
+                            let tokenMessage = JSON(value)
+                            print(tokenMessage["ResponseCode"],"正常请求token")
+                            print(tokenMessage["ResponseMsg"])
+                            if tokenMessage["ResponseCode"] == "200" {
+                                TokenSuccess = true
+                                AccessToken = tokenMessage["AccessToken"].stringValue
+                                ExpireTimestamp = tokenMessage["ExpireTimestamp"].int
+                                //TokenRealm
+                                let tokenRealm = TokenRealm()
+                                tokenRealm.TokenString = AccessToken!
+                                print("AccessToken",AccessToken as Any)
+                                //若TokenRealm数据库中存在值，则将其删除后再添加，保证数据库只有一个值（保证Token唯一性）
+                                if realm.objects(TokenRealm.self).count != 0{
+                                    do{
+                                        try realm.write {
+                                            realm.delete(realm.objects(TokenRealm.self).first!)
+                                        }
+                                    }catch{
+                                        print(error)
+                                    }
+                                }
+                                do{
+                                    print("正在添加Token")
+                                    try realm.write {
+                                        realm.add(tokenRealm)
+                                    }
+                                }catch{
+                                    print(error)
+                                }
+                                sema.signal()
+                            }else{
+                                print(tokenMessage["ResponseCode"])
+                                print(tokenMessage["ResponseMsg"])
+                                TokenSuccess = false
+                                sema.signal()
+                            }
+                            
+                            
+                        case .failure(let error):
+                            TokenSuccess = false
+                            print(error)
+                        sema.signal()
+                        }
+                   })
+                    
+                  
+    }
+    func SessionRE(sema: DispatchSemaphore){
+        let parameters = ["AccessToken":AccessToken,
+                          "SessionUUID":SessionUUID,
+        ]
+        AF.request("\(networkInterface)doSession.php",
+                   method: HTTPMethod.post,
+                   parameters: parameters,
+                   encoder: JSONParameterEncoder.default).responseJSON(completionHandler: { response in
+                    switch response.result {
+                        case .success(let value):
+                            let doSessionMessage = JSON(value)
+                            print(doSessionMessage["ResponseCode"],"session")
+                            print(doSessionMessage["ResponseMsg"],"session")
+                            if doSessionMessage["ResponseCode"] == "202" {
+                                //未登录时
+                                SessionSuccess = true
+                                SessionUUID = doSessionMessage["SessionUUID"].stringValue
+                                print("SessionUUID",SessionUUID as Any)
+                                sema.signal()
+                                //SessionUUIDmd5 = SessionUUID.md5
+                                //sessionRealm
+                                self.UpdateSessionReaml()
+                            }else if doSessionMessage["ResponseCode"] == "201"{
+                                //已登录时
+                                SessionSuccess = true
+                                self.UpdateSessionReaml()
+                                print("\(doSessionMessage["UserName"])")
+                                sema.signal()
+                            }else{
+                                SessionSuccess = false
+                                sema.signal()
+                            }
+                        case .failure(let error):
+                            print(error)
+                            SessionSuccess = false
+                            sema.signal()
+                        }
+                   })
+                    
     }
 }

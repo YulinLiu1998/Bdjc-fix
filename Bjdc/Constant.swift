@@ -31,6 +31,7 @@ var alertView: AlertView?
 var tableFlage = false
 var NavMenu:LMJDropdownMenu?
 var NavMenu1:LMJDropdownMenu?
+var NavMenu2:LMJDropdownMenu?
 ////当前项目索引 已有
 //var CurrentProject:Int?
 //当前项目名

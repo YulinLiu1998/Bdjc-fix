@@ -46,6 +46,8 @@ extension DateTableVC{
         navMenu?.optionLineColor = .systemBackground
         navMenu?.optionIconSize = CGSize(width: 15, height: 15)
         self.navigationController?.navigationBar.addSubview(navMenu!)
+        self.navigationController?.navigationBar.backgroundColor = .systemBackground
+        
         //HeaderView?.addSubview(navMenu!)
     }
 }

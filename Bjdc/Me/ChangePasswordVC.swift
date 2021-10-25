@@ -24,7 +24,6 @@ class ChangePasswordVC: UIViewController {
         originalPasswordTF.becomeFirstResponder()
     }
     @IBAction func backEvent(_ sender: Any) {
-//        dismiss(animated: true, completion: nil)
         self.navigationController?.popViewController(animated: true)
     }
     
@@ -34,26 +33,31 @@ class ChangePasswordVC: UIViewController {
     @IBAction func doneBtn(_ sender: UIButton) {
         
         view.endEditing(true)
-        if newPassword.isPassword && originalPassword.isPassword && confirmPassword.isPassword{
-            if newPassword == confirmPassword  {
-                //更新数据
-                setPassword()
-            }else{
-                view.showError("两次密码不一致,请重新输入！")
-            }
+//        if newPassword.isPassword && originalPassword.isPassword && confirmPassword.isPassword{
+//            if newPassword == confirmPassword  {
+//                //更新数据
+//                setPassword()
+//            }else{
+//                view.showError("两次密码不一致,请重新输入！")
+//            }
+//        }else{
+//            print("输入密码不符合规则")
+//            var message:String?
+//            if !originalPassword.isPassword{
+//                message = "您输入的原密码不符合规则,请重新输入！"
+//            }else if !newPassword.isPassword{
+//                message = "您输入的新密码不符合规则,请重新输入！"
+//            }else if !confirmPassword.isPassword {
+//                message = "您输入的确认密码不符合规则,请重新输入！"
+//            }
+//            view.showError(message!)
+//        }
+        if newPassword == confirmPassword  {
+            //更新数据
+            setPassword()
         }else{
-            print("输入密码不符合规则")
-            var message:String?
-            if !originalPassword.isPassword{
-                message = "您输入的原密码不符合规则,请重新输入！"
-            }else if !newPassword.isPassword{
-                message = "您输入的新密码不符合规则,请重新输入！"
-            }else if !confirmPassword.isPassword {
-                message = "您输入的确认密码不符合规则,请重新输入！"
-            }
-            view.showError(message!)
+            view.showError("两次密码不一致,请重新输入！")
         }
-        
         
         
         

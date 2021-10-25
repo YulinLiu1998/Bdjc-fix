@@ -31,7 +31,8 @@ let SECOND_BASE_URL = "http://39.96.80.62/bdjc/API/"
 //第三平台，测试
 let THIRD_BASE_URL = "http://172.18.7.86/dist/API/"
 //第四平台，海淀
-let FOURTH_BASE_URL = "http://140.210.9.229/bdjc/API/";
+let FOURTH_BASE_URL = "http://140.210.9.229/bdjc/API/"
+let NetAPI = [FIRST_BASE_URL,SECOND_BASE_URL,THIRD_BASE_URL,FOURTH_BASE_URL]
 //MARK: -获取访问令牌
 var AccessToken:String?
 var ExpireTimestamp:Int?
@@ -42,6 +43,7 @@ var SessionUUID:String = "00000000-0000-0000-0000-000000000000"
 var SessionUUIDmd5:String?
 var Username:String?
 var Password:String?
+var CurrentPlatform:Int?
 //MARK: -工程项目
 var ProjectList:JSON?
 //当前项目

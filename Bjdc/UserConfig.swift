@@ -28,3 +28,6 @@ class ProjectSelectedTag:Object{
     @objc dynamic var ProjectSelectedTagIndex = 0
 }
 
+class PlatformSelectedTag:Object{
+    @objc dynamic var PlatformSelectedTagIndex = 0
+}

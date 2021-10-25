@@ -12,7 +12,7 @@ import RealmSwift
 import SwiftDate
 //Token定时器
 func accessTokenTimer(){
-
+    
     let parameters = ["GrantType":"BDJC",
                       "AppID":"UzHky82L6hOKCAsI5MBQYImw",
                       "AppSecret":"HCarvgfeeCQlFoWfo8lylh7aF61wNNBjv8FriEw"
@@ -109,6 +109,8 @@ func DestorySessionAccessTime(){
 }
 
 func RedirectApp(VC:UIViewController){
+    //重置SessionUUID
+    SessionUUID = "00000000-0000-0000-0000-000000000000"
     let storyboard = UIStoryboard(name: "Main", bundle: nil)
     let vc = storyboard.instantiateViewController(identifier: "LoginVCID") as! LoginVC
     VC.present(vc, animated: true, completion: nil)

@@ -26,7 +26,7 @@ extension LoginVC{
                     switch response.result {
                         case .success(let value):
                             let tokenMessage = JSON(value)
-                            print(tokenMessage["ResponseCode"],"token")
+                            print(tokenMessage["ResponseCode"],"正常请求token")
                             print(tokenMessage["ResponseMsg"])
                             if tokenMessage["ResponseCode"] == "200" {
                                 TokenSuccess = true
@@ -35,6 +35,7 @@ extension LoginVC{
                                 //TokenRealm
                                 let tokenRealm = TokenRealm()
                                 tokenRealm.TokenString = AccessToken!
+                                print("AccessToken",AccessToken as Any)
                                 //若TokenRealm数据库中存在值，则将其删除后再添加，保证数据库只有一个值（保证Token唯一性）
                                 if realm.objects(TokenRealm.self).count != 0{
                                     do{
@@ -88,6 +89,7 @@ extension LoginVC{
                                 //未登录时
                                 SessionSuccess = true
                                 SessionUUID = doSessionMessage["SessionUUID"].stringValue
+                                print("SessionUUID",SessionUUID as Any)
                                 //SessionUUIDmd5 = SessionUUID.md5
                                 //sessionRealm
                                 self.UpdateSessionReaml()
@@ -157,7 +159,7 @@ extension LoginVC{
                             let loginMessage = JSON(value)
                             LoginMessage = loginMessage["ResponseMsg"].stringValue
                             LoginCode = loginMessage["ResponseCode"].stringValue
-                            print("loginMessage",loginMessage)
+                            print("loginMessage*******",loginMessage)
                             if loginMessage["ResponseCode"] == "200" {
                                 //成功
                                 LoginState = true
