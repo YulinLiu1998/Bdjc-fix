@@ -9,9 +9,12 @@
 /* Begin PBXBuildFile section */
 		106B69CA26B92F7100487AF0 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106B69C926B92F7000487AF0 /* TabBarController.swift */; };
 		106B69CC26BA35E300487AF0 /* PersonalInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106B69CB26BA35E300487AF0 /* PersonalInfo.swift */; };
+		1085B89A272BC759000ADABB /* DocumentTableVCTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1085B899272BC759000ADABB /* DocumentTableVCTableViewController.swift */; };
 		1091A686271561100071814B /* DateSheetVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1091A685271561100071814B /* DateSheetVC.swift */; };
 		10C1944126AE867E00FB98D2 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 10C1944026AE867E00FB98D2 /* README.md */; };
 		10C1944926AEA90200FB98D2 /* ReqFunc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10C1944826AEA90200FB98D2 /* ReqFunc.swift */; };
+		10D883ED2727DB90000C8742 /* DocumentFileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D883EC2727DB90000C8742 /* DocumentFileVC.swift */; };
+		10D883F12727E56F000C8742 /* DocumentFileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D883F02727E56F000C8742 /* DocumentFileCell.swift */; };
 		10F62A5C26F18FC40066F98D /* dropdownMenuPlatform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F62A5B26F18FC40066F98D /* dropdownMenuPlatform.swift */; };
 		B1152AC010D607A89DEB0D37 /* Pods_BDJC_Test.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A63DE7AA34004B8F7F49CB13 /* Pods_BDJC_Test.framework */; };
 		FF5EC81926A6E123002B2D81 /* UserConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5EC81826A6E123002B2D81 /* UserConfig.swift */; };
@@ -70,9 +73,12 @@
 /* Begin PBXFileReference section */
 		106B69C926B92F7000487AF0 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		106B69CB26BA35E300487AF0 /* PersonalInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalInfo.swift; sourceTree = "<group>"; };
+		1085B899272BC759000ADABB /* DocumentTableVCTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentTableVCTableViewController.swift; sourceTree = "<group>"; };
 		1091A685271561100071814B /* DateSheetVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateSheetVC.swift; sourceTree = "<group>"; };
 		10C1944026AE867E00FB98D2 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		10C1944826AEA90200FB98D2 /* ReqFunc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReqFunc.swift; sourceTree = "<group>"; };
+		10D883EC2727DB90000C8742 /* DocumentFileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentFileVC.swift; sourceTree = "<group>"; };
+		10D883F02727E56F000C8742 /* DocumentFileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentFileCell.swift; sourceTree = "<group>"; };
 		10F62A5B26F18FC40066F98D /* dropdownMenuPlatform.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dropdownMenuPlatform.swift; sourceTree = "<group>"; };
 		35D566247A3047EB539B1250 /* Pods-BDJC.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BDJC.release.xcconfig"; path = "Pods/Target Support Files/Pods-BDJC/Pods-BDJC.release.xcconfig"; sourceTree = "<group>"; };
 		3B6B1DE6C6619AD3A92ED268 /* Pods-BDJC.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BDJC.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BDJC/Pods-BDJC.debug.xcconfig"; sourceTree = "<group>"; };
@@ -247,6 +253,9 @@
 				FFA8589C265DDFAD0067CA7D /* Setting.swift */,
 				FFA8589E265DE02C0067CA7D /* AccountSecurityVC.swift */,
 				FFA858A2265DE0D10067CA7D /* ChangePasswordVC.swift */,
+				10D883EC2727DB90000C8742 /* DocumentFileVC.swift */,
+				10D883F02727E56F000C8742 /* DocumentFileCell.swift */,
+				1085B899272BC759000ADABB /* DocumentTableVCTableViewController.swift */,
 			);
 			path = Me;
 			sourceTree = "<group>";
@@ -489,6 +498,7 @@
 				FFDCEBF3265CB3C6006A306B /* SceneDelegate.swift in Sources */,
 				FFA4B663267094E30000C995 /* GNSSFilterInfoN.swift in Sources */,
 				FF968B82266A1A20009D9404 /* ProjectVC-btn.swift in Sources */,
+				10D883ED2727DB90000C8742 /* DocumentFileVC.swift in Sources */,
 				FFD9F7492696DFA300D57BF4 /* AlertView.swift in Sources */,
 				FFDCEC0B265CBC2A006A306B /* ProjectVC.swift in Sources */,
 				FFA8589F265DE02C0067CA7D /* AccountSecurityVC.swift in Sources */,
@@ -502,6 +512,7 @@
 				FFD34FE22664BA8F00EF0ED2 /* LoginVC-accessToken.swift in Sources */,
 				FF803ADF2669CAA8005B9ED7 /* BootomSheet-req.swift in Sources */,
 				FFA4B636266F49910000C995 /* ChartData-req.swift in Sources */,
+				10D883F12727E56F000C8742 /* DocumentFileCell.swift in Sources */,
 				FFA4B62D266F10500000C995 /* dropdownName.swift in Sources */,
 				FF803ADD26674E65005B9ED7 /* MeVC-req.swift in Sources */,
 				FFDCEC08265CBB87006A306B /* LoginVC.swift in Sources */,
@@ -509,6 +520,7 @@
 				FFDCEC1A265CCA60006A306B /* LMJDropdownMenu.m in Sources */,
 				FFA4B62F266F10600000C995 /* dropdownDate.swift in Sources */,
 				10F62A5C26F18FC40066F98D /* dropdownMenuPlatform.swift in Sources */,
+				1085B89A272BC759000ADABB /* DocumentTableVCTableViewController.swift in Sources */,
 				FFA4B6672670D5270000C995 /* GNSSFilterInfoH.swift in Sources */,
 				106B69CA26B92F7100487AF0 /* TabBarController.swift in Sources */,
 				FFDCEC23265D1089006A306B /* Demoable.swift in Sources */,

@@ -12,6 +12,7 @@ class MeVC: UIViewController {
     @IBOutlet weak var UserName: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationController?.isNavigationBarHidden = true
         if Username == nil {
             Username = realm.objects(UserAccountReaml.self).first?.account
         }

@@ -130,13 +130,12 @@ extension BootomSheetChartVC:UIDocumentInteractionControllerDelegate{
                           "EndTime":EndTime
         ]
        
-        showLoadHUD()
-        
+        BootomSheetChartVC.showGlobalLoadHUD("正在加载图表")
         AF.request("\(networkInterface)getStationReport.php",
                    method: HTTPMethod.post,
                    parameters: parameters,
                    encoder: JSONParameterEncoder.default).responseJSON(completionHandler: { response in
-                    self.hideLoadHUD()
+            BootomSheetChartVC.hideGlobalHUD()
                     switch response.result {
                         case .success(let value):
                             let StationReportMessage = JSON(value)
@@ -146,14 +145,21 @@ extension BootomSheetChartVC:UIDocumentInteractionControllerDelegate{
                                 UpdateSessionAccessTime()
                                 StationReport = StationReportMessage
                                 let url = StationReport!["ReportFilePath"].stringValue
-                                print("进入下载")
+                                let fileName = url.subStringFrom(startIndex: url.positionOf(sub: "/", backwards: true))
+                                let fileManager = FileManager.default
+                                let filePath:String = NSHomeDirectory() + "/Documents" + fileName
+                                let exist = fileManager.fileExists(atPath: filePath)
+                                if exist {
+                                    //删除已下载的
+                                    try! fileManager.removeItem(atPath: filePath)
+                                }
                                 self.download(url: url)
                             }else if StationReportMessage["ResponseCode"] == "400"{
                                 //操作失败/参数非法
                                 print("\(StationReportMessage["ResponseMsg"])")
-                                self.view.showError("下载失败请重试！")
+                                self.view.showError("\(StationReportMessage["ResponseMsg"])")
                             }else{
-                                self.view.showError("下载失败请重试！")
+                                self.view.showError("下载失败请重试！2")
                                 if StationReportMessage["ResponseCode"] == "400110"{
                                     RedirectApp(VC: self)
                                 }
@@ -163,7 +169,7 @@ extension BootomSheetChartVC:UIDocumentInteractionControllerDelegate{
                         case .failure(let error):
                             print("sdfasdf")
                             print(error)
-                            self.view.showError("下载失败请重试！")
+                            self.view.showError("下载失败请重试！3")
                         }
                    })
     }
@@ -181,7 +187,6 @@ extension BootomSheetChartVC:UIDocumentInteractionControllerDelegate{
                     let action1 = UIAlertAction(title: "取消", style: .cancel)
                     let action2 = UIAlertAction(title: "确认", style: .default) { _ in
                         let docUrl = value?.absoluteURL
-                        
                         let documentController = UIDocumentInteractionController(url:docUrl!)
                         //let documentController = UIDocumentInteractionController(url:value!.absoluteURL)
                         documentController.delegate = self
