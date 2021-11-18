@@ -24,8 +24,10 @@ class CustomAnnotationViewSwift: MAAnnotationView {
                 calloutView!.center = CGPoint.init(x: bounds.width/2 + calloutOffset.x, y: -calloutView!.bounds.height/2 + calloutOffset.y)
             }
             
-            calloutView!.titleLabel.text = annotation.title as? NSString as String?
-            calloutView!.subtitleLabel.text = annotation.subtitle as? NSString as String?
+//            calloutView!.titleLabel.text = annotation.title as! String?
+//            calloutView!.subtitleLabel.text = annotation.subtitle as! String?
+            calloutView!.titleLabel.text = annotation.title.unwrappedText
+            calloutView!.subtitleLabel.text = annotation.subtitle.unwrappedText
             addSubview(calloutView!)
         } else {
             calloutView!.removeFromSuperview()

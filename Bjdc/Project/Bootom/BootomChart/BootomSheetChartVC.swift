@@ -8,6 +8,8 @@
 import UIKit
 import SwiftyJSON
 import Charts
+import LMJDropdownMenu
+
 class BootomSheetChartVC: UIViewController,UIScrollViewDelegate {
     
 

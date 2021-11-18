@@ -63,7 +63,6 @@
 		FFDCEC0F265CBF34006A306B /* DateTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFDCEC0E265CBF34006A306B /* DateTableVC.swift */; };
 		FFDCEC12265CC007006A306B /* DateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFDCEC11265CC007006A306B /* DateTableViewCell.swift */; };
 		FFDCEC16265CC59E006A306B /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFDCEC15265CC59E006A306B /* Constant.swift */; };
-		FFDCEC1A265CCA60006A306B /* LMJDropdownMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = FFDCEC18265CCA60006A306B /* LMJDropdownMenu.m */; };
 		FFDCEC1D265CEFC2006A306B /* BootomSheetVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFDCEC1C265CEFC2006A306B /* BootomSheetVC.swift */; };
 		FFDCEC1F265D0AAF006A306B /* BootomSheetDropdownMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFDCEC1E265D0AAF006A306B /* BootomSheetDropdownMenu.swift */; };
 		FFDCEC21265D0ED1006A306B /* DateTableDropdownMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFDCEC20265D0ED1006A306B /* DateTableDropdownMenu.swift */; };
@@ -137,8 +136,6 @@
 		FFDCEC0E265CBF34006A306B /* DateTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateTableVC.swift; sourceTree = "<group>"; };
 		FFDCEC11265CC007006A306B /* DateTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateTableViewCell.swift; sourceTree = "<group>"; };
 		FFDCEC15265CC59E006A306B /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
-		FFDCEC18265CCA60006A306B /* LMJDropdownMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMJDropdownMenu.m; sourceTree = "<group>"; };
-		FFDCEC19265CCA60006A306B /* LMJDropdownMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMJDropdownMenu.h; sourceTree = "<group>"; };
 		FFDCEC1B265CCB23006A306B /* Bdjc-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bdjc-Bridging-Header.h"; sourceTree = "<group>"; };
 		FFDCEC1C265CEFC2006A306B /* BootomSheetVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BootomSheetVC.swift; sourceTree = "<group>"; };
 		FFDCEC1E265D0AAF006A306B /* BootomSheetDropdownMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BootomSheetDropdownMenu.swift; sourceTree = "<group>"; };
@@ -297,7 +294,6 @@
 				FFDCEC01265CB3C9006A306B /* Info.plist */,
 				FFDCEBF9265CB3C6006A306B /* Bjdc.xcdatamodeld */,
 				FFDCEC1B265CCB23006A306B /* Bdjc-Bridging-Header.h */,
-				FFDCEC17265CCA60006A306B /* LMJDropdownMenu */,
 			);
 			path = Bjdc;
 			sourceTree = "<group>";
@@ -336,15 +332,6 @@
 				1091A685271561100071814B /* DateSheetVC.swift */,
 			);
 			path = Data;
-			sourceTree = "<group>";
-		};
-		FFDCEC17265CCA60006A306B /* LMJDropdownMenu */ = {
-			isa = PBXGroup;
-			children = (
-				FFDCEC18265CCA60006A306B /* LMJDropdownMenu.m */,
-				FFDCEC19265CCA60006A306B /* LMJDropdownMenu.h */,
-			);
-			path = LMJDropdownMenu;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -517,7 +504,6 @@
 				FF803ADD26674E65005B9ED7 /* MeVC-req.swift in Sources */,
 				FFDCEC08265CBB87006A306B /* LoginVC.swift in Sources */,
 				FFA4B621266CEB4C0000C995 /* AnnotationView.swift in Sources */,
-				FFDCEC1A265CCA60006A306B /* LMJDropdownMenu.m in Sources */,
 				FFA4B62F266F10600000C995 /* dropdownDate.swift in Sources */,
 				10F62A5C26F18FC40066F98D /* dropdownMenuPlatform.swift in Sources */,
 				1085B89A272BC759000ADABB /* DocumentTableVCTableViewController.swift in Sources */,
@@ -694,7 +680,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "Lyl19980305Bjdc.BDJC-Test";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "/Users/mbp/Desktop/Bdjc-test/Bjdc/Bdjc-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "/Users/mbp/Documents/Bdjc-fix/Bjdc/Bdjc-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -716,7 +702,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "Lyl19980305Bjdc.BDJC-Test";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "/Users/mbp/Desktop/Bdjc-test/Bjdc/Bdjc-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "/Users/mbp/Documents/Bdjc-fix/Bjdc/Bdjc-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

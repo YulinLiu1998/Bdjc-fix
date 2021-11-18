@@ -17,4 +17,5 @@ target 'BDJC-Test' do
   pod 'Malert'
   pod 'PGDatePicker'
   pod 'RealmSwift'
+  pod 'LMJDropdownMenu'
 end

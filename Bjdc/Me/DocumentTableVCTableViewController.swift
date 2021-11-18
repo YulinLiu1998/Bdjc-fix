@@ -13,18 +13,25 @@ class DocumentTableVCTableViewController: UITableViewController {
     var navMenuDocument:LMJDropdownMenu?
     var AllFilesList:Array<String>?
     var contentsOfPath:Array<String>?
-    
+    var footerText:String {
+        if ((AllFilesList?.count) == 0) {
+            return "当前您并未下载报表！"
+        }else{
+            return "报表信息显示完毕！"
+        }
+    }
     
     @IBOutlet weak var BackBtn: UIBarButtonItem!
     
     @IBOutlet weak var Edit: UIBarButtonItem!
     @IBOutlet weak var DeletMu: UIBarButtonItem!
     
+    @IBOutlet weak var FooterLable: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.isNavigationBarHidden = false
         getAllFiles()
-        self.navigationItem.rightBarButtonItem = self.editButtonItem
+        FooterLable.text = footerText
         DeletMu.isEnabled = isEditing
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -60,6 +67,7 @@ class DocumentTableVCTableViewController: UITableViewController {
 
                 getAllFiles()
                 tableView.reloadData()
+                FooterLable.text = footerText
             }
         }
     }
@@ -189,7 +197,7 @@ extension DocumentTableVCTableViewController:UIDocumentInteractionControllerDele
             try! manager.removeItem(at: toUrl)
             getAllFiles()
             tableView.reloadData()
-            
+            FooterLable.text = footerText
         }
         alert.addAction(action1)
         alert.addAction(action2)

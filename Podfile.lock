@@ -8,6 +8,7 @@ PODS:
   - Charts/Core (3.6.0)
   - CryptoSwift (1.4.0)
   - FittedSheets (2.4.1)
+  - LMJDropdownMenu (3.0.4)
   - Malert (4.1)
   - MBProgressHUD (1.2.0)
   - PGDatePicker (2.6.9):
@@ -27,6 +28,7 @@ DEPENDENCIES:
   - Charts
   - CryptoSwift (~> 1.4.0)
   - FittedSheets
+  - LMJDropdownMenu
   - Malert
   - MBProgressHUD (~> 1.2.0)
   - PGDatePicker
@@ -42,6 +44,7 @@ SPEC REPOS:
     - Charts
     - CryptoSwift
     - FittedSheets
+    - LMJDropdownMenu
     - Malert
     - MBProgressHUD
     - PGDatePicker
@@ -58,6 +61,7 @@ SPEC CHECKSUMS:
   Charts: b1e3a1f5a1c9ba5394438ca3b91bd8c9076310af
   CryptoSwift: 7cc902df1784de3b389a387756c7d710f197730c
   FittedSheets: 839b9d261e446cfa9ae8d7229d266f22b30f8be8
+  LMJDropdownMenu: 50c74e9d50a480c290fec47eb575826861d0823b
   Malert: d7ae7306ea1b7d50ec66590256e4e4fe72c09876
   MBProgressHUD: 3ee5efcc380f6a79a7cc9b363dd669c5e1ae7406
   PGDatePicker: 88960f3760edac96219c10320f25536ad31d0f44
@@ -67,6 +71,6 @@ SPEC CHECKSUMS:
   SwiftDate: 6329e58969a2de31cea7f1ee1143b247693196e7
   SwiftyJSON: 6faa0040f8b59dead0ee07436cbf76b73c08fd08
 
-PODFILE CHECKSUM: 6a774e0b04e38cd0a2295c4763cdeee12dcedaa4
+PODFILE CHECKSUM: a870a2ed238dcddce60d3c54caac6ff31f52b673
 
 COCOAPODS: 1.10.1
